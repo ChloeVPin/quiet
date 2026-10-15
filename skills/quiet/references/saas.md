@@ -9,7 +9,7 @@ A founder has a bad landing page. Keep the business sections: hero, product, fea
 ## What tasteful SaaS does
 
 1. **Real product UI is the hero visual.** Genuine fidelity: sidebar, filters, issue ids, owners, tabular dates, activity. Not emoji cards, not “screenshot coming soon,” not abstract blobs.
-2. **One primary CTA grammar.** One filled button style for the whole page. Secondary actions are text links (or a quiet border used sparingly), never a competing twin. On dark grounds: light filled primary. On light grounds: dark filled primary. Same logic either mode.
+2. **One primary CTA grammar.** One filled button style for the whole page. The secondary is a quiet bordered button of identical height and radius, or a text link. Never two filled buttons side by side. On dark grounds: light filled primary. On light grounds: dark filled primary. Same logic either mode.
 3. **Neutral ground, color only as meaning.** Near-black or near-white page. Accent only for status, tags, or a small brand mark inside the product chrome. Never for decorative avatars, glow CTAs, or “warmth.”
 4. **Single grotesk.** Inter or a Söhne-class face for UI and marketing. Hierarchy from weight and muted color. No serif display headlines on SaaS.
 5. **Density where the product shows.** Marketing chrome can breathe. The embedded app is information-dense so a practitioner recognizes a tool.
@@ -18,17 +18,20 @@ A founder has a bad landing page. Keep the business sections: hero, product, fea
 
 Light SaaS follows the same rules as dark: neutral near-white (not cream), dark filled primary, product fragment first. Do not invent a separate “warm” look for light mode.
 
-## Avoid: default component-kit grammar
+## Default grammar (see `landing.md` for numbers)
 
-These read clean but generic. Do not treat them as Quiet taste:
+- One grotesk (Inter-class), weights 400/500/600 only. Neutral zinc ramp, not cream and not blue-gray.
+- Hero headline 60/60, weight 600, tracking -0.025em, two lines. The second clause may drop to the tertiary text color (a two-tone headline) to carry hierarchy without a second size.
+- Primary filled + secondary quiet-bordered button is allowed as a pair when both are the same height, radius, and type size, and only the primary is filled.
+- Layout sits on structural rails: one 1104px container with 1px edge lines that run the full page, and full-bleed 1px rules between sections. Features live in cells of that grid, not in floating cards.
+- The product shot sits in a bezel: 4px padding, 1px line, 14px outer radius, 10px inner radius, soft shadow. It starts inside the fold.
 
-- Inter or Geist as the only “personality,” with cool zinc neutrals (`#111` / `#737373` / `#f7f7f7`)
-- Black fill primary + outlined secondary CTA pair
-- Muted gray panel hosting a bordered white component as the default exhibit
-- Actions menu with keyboard hints presented as the taste centerpiece
-- Component-gallery collage heroes (component-kit marketing default)
-- Feature grids of identical bordered cards
-- Huge negative-tracked marketing display that outshouts the product
+## Still avoid
+
+- Component-gallery collage heroes
+- Floating grids of identical bordered cards with drop shadows
+- Glow, gradient text, starfield or noise backgrounds behind the hero
+- Display type so large it outshouts the product (over 64px on desktop)
 
 ## Anti-patterns (fail)
 

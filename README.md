@@ -55,7 +55,10 @@ A noisy product page restyled as calm SaaS. Real board UI in the hero, one prima
 </p>
 
 <p align="center">
-  <img src="examples/saas/after-dark-fold.png" alt="SaaS after Quiet" width="880" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="examples/saas/after-dark-fold.png" />
+    <img src="examples/saas/after-light-fold.png" alt="SaaS after Quiet" width="880" />
+  </picture>
 </p>
 
 Full pages in [`examples/saas/`](examples/saas/).

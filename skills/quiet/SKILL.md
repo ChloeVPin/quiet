@@ -39,6 +39,7 @@ Read the reference that matches the decision. Do not skim them all up front.
 | Redesigning an existing surface | `references/redesign.md` |
 | Chat, sidebars, settings, dashboards | `references/product-ui.md` |
 | SaaS / marketing landings | `references/saas.md` |
+| Landing page numbers (grid, type, buttons, product bezel, pricing) | `references/landing.md` |
 | Before/after self-check | `references/critique-rubric.md` |
 
 Optional: `node <this-skill>/scripts/lint.mjs <paths…>` greps for common tells.
@@ -66,9 +67,10 @@ building is cheap?
    Never animate from `scale(0)` (start ~0.9-0.95). Instant subsequent tooltips.
    Freeze exiting content. Morph icons instead of crossfading. Skip what does
    not apply.
-6. **Layout.** Product density in apps. For sites: narrow left column, lists,
-   real UI fragments as the visual. No stat cards, no hairline feature tables,
-   no serif-section SaaS rhythm.
+6. **Layout.** Product density in apps. For product marketing: a 1104px
+   container on structural rails, a two-line hero, the real product in a bezel
+   inside the fold, features as grid cells. Numbers in `references/landing.md`.
+   No stat-card heroes, no fake feature row tables, no serif-section rhythm.
 7. **Copy.** Buttons name the action (“Send invite”, not “Submit”). No stock AI
    phrases. No eyebrow / pill kickers above headlines.
 8. **Bans.** See `references/bans.md`. Absolute. Includes: no AI-colliding brand names, no sidebar logo tiles, no needless dividers, Boxicons (not Lucide) where icons are conventional, fill empty app chrome, grid-aligned buttons, paid-sounding CTAs, real product photos without overlay SKUs.

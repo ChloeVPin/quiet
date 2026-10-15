@@ -3,91 +3,122 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cascade Changelog</title>
+<title>Cascade · Changelog</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <style>
-
-:root{
-  --bg:#fafafa;--panel:#ffffff;--panel2:#f3f3f4;--line:#e8e8ea;
-  --fg:#111113;--muted:#6b6f76;--faint:#9b9fa6;
-  --accent:#5e6ad2;--green:#1f8a5b;--amber:#b58105;--red:#c43c3c;
-  --btn:#111113;--btn-fg:#ffffff;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{box-sizing:border-box;margin:0}
-html{-webkit-font-smoothing:antialiased}
+:root{--bg:#fff;--bg2:#fafafa;--fg:#09090b;--fg2:#52525c;--fg3:#9f9fa9;--line:rgb(9 9 11/.1);--line2:rgb(9 9 11/.06);--card:#fff;
+--btn:#18181b;--btnfg:#fff;--btn2:#fff;--btn2fg:#09090b;--ring:rgb(9 9 11/.12);--ok:#16a34a;--warn:#d97706;--info:#2563eb;--shadow:0 1px 2px rgb(0 0 0/.06),0 10px 15px -3px rgb(0 0 0/.05)}
+.dark{--bg:#09090b;--bg2:#0e0e11;--fg:#fafafa;--fg2:#a1a1aa;--fg3:#71717b;--line:rgb(255 255 255/.1);--line2:rgb(255 255 255/.06);--card:#111113;
+--btn:#fafafa;--btnfg:#09090b;--btn2:rgb(255 255 255/.06);--btn2fg:#fafafa;--ring:rgb(255 255 255/.12);--ok:#4ade80;--warn:#fbbf24;--info:#60a5fa;--shadow:0 20px 40px -12px rgb(0 0 0/.6)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--fg);font:400 16px/24px Inter,system-ui,sans-serif;font-feature-settings:"cv11","ss01"}
 a{color:inherit;text-decoration:none}
+.c{width:min(1104px,calc(100% - 48px));margin:0 auto}
+.c-md{width:min(1024px,calc(100% - 48px));margin:0 auto}
+.num{font-variant-numeric:tabular-nums}
+/* nav */
+.nav{height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.nav .brand{font:600 16px/1 Inter;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.nav .links{display:flex;gap:32px;font-size:14px;color:var(--fg2)}
+.nav .links a:hover{color:var(--fg)}
+.nav .act{display:flex;gap:8px;justify-content:flex-end}
+.bar{border-bottom:1px solid var(--line)}
+/* buttons: one height per row, 6px radius, ring + tiny drop */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;font:500 14px/20px Inter;white-space:nowrap;cursor:pointer;border:0;transition:opacity .15s,background .15s}
+.b.sm{height:32px;padding:0 12px;font-size:13px;border-radius:6px}
+.b.p{background:var(--btn);color:var(--btnfg);box-shadow:0 0 0 1px var(--btn),0 1px 2px rgb(0 0 0/.2)}
+.b.s{background:var(--btn2);color:var(--btn2fg);box-shadow:0 0 0 1px var(--ring),0 1px 2px rgb(0 0 0/.06)}
+.b.p:hover{opacity:.9}.b.s:hover{background:var(--line2)}
+.b.w{width:100%}
+/* type */
+.h1{font:600 60px/60px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h2{font:600 40px/44px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h3{font:600 20px/28px Inter;letter-spacing:-.01em}
+.lead{font-size:18px;line-height:28px;color:var(--fg2);text-wrap:pretty}
+.mute{color:var(--fg2)}.faint{color:var(--fg3)}
+.tone{color:var(--fg3)}
+.stmt{font:500 20px/28px Inter;letter-spacing:-.01em;text-wrap:pretty}.stmt span{color:var(--fg2)}
+.sm-t{font-size:14px;line-height:20px}
+.xs-t{font-size:12px;line-height:16px}
+.sec{padding:96px 0}
+/* bezel frame for product shots */
+.bezel{padding:4px;border-radius:14px;background:var(--bg2);box-shadow:0 0 0 1px var(--line),var(--shadow)}
+.bezel>.in{border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line);background:var(--card)}
+/* hairline grid shell */
+.rails{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hr{border-top:1px solid var(--line)}
+i.bx{font-size:16px;line-height:1;vertical-align:-2px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;color:var(--fg2)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+@media (max-width:760px){
+ .nav{grid-template-columns:1fr auto}.nav .links{display:none}
+ .h1{font-size:40px;line-height:44px}.h2{font-size:30px;line-height:36px}
+ .lead{font-size:17px;line-height:26px}
+ [class*="grid"],.cells,.three,.head,.quote,.stats,.logos,footer .c{grid-template-columns:1fr!important}
+ .cell+.cell,.three>div+div,.stats div+div{border-left:0!important;border-top:1px solid var(--line)}
+ .head,.cell,.three>div,.quote,.end,.hero{padding-left:20px!important;padding-right:20px!important}
+ .shot{padding:0 12px!important}
+ .app{grid-template-columns:1fr!important}.app .side{display:none}
+ .app .row{grid-template-columns:56px 16px 1fr 48px}.app .row .lb,.app .row .av{display:none}.app .tb .pill:first-of-type{display:none}.hero{padding-top:64px!important;padding-bottom:48px!important}
+ .tb .faint.xs-t{display:none}
+ .logos{height:auto!important;padding:24px 0;gap:16px}
+}
 
-.btn{display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
-.btn:active{transform:scale(.97)}
-.btn-primary{background:var(--btn);color:var(--btn-fg)}
-.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.app{display:grid;grid-template-columns:232px 1fr;font-size:13px;line-height:18px;min-height:560px;text-align:left}
+.side{border-right:1px solid var(--line);padding:10px 8px;background:var(--bg2)}
+.side .ws{display:flex;align-items:center;gap:6px;padding:6px 8px 12px;font-weight:600}
+.side .ws .sp{flex:1}
+.side a{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:6px;color:var(--fg2)}
+.side a.on{background:var(--line2);color:var(--fg)}
+.side a.sub{padding-left:28px}
+.side .ct{margin-left:auto;font-size:12px;color:var(--fg3)}
+.side .gl{font-size:12px;color:var(--fg3);padding:16px 8px 4px}
+.main{min-width:0}
+.tb{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--line);font-weight:500}
+.tb .sp{flex:1}
+.pill{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px;border-radius:6px;box-shadow:0 0 0 1px var(--line);font-size:12px;color:var(--fg2);font-weight:500}
+.grp{display:flex;align-items:center;gap:8px;height:36px;padding:0 16px;background:var(--line2);font-weight:500}
+.row{display:grid;grid-template-columns:64px 18px 1fr auto 24px 52px;align-items:center;gap:10px;height:40px;padding:0 16px;border-top:1px solid var(--line2)}
+.row .pr{color:var(--fg3);font-size:12px}
+.row .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.row .lb{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--fg2)}
+.row .av{width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--fg2);font-size:9px;font-weight:600;display:grid;place-items:center}
+.row .d{font-size:12px;color:var(--fg3);text-align:right}
 
-body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
-.wrap{width:min(720px,calc(100% - 48px));margin:0 auto}
-nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
-.mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
-.nav-r{display:flex;gap:14px;align-items:center;font-size:13px;color:var(--muted)}
-.hero{padding:48px 0 28px}
-.hero h1{font-size:28px;font-weight:510;letter-spacing:-.03em;margin-bottom:8px}
-.hero p{color:var(--muted);font-size:15px;max-width:42ch}
-.list{border-top:1px solid var(--line)}
-.item{display:grid;grid-template-columns:88px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
-.item .date{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
-.item h2{font-size:15px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px}
-.item h2 a:hover{color:var(--accent)}
-.item p{font-size:14px;color:var(--muted);max-width:52ch}
-.item .kind{font-size:12px;color:var(--faint);margin-top:8px}
-
-@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+footer .c{display:grid;grid-template-columns:2fr repeat(3,1fr);padding:56px 48px;gap:24px;font-size:14px}footer h4{font:500 14px/20px Inter;margin-bottom:12px}footer a{display:block;color:var(--fg2);line-height:28px}.legal{display:flex;justify-content:space-between;padding:20px 48px;font-size:13px;color:var(--fg3)}
+.hero{padding:96px 48px 64px;display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:48px}
+form{display:flex;gap:8px}input{flex:1;height:36px;padding:0 12px;border-radius:8px;border:0;background:var(--btn2);font:400 14px Inter;box-shadow:0 0 0 1px var(--ring);color:var(--fg)}
+.e{display:grid;grid-template-columns:240px 1fr}
+.e .dt{padding:48px;border-right:1px solid var(--line);font-size:14px;color:var(--fg2)}
+.e .dt b{display:block;color:var(--fg);font-weight:500}
+.e .x{padding:48px 48px 56px}
+.e h2{font:600 28px/34px Inter;letter-spacing:-.02em}
+.e p{color:var(--fg2);margin-top:12px;max-width:620px}
+.e .bezel{margin-top:32px}
+.e ul{margin-top:20px;padding-left:18px;color:var(--fg2);display:grid;gap:8px;max-width:620px;font-size:15px}
+.e ul b{color:var(--fg);font-weight:500}
+.app{min-height:0}
+@media (max-width:760px){input{min-width:0}.e .tb .pill,.e .tb .xs-t{display:none}.hero,.e{grid-template-columns:minmax(0,1fr)}.e .dt{border-right:0;padding:32px 20px 0}.e .x{padding:16px 20px 40px}.hero{padding:48px 20px}}
 </style>
 </head>
 <body>
-
-<div class="wrap">
-  <nav>
-    <div class="mark">Cascade</div>
-    <div class="nav-r"><a href="#">Docs</a><a class="btn btn-primary" href="#">Subscribe</a></div>
-  </nav>
-  <header class="hero">
-    <h1>Changelog</h1>
-    <p>Shipping notes for Cascade. Newest first.</p>
-  </header>
-  <div class="list">
-    <article class="item">
-      <div class="date">Oct 14</div>
-      <div>
-        <h2><a href="article.html">Cycles 2.0</a></h2>
-        <p>Cycle goals, carry-over, and a quieter progress strip. Existing cycles migrate automatically.</p>
-        <div class="kind">Feature</div>
-      </div>
-    </article>
-    <article class="item">
-      <div class="date">Oct 9</div>
-      <div>
-        <h2><a href="#">Faster issue search</a></h2>
-        <p>Search across titles and ids is about 2x faster on workspaces over 10k issues.</p>
-        <div class="kind">Improvement</div>
-      </div>
-    </article>
-    <article class="item">
-      <div class="date">Oct 3</div>
-      <div>
-        <h2><a href="#">Due dates use your timezone</a></h2>
-        <p>Due dates stored in UTC now render in your profile zone.</p>
-        <div class="kind">Fix</div>
-      </div>
-    </article>
-    <article class="item">
-      <div class="date">Sep 28</div>
-      <div>
-        <h2><a href="#">Keyboard: assign owner</a></h2>
-        <p>Press O on an issue to open the owner picker. Esc dismisses.</p>
-        <div class="kind">Improvement</div>
-      </div>
-    </article>
-  </div>
-</div>
-
+<header class="bar"><div class="c nav"><a class="brand">Cascade</a><nav class="links"><a>Product</a><a>Customers</a><a>Pricing</a><a style="color:var(--fg)">Changelog</a></nav><div class="act"><a class="b s sm">Log in</a><a class="b p sm">Start free</a></div></div></header>
+<div class="c rails"><section class="hero"><div><h1 class="h1">Changelog</h1><p class="lead" style="margin-top:16px">What shipped in Cascade, newest first.</p></div><form onsubmit="return false"><input type="email" placeholder="you@company.com" aria-label="Email"/><button class="b s">Get updates</button></form></section></div>
+<div class="hr"></div>
+<div class="c rails"><article class="e"><div class="dt"><b>Oct 14, 2026</b>Version 4.2</div><div class="x"><h2>Cycles 2.0</h2><p>Cycles now carry a goal, roll unfinished work forward with the reason attached, and show progress in the list header. Existing cycles migrate automatically.</p>
+<div class="bezel"><div class="in"><div class="app" style="grid-template-columns:1fr"><section class="main"><div class="tb"><span>Platform <span class="faint">/</span> Cycle 42</span><span class="sp"></span><span class="faint xs-t num">38% · 6 of 16 done</span><span class="pill"><i class="bx bx-target-lock"></i>Goal: ship webhook retries</span></div>
+<div class="row"><span class="pr num">PLT-512</span><i class="bx bx-adjust" style="color:var(--warn)"></i><span class="t">Retry webhook deliveries with jittered backoff</span><span class="lb"><span class="dot" style="background:var(--info)"></span>Backend</span><span class="av">MA</span><span class="d num">Oct 16</span></div>
+<div class="row"><span class="pr num">PLT-509</span><i class="bx bx-adjust" style="color:var(--warn)"></i><span class="t">Cursor pagination for the events endpoint</span><span class="lb"><span class="dot" style="background:var(--info)"></span>API</span><span class="av">JO</span><span class="d num">Oct 17</span></div>
+<div class="row"><span class="pr num">PLT-488</span><i class="bx bx-redo faint"></i><span class="t">Webhook signing docs <span class="faint" style="font-weight:400">carried from Cycle 41: blocked on review</span></span><span class="lb"><span class="dot" style="background:var(--warn)"></span>Docs</span><span class="av">CV</span><span class="d num">Oct 18</span></div>
+</section></div></div></div></div></article></div>
+<div class="hr"></div>
+<div class="c rails"><article class="e"><div class="dt"><b>Oct 9, 2026</b>Version 4.1.3</div><div class="x"><h2>Faster issue search</h2><p>Search across titles and ids is about twice as fast on workspaces with more than 10,000 issues.</p><ul><li><b>Prefix matching</b> on ids, so PLT-5 finds PLT-512 as you type.</li><li><b>Recent first.</b> Results you opened this week rank higher.</li><li>Fixed search ignoring archived projects when the filter was on.</li></ul></div></article></div>
+<div class="hr"></div>
+<div class="c rails"><article class="e"><div class="dt"><b>Oct 3, 2026</b>Version 4.1.2</div><div class="x"><h2>Due dates use your timezone</h2><p>Due dates stored in UTC now render in the timezone on your profile, so an issue due Friday no longer shows Thursday evening on the West Coast.</p></div></article></div>
+<div class="hr"></div>
+<div class="c rails"><article class="e"><div class="dt"><b>Sep 28, 2026</b>Version 4.1.1</div><div class="x"><h2>Assign an owner from the keyboard</h2><p>Press O on any issue to open the owner picker. Type to filter, Enter to assign, Esc to dismiss.</p></div></article></div>
+<footer class="hr"><div class="c rails" style="padding:0"><div class="c" style="width:100%"><div><a class="brand" style="color:var(--fg);font-weight:600">Cascade</a><p class="sm-t faint" style="margin-top:8px">Issue tracking for platform teams.</p></div><div><h4>Product</h4><a>Cycles</a><a>Projects</a><a>Integrations</a></div><div><h4>Company</h4><a>Customers</a><a>Careers</a><a>Changelog</a></div><div><h4>Resources</h4><a>Docs</a><a>API</a><a>Status</a></div></div><div class="hr legal"><span>© 2026 Cascade, Inc.</span><span>Privacy · Terms</span></div></div></footer>
 </body>
 </html>

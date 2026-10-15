@@ -1,3 +1,3 @@
 # Example: Changelog
 
-Cascade changelog index and an article page. Dated shipping notes, narrow measure, one Subscribe CTA. Named changelog (not a general blog) to match the content.
+Cascade changelog on the grid. Each entry has a date and version column, and the lead entry shows the real UI it changed. It includes an email field for updates. `article.html` is a single changelog post.

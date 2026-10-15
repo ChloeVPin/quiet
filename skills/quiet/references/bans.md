@@ -16,7 +16,7 @@ Absolute. Treat as fail conditions in critique.
 
 - Monospace micro-labels / mono as fake “technical” voice (real code blocks OK)
 - Index cosplay: `01 / 02 / 03`, `(001)`, “Step 02” markers
-- Hairline grids, crop marks, crosshairs, design-tool chrome as ornament
+- Crop marks, crosshairs, corner ticks, rulers, design-tool chrome as ornament. Structural rails (container edge lines and section rules that content actually aligns to) are allowed; lines that align to nothing are not
 - Tiny tracked uppercase labels scattered as ornament
 - Corner version stamps (`UI skill · v1`, local time, coordinates, “© scroll”)
 

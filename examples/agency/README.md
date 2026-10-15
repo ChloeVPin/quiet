@@ -1,3 +1,3 @@
 # Example: Agency / studio
 
-Loom studio site: expressive through type and a selected work list, not cream or serif costume.
+Quiet studio site on the grid: a two-column hero, a selected work list, three service cells, and a booking CTA. Expressive through type, not cream or serif costume.
