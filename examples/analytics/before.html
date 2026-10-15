@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pulse Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(135deg,#1e1b4b,#312e81 40%,#4c1d95);color:#fff;min-height:100vh}
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.side{background:rgba(15,10,40,.75);backdrop-filter:blur(18px);padding:24px 18px;border-right:1px solid rgba(255,255,255,.12)}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(90deg,#a78bfa,#f0abfc);-webkit-background-clip:text;color:transparent;margin-bottom:28px}
+.nav a{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;color:rgba(255,255,255,.7);text-decoration:none;margin-bottom:6px;font-size:14px}
+.nav a.on{background:linear-gradient(90deg,#7c3aed,#4f46e5);color:#fff;box-shadow:0 8px 24px rgba(124,58,237,.45)}
+.main{padding:28px 32px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.top h1{font-size:28px;font-weight:800}
+.btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);border:0;color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(236,72,153,.4)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
+.kpi{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:22px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.kpi .emoji{font-size:28px;margin-bottom:10px}
+.kpi .label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;opacity:.65;margin-bottom:8px}
+.kpi .val{font-size:32px;font-weight:800}
+.kpi .delta{font-size:13px;color:#86efac;margin-top:6px}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.card{background:rgba(255,255,255,.08);border-radius:24px;padding:24px;border:1px solid rgba(255,255,255,.14);box-shadow:0 16px 50px rgba(0,0,0,.3)}
+.card h2{font-size:18px;margin-bottom:16px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:160px}
+.bars span{flex:1;background:linear-gradient(180deg,#c084fc,#6366f1);border-radius:8px 8px 0 0;opacity:.9}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:12px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+th{opacity:.55;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#7c3aed;font-size:11px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="logo">Pulse ✨</div>
+    <nav class="nav">
+      <a class="on" href="#">📊 Overview</a>
+      <a href="#">📈 Funnels</a>
+      <a href="#">👥 Users</a>
+      <a href="#">⚙️ Settings</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <h1>Unlock your growth insights 🚀</h1>
+      <button class="btn">Export magic</button>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="emoji">💰</div><div class="label">Revenue</div><div class="val">$128k</div><div class="delta">↑ 12% vs last week</div></div>
+      <div class="kpi"><div class="emoji">👤</div><div class="label">Active users</div><div class="val">18,402</div><div class="delta">↑ 4.2%</div></div>
+      <div class="kpi"><div class="emoji">🔥</div><div class="label">Conversion</div><div class="val">3.8%</div><div class="delta">↑ 0.3pts</div></div>
+      <div class="kpi"><div class="emoji">⏱️</div><div class="label">Session</div><div class="val">4m 12s</div><div class="delta">↓ 8s</div></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h2>Weekly activity — seamless trends</h2>
+        <div class="bars"><span style="height:40%"></span><span style="height:65%"></span><span style="height:50%"></span><span style="height:80%"></span><span style="height:70%"></span><span style="height:95%"></span><span style="height:60%"></span></div>
+      </div>
+      <div class="card">
+        <h2>Top pages</h2>
+        <table>
+          <thead><tr><th>Page</th><th>Views</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>/pricing</td><td>12,480</td><td><span class="pill">Hot</span></td></tr>
+            <tr><td>/docs</td><td>9,210</td><td><span class="pill">Rising</span></td></tr>
+            <tr><td>/blog</td><td>6,104</td><td><span class="pill">OK</span></td></tr>
+            <tr><td>/login</td><td>4,880</td><td><span class="pill">OK</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

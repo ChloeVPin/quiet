@@ -60,6 +60,35 @@ A noisy product page restyled as calm SaaS. Real board UI in the hero, one prima
 
 Full pages in [`examples/saas/`](examples/saas/).
 
+## Examples
+
+Surfaces beyond the landing pass. Each folder has before, after, and fold shots.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/analytics/"><strong>Analytics</strong></a><br/>
+      <img src="examples/analytics/after-fold.png" alt="Analytics after" width="420" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/settings/"><strong>Settings</strong></a><br/>
+      <img src="examples/settings/after-fold.png" alt="Settings after" width="420" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/pricing/"><strong>Pricing</strong></a><br/>
+      <img src="examples/pricing/after-fold.png" alt="Pricing after" width="420" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/mobile/"><strong>Mobile</strong></a><br/>
+      <img src="examples/mobile/after.png" alt="Mobile after" width="200" />
+    </td>
+  </tr>
+</table>
+
+Also [`examples/messy-landing/`](examples/messy-landing/) and [`examples/saas/`](examples/saas/).
+
 ## Credits
 
 Primary: [rauno.me](https://rauno.me), [devouringdetails.com](https://devouringdetails.com), [paco.me/craft](https://paco.me/craft). Also Emil Kowalski, Jakub Krehel, Linear Method and Quality. Sources: [`skills/quiet/references/sources.md`](skills/quiet/references/sources.md). Not affiliated.

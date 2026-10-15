@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Orbit Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;background-image:radial-gradient(circle at 20% 20%,rgba(124,58,237,.35),transparent 40%),radial-gradient(circle at 80% 0%,rgba(236,72,153,.25),transparent 35%)}
+.wrap{display:grid;grid-template-columns:240px 1fr;max-width:1100px;margin:40px auto;gap:24px;padding:0 24px}
+.side{background:rgba(15,23,42,.7);backdrop-filter:blur(16px);border:1px solid rgba(148,163,184,.2);border-radius:24px;padding:22px}
+.side h1{font-size:20px;font-weight:800;margin-bottom:18px;background:linear-gradient(90deg,#a78bfa,#f472b6);-webkit-background-clip:text;color:transparent}
+.side a{display:block;padding:12px 14px;border-radius:12px;color:#94a3b8;text-decoration:none;margin-bottom:4px;font-size:14px}
+.side a.on{background:linear-gradient(90deg,#7c3aed,#db2777);color:#fff;font-weight:700}
+.main{display:flex;flex-direction:column;gap:20px}
+.card{background:rgba(30,41,59,.75);backdrop-filter:blur(12px);border:1px solid rgba(148,163,184,.25);border-radius:24px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.card h2{font-size:18px;font-weight:800;margin-bottom:6px}
+.card p.lead{color:#94a3b8;font-size:14px;margin-bottom:20px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#64748b;margin-bottom:6px;font-weight:700}
+input,select{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(148,163,184,.3);background:rgba(15,23,42,.6);color:#fff;font-size:14px}
+.toggle{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid rgba(148,163,184,.15)}
+.switch{width:52px;height:30px;background:#7c3aed;border-radius:999px;position:relative}
+.switch::after{content:"";position:absolute;width:24px;height:24px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 4px 10px rgba(0,0,0,.3)}
+.btns{display:flex;gap:12px;margin-top:18px}
+.btn{padding:14px 22px;border-radius:999px;border:0;font-weight:800;cursor:pointer;font-size:14px}
+.btn-p{background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;box-shadow:0 10px 30px rgba(139,92,246,.45)}
+.btn-g{background:transparent;border:2px solid rgba(148,163,184,.4);color:#e2e8f0}
+.danger{border-color:rgba(248,113,113,.5)}
+.danger h2{color:#f87171}
+.danger .btn-p{background:linear-gradient(90deg,#ef4444,#f97316)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="side">
+    <h1>⚙️ Settings</h1>
+    <a class="on" href="#">👤 Profile</a>
+    <a href="#">💳 Billing</a>
+    <a href="#">👥 Team</a>
+    <a href="#">🔔 Notifications</a>
+    <a href="#">💀 Danger zone</a>
+  </aside>
+  <div class="main">
+    <section class="card">
+      <h2>Supercharge your profile</h2>
+      <p class="lead">Elevate your presence — unlock the future of collaboration.</p>
+      <div class="row">
+        <div><label>Display name</label><input value="Maya Chen"/></div>
+        <div><label>Email</label><input value="maya@orbit.dev"/></div>
+      </div>
+      <div class="row">
+        <div><label>Timezone</label><select><option>Pacific Time</option></select></div>
+        <div><label>Role</label><input value="Admin" disabled/></div>
+      </div>
+      <div class="btns"><button class="btn btn-p">Save changes</button><button class="btn btn-g">Cancel</button></div>
+    </section>
+    <section class="card">
+      <h2>Notifications ✨</h2>
+      <div class="toggle"><div><b>Product updates</b><div style="color:#94a3b8;font-size:13px;margin-top:4px">Seamless digests every week</div></div><div class="switch"></div></div>
+      <div class="toggle"><div><b>Billing alerts</b><div style="color:#94a3b8;font-size:13px;margin-top:4px">Never miss an invoice</div></div><div class="switch"></div></div>
+    </section>
+    <section class="card danger">
+      <h2>Danger zone ⚠️</h2>
+      <p class="lead">These actions are permanent — proceed carefully.</p>
+      <button class="btn btn-p">Delete workspace</button>
+    </section>
+  </div>
+</div>
+</body>
+</html>

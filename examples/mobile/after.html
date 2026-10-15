@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=390, initial-scale=1"/>
+<title>Ledger</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08090a;--panel:#111214;--line:#23252a;
+  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
+  --green:#4cb782;--red:#eb5757;--accent:#5e6ad2;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html,a{color:inherit;text-decoration:none}
+body{width:390px;min-height:844px;margin:0 auto}
+html{-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 Inter,system-ui,sans-serif;padding:14px 16px 88px}
+.time{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:20px;font-variant-numeric:tabular-nums}
+.hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.hd h1{font-size:15px;font-weight:500}
+.hd-actions{display:flex;align-items:center;gap:12px}
+.hd a{font-size:13px;color:var(--muted)}
+.btn{
+  font:500 13px/1 Inter,system-ui,sans-serif;border:0;border-radius:8px;
+  padding:7px 11px;background:var(--fg);color:var(--bg);cursor:pointer;
+  transition:transform 120ms var(--ease);
+}
+.btn:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+.bal{font-size:34px;font-weight:510;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.delta{font-size:13px;color:var(--muted);margin-bottom:22px;font-variant-numeric:tabular-nums}
+.delta b{color:var(--green);font-weight:500}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px}
+.metric{background:var(--panel);padding:14px}
+.metric .l{font-size:12px;color:var(--muted);margin-bottom:6px}
+.metric .v{font-size:18px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.sec-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sec-hd h2{font-size:13px;font-weight:500}
+.sec-hd span{font-size:12px;color:var(--muted)}
+.list{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line);gap:12px}
+.row:last-child{border-bottom:0}
+.row .name{font-size:14px;font-weight:500}
+.row .cat{font-size:12px;color:var(--muted);margin-top:2px}
+.row .amt{font-size:14px;font-variant-numeric:tabular-nums;font-weight:500}
+.row .amt.in{color:var(--green)}
+.row .amt.out{color:var(--fg)}
+.tab{
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);
+  width:390px;background:var(--bg);border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(4,1fr);padding:14px 8px 28px;font-size:12px;color:var(--muted);text-align:center;
+}
+.tab span{padding:8px 6px;position:relative}
+.tab span.on{color:var(--fg);font-weight:500}
+.tab span.on::after{content:"";position:absolute;left:22%;right:22%;bottom:0;height:1px;background:var(--fg)}
+</style>
+</head>
+<body>
+  <div class="time">9:41</div>
+  <div class="hd">
+    <h1>Ledger</h1>
+    <div class="hd-actions"><a href="#">Accounts</a><button class="btn" type="button">Add</button></div>
+  </div>
+  <div class="bal">$4,280.50</div>
+  <div class="delta"><b>+$320.00</b> this week</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="l">Income</div><div class="v">$2,140.00</div></div>
+    <div class="metric"><div class="l">Spent</div><div class="v">$1,820.00</div></div>
+  </div>
+
+  <div class="sec-hd">
+    <h2>Today</h2>
+    <span>Oct 15</span>
+  </div>
+  <div class="list">
+    <div class="row">
+      <div><div class="name">Coffee Lab</div><div class="cat">Food · 8:14 AM</div></div>
+      <div class="amt out">-$6.50</div>
+    </div>
+    <div class="row">
+      <div><div class="name">Payroll</div><div class="cat">Income · 9:02 AM</div></div>
+      <div class="amt in">+$2,100.00</div>
+    </div>
+    <div class="row">
+      <div><div class="name">Market</div><div class="cat">Groceries · 12:40 PM</div></div>
+      <div class="amt out">-$64.20</div>
+    </div>
+    <div class="row">
+      <div><div class="name">Transit</div><div class="cat">Travel · 5:51 PM</div></div>
+      <div class="amt out">-$12.00</div>
+    </div>
+    <div class="row">
+      <div><div class="name">Studio rent</div><div class="cat">Housing · Yesterday</div></div>
+      <div class="amt out">-$1,450.00</div>
+    </div>
+  </div>
+
+  <nav class="tab" aria-label="Primary">
+    <span class="on">Home</span>
+    <span>Activity</span>
+    <span>Cards</span>
+    <span>You</span>
+  </nav>
+</body>
+</html>

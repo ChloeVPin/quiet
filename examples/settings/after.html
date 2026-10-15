@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Orbit · Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f7f7f8;--panel:#ffffff;--line:#e6e6e8;--line2:#ececee;
+  --fg:#111113;--muted:#6b6f76;--faint:#9b9fa6;
+  --accent:#5e6ad2;--danger:#c43c3c;--danger-bg:#faf0f0;
+  --btn:#111113;--btn-fg:#ffffff;--track:#e6e6e8;--thumb:#ffffff;
+  --input-bg:#ffffff;--on-danger:#ffffff;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 Inter,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.side{background:var(--panel);border-right:1px solid var(--line);padding:16px 12px}
+.side .mark{font-size:13px;font-weight:600;letter-spacing:-.01em;padding:6px 8px;margin-bottom:14px}
+.side a{display:block;padding:7px 8px;border-radius:6px;color:var(--muted);font-size:13px;margin-bottom:1px}
+.side a.on{background:var(--bg);color:var(--fg);font-weight:500}
+.side .sec{margin:16px 8px 6px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
+.main{padding:28px 36px 64px;max-width:720px}
+.main h1{font-size:16px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
+.main .lede{color:var(--muted);font-size:13px;margin-bottom:28px}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.group .hd{padding:14px 16px;border-bottom:1px solid var(--line);font-size:13px;font-weight:500}
+.group .bd{padding:4px 16px 16px}
+.field{padding:12px 0;border-bottom:1px solid var(--line2)}
+.field:last-child{border-bottom:0}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.field input,.field select{
+  width:100%;max-width:360px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
+  background:var(--input-bg);color:var(--fg);font:14px/1.4 Inter,system-ui,sans-serif;
+}
+.field input:disabled{color:var(--muted);background:var(--bg)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toggle{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line2);gap:16px}
+.toggle:last-child{border-bottom:0}
+.toggle .t{font-size:13px;font-weight:500}
+.toggle .d{font-size:12px;color:var(--muted);margin-top:2px}
+.sw{width:36px;height:22px;background:var(--btn);border-radius:999px;position:relative;flex-shrink:0;border:0;cursor:pointer}
+.sw::after{content:"";position:absolute;width:16px;height:16px;background:var(--thumb);border-radius:50%;top:3px;right:3px}
+.sw.off{background:var(--track)}.sw.off::after{right:auto;left:3px}
+.actions{display:flex;gap:8px;margin-top:14px}
+.btn{
+  display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;
+  border-radius:8px;padding:8px 12px;border:0;cursor:pointer;
+  transition:transform 120ms var(--ease);
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn-danger{background:var(--danger);color:var(--on-danger)}
+.danger .hd{color:var(--danger)}
+.danger .bd{background:var(--danger-bg)}
+.meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:8px}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="mark">Orbit</div>
+    <a class="on" href="#">Profile</a>
+    <a href="#">Billing</a>
+    <a href="#">Team</a>
+    <a href="#">Notifications</a>
+    <div class="sec">Workspace</div>
+    <a href="#">Danger zone</a>
+  </aside>
+  <main class="main">
+    <h1>Profile</h1>
+    <p class="lede">Account details for maya@orbit.dev</p>
+
+    <section class="group">
+      <div class="hd">Account</div>
+      <div class="bd">
+        <div class="row2">
+          <div class="field"><label for="name">Display name</label><input id="name" value="Maya Chen"/></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" value="maya@orbit.dev"/></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="tz">Timezone</label>
+            <select id="tz"><option>America/Los_Angeles</option><option>America/New_York</option><option>UTC</option></select>
+          </div>
+          <div class="field"><label for="role">Role</label><input id="role" value="Admin" disabled/></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary">Save changes</button>
+          <button class="btn btn-ghost">Cancel</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="group">
+      <div class="hd">Notifications</div>
+      <div class="bd">
+        <div class="toggle">
+          <div><div class="t">Product updates</div><div class="d">Weekly digest of shipping notes</div></div>
+          <button class="sw" aria-label="Product updates on"></button>
+        </div>
+        <div class="toggle">
+          <div><div class="t">Billing alerts</div><div class="d">Invoices and failed payments</div></div>
+          <button class="sw" aria-label="Billing alerts on"></button>
+        </div>
+        <div class="toggle">
+          <div><div class="t">Mention emails</div><div class="d">When someone @mentions you</div></div>
+          <button class="sw off" aria-label="Mention emails off"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="group">
+      <div class="hd">Billing</div>
+      <div class="bd">
+        <div class="field" style="border:0;padding-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;max-width:420px">
+            <div>
+              <div style="font-weight:500;font-size:13px">Team plan</div>
+              <div class="meta">$12 / seat · 14 seats · renews Nov 1</div>
+            </div>
+            <button class="btn btn-ghost">Manage billing</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group danger">
+      <div class="hd">Danger zone</div>
+      <div class="bd">
+        <p class="meta" style="margin:12px 0 14px;color:var(--muted)">Delete the Orbit workspace and all issues. This cannot be undone.</p>
+        <button class="btn btn-danger">Delete workspace</button>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

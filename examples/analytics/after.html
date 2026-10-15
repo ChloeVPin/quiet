@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
+  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
+  --accent:#5e6ad2;--green:#4cb782;--amber:#f2c94c;--red:#eb5757;
+  --btn:#e5e5e6;--btn-fg:#08090a;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.side{background:var(--panel2);border-right:1px solid var(--line);padding:14px 10px;font-size:13px}
+.side .ws{display:flex;align-items:center;gap:8px;padding:6px 8px;margin-bottom:14px;font-weight:500}
+.side .ws i{width:16px;height:16px;border-radius:4px;background:var(--accent);display:block}
+.side a{display:flex;align-items:center;padding:7px 8px;border-radius:6px;color:var(--muted)}
+.side a.on{background:rgba(255,255,255,.06);color:var(--fg)}
+.side .sec{margin:16px 8px 6px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
+.main{padding:20px 28px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.top h1{font-size:14px;font-weight:500}
+.top .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.actions{display:flex;gap:8px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;
+  border-radius:8px;padding:7px 12px;border:0;cursor:pointer;
+  transition:transform 120ms var(--ease),opacity 120ms var(--ease);
+}
+.btn:active{transform:scale(.97)}
+.btn-light{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:16px}
+.kpi{background:var(--panel);padding:14px 16px}
+.kpi .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+.kpi .val{font-size:22px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .delta{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .delta.up{color:var(--green)}.kpi .delta.down{color:var(--red)}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card h2{font-size:13px;font-weight:500;margin-bottom:4px}
+.card .sub{font-size:12px;color:var(--muted);margin-bottom:14px;font-variant-numeric:tabular-nums}
+.chart{height:180px;display:flex;align-items:flex-end}
+.chart svg{width:100%;height:100%;display:block}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:9px 0;text-align:left;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td{font-variant-numeric:tabular-nums}
+td.page{font-variant-numeric:normal}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.dot.hot{background:var(--amber)}.dot.ok{background:var(--faint)}.dot.up{background:var(--green)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="ws"><i></i> Pulse</div>
+    <a class="on" href="#">Overview</a>
+    <a href="#">Funnels</a>
+    <a href="#">Users</a>
+    <div class="sec">Workspace</div>
+    <a href="#">Settings</a>
+    <a href="#">Billing</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div>
+        <h1>Overview</h1>
+        <div class="meta">Oct 9 to Oct 15 · Last 7 days</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost">Export CSV</button>
+        <button class="btn btn-light">Share report</button>
+      </div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="label">Revenue</div><div class="val">$128,420</div><div class="delta up">+12.4% vs prior week</div></div>
+      <div class="kpi"><div class="label">Active users</div><div class="val">18,402</div><div class="delta up">+4.2%</div></div>
+      <div class="kpi"><div class="label">Conversion</div><div class="val">3.84%</div><div class="delta up">+0.31 pts</div></div>
+      <div class="kpi"><div class="label">Avg session</div><div class="val">4:12</div><div class="delta down">-8s</div></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h2>Sessions</h2>
+        <div class="sub">Daily · 42.1k total</div>
+        <div class="chart">
+          <svg viewBox="0 0 560 180" preserveAspectRatio="none" aria-hidden="true">
+            <polyline fill="none" stroke="var(--accent)" stroke-width="2" points="0,140 80,110 160,122 240,78 320,88 400,42 480,58 560,36"/>
+            <polyline fill="none" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="4 4" points="0,150 80,145 160,138 240,130 320,128 400,120 480,118 560,112"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Top pages</h2>
+        <div class="sub">By views</div>
+        <table>
+          <thead><tr><th>Page</th><th>Views</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="page"><span class="dot hot"></span>/pricing</td><td>12,480</td><td style="color:var(--muted);text-align:right">28%</td></tr>
+            <tr><td class="page"><span class="dot up"></span>/docs</td><td>9,210</td><td style="color:var(--muted);text-align:right">21%</td></tr>
+            <tr><td class="page"><span class="dot ok"></span>/blog</td><td>6,104</td><td style="color:var(--muted);text-align:right">14%</td></tr>
+            <tr><td class="page"><span class="dot ok"></span>/login</td><td>4,880</td><td style="color:var(--muted);text-align:right">11%</td></tr>
+            <tr><td class="page"><span class="dot ok"></span>/changelog</td><td>3,102</td><td style="color:var(--muted);text-align:right">7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

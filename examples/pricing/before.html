@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Fieldkit Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(180deg,#fdf4ff,#eef2ff 40%,#fff);color:#1e1b4b;min-height:100vh}
+nav{display:flex;justify-content:space-between;padding:20px 40px;align-items:center}
+.logo{font-weight:800;font-size:20px;background:linear-gradient(90deg,#7c3aed,#db2777);-webkit-background-clip:text;color:transparent}
+.hero{text-align:center;padding:48px 24px 32px}
+.hero .eyebrow{display:inline-block;background:#ede9fe;color:#6d28d9;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:56px;line-height:1.1;margin-bottom:14px}
+.hero p{color:#64748b;font-size:18px;max-width:480px;margin:0 auto 28px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1040px;margin:0 auto;padding:0 24px 48px}
+.tier{background:#fff;border-radius:28px;padding:32px 28px;box-shadow:0 20px 60px rgba(124,58,237,.15);border:2px solid transparent;position:relative}
+.tier.pop{border-color:#8b5cf6;transform:scale(1.05);background:linear-gradient(180deg,#fff,#f5f3ff)}
+.badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:800;box-shadow:0 8px 20px rgba(139,92,246,.4)}
+.tier h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.price{font-size:48px;font-weight:800;margin:12px 0}.price span{font-size:16px;color:#64748b;font-weight:600}
+.tier ul{list-style:none;margin:18px 0 24px;padding:0}
+.tier li{padding:8px 0;font-size:14px;color:#475569}
+.tier li::before{content:"✨ ";}
+.btn{display:block;text-align:center;padding:16px;border-radius:999px;font-weight:800;text-decoration:none;background:linear-gradient(90deg,#7c3aed,#db2777);color:#fff;box-shadow:0 12px 30px rgba(124,58,237,.35)}
+.tier:not(.pop) .btn{background:#fff;color:#6d28d9;border:2px solid #c4b5fd;box-shadow:none}
+.faq{max-width:720px;margin:0 auto;padding:24px 24px 80px}
+.faq h2{font-family:'Playfair Display',serif;font-size:36px;text-align:center;margin-bottom:24px}
+.faq details{background:#fff;border-radius:16px;padding:18px 22px;margin-bottom:12px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{margin-top:10px;color:#64748b;font-size:14px}
+</style>
+</head>
+<body>
+<nav><div class="logo">Fieldkit</div><div style="display:flex;gap:16px;font-size:14px;font-weight:600"><a href="#" style="color:#64748b;text-decoration:none">Docs</a><a href="#" style="color:#6d28d9;text-decoration:none">Sign in</a></div></nav>
+<header class="hero">
+  <div class="eyebrow">Pricing</div>
+  <h1>Plans that supercharge your fieldwork</h1>
+  <p>Seamless pricing for teams who want to unlock the future — pick a tier and elevate your ops.</p>
+</header>
+<section class="tiers">
+  <div class="tier"><h2>Starter</h2><div class="price">$0<span>/mo</span></div><ul><li>3 projects</li><li>Basic sync</li><li>Community support</li></ul><a class="btn" href="#">Get started</a></div>
+  <div class="tier pop"><div class="badge">MOST POPULAR 🔥</div><h2>Team</h2><div class="price">$16<span>/mo</span></div><ul><li>Unlimited projects</li><li>Priority sync</li><li>SSO ready</li><li>Shared libraries</li></ul><a class="btn" href="#">Start free trial</a></div>
+  <div class="tier"><h2>Business</h2><div class="price">$32<span>/mo</span></div><ul><li>Everything in Team</li><li>Audit log</li><li>Dedicated success</li></ul><a class="btn" href="#">Talk to sales</a></div>
+</section>
+<section class="faq">
+  <h2>FAQ</h2>
+  <details open><summary>Can we change plans later?</summary><p>Yes — upgrade or downgrade anytime. Seamless.</p></details>
+  <details><summary>Is there a free trial?</summary><p>Team includes 14 days free. No card required to start.</p></details>
+  <details><summary>Do you offer annual billing?</summary><p>Yes, two months free when billed yearly.</p></details>
+</section>
+</body>
+</html>
