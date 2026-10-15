@@ -41,6 +41,7 @@ Read the reference that matches the decision. Do not skim them all up front.
 | Absolute fail list | `references/bans.md` |
 | Redesigning an existing surface | `references/redesign.md` |
 | Chat, sidebars, settings, dashboards | `references/product-ui.md` |
+| SaaS / marketing landings | `references/saas.md` |
 | Before/after self-check | `references/critique-rubric.md` |
 | Attributions and source essays | `references/sources.md` |
 

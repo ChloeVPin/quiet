@@ -46,6 +46,20 @@ Details live in `skills/quiet/SKILL.md` and `skills/quiet/references/`.
 node skills/quiet/scripts/lint.mjs path/to/ui
 ```
 
+## SaaS landing
+
+A noisy product page restyled as calm SaaS. Real board UI in the hero, one primary CTA, pricing without costume.
+
+<p align="center">
+  <img src="examples/saas/before-fold.png" alt="SaaS before" width="880" />
+</p>
+
+<p align="center">
+  <img src="examples/saas/after-warm-fold.png" alt="SaaS after Quiet" width="880" />
+</p>
+
+Full pages in [`examples/saas/`](examples/saas/).
+
 ## Credits
 
 Primary: [rauno.me](https://rauno.me), [devouringdetails.com](https://devouringdetails.com), [paco.me/craft](https://paco.me/craft). Also Emil Kowalski, Jakub Krehel, Linear Method and Quality. Sources: [`skills/quiet/references/sources.md`](skills/quiet/references/sources.md). Not affiliated.

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NovaBoard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
+  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
+  --accent:#5e6ad2; /* considered indigo as data/brand, not gradient soup */
+  --green:#4cb782;--amber:#f2c94c;
+  --btn-bg:#e5e5e6;--btn-fg:#08090a;--hover:#fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--hover)}
+.wrap{width:min(1120px,calc(100% - 48px));margin:0 auto}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;position:relative;z-index:2}
+.mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
+.nav-links{display:flex;gap:22px;font-size:13px;color:var(--muted)}
+.nav-actions{display:flex;gap:10px;align-items:center;font-size:13px}
+.nav-actions .login{color:var(--muted)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font:500 13px/1 Inter,system-ui,sans-serif;border-radius:999px;padding:8px 14px;border:0;cursor:pointer;
+  transition:transform 120ms var(--ease),opacity 120ms var(--ease);
+}
+.btn:active{transform:scale(.97)}
+.btn-light{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 12px}
+/* NOT a shadcn pair: primary is light-on-dark only; secondary is text or quiet border, never competing outline twin */
+
+.hero{padding:72px 0 28px;text-align:center}
+.hero h1{
+  font-size:clamp(36px,4.6vw,52px);font-weight:510;letter-spacing:-.035em;line-height:1.08;
+  max-width:18ch;margin:0 auto 16px;text-wrap:balance;
+}
+.hero .lede{color:var(--muted);max-width:42ch;margin:0 auto 28px;font-size:16px;text-wrap:pretty}
+.hero .actions{display:flex;gap:12px;justify-content:center;align-items:center}
+.hero .actions .quiet-link{font-size:13px;color:var(--muted)}
+
+/* High-fidelity product */
+.product-stage{padding:12px 0 80px}
+.app{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  display:grid;grid-template-columns:220px 1fr 260px;min-height:500px;
+  box-shadow:0 40px 80px rgba(0,0,0,.45);
+}
+.side{background:var(--panel2);border-right:1px solid var(--line);padding:14px 10px;font-size:13px}
+.side .ws{display:flex;align-items:center;gap:8px;padding:6px 8px;margin-bottom:12px;color:var(--fg);font-weight:500}
+.side .ws i{width:16px;height:16px;border-radius:4px;background:var(--accent);display:block}
+.side a{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;color:var(--muted)}
+.side a.on{background:rgba(255,255,255,.06);color:var(--fg)}
+.side .sec{margin:16px 8px 6px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
+.main{display:flex;flex-direction:column}
+.toolbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.toolbar h2{font-size:13px;font-weight:500}
+.toolbar .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.chip{border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.rows{padding:4px 0}
+.row{display:grid;grid-template-columns:18px 1fr 90px 72px 64px;gap:12px;align-items:center;padding:9px 16px;font-size:13px;border-bottom:1px solid transparent}
+.row:hover{background:rgba(255,255,255,.03)}
+.dot{width:8px;height:8px;border-radius:50%}
+.dot.todo{background:var(--faint)}.dot.prog{background:var(--amber)}.dot.done{background:var(--green)}
+.pri{color:var(--muted);font-size:12px}
+.owner{color:var(--muted);font-size:12px;text-align:right}
+.due{color:var(--muted);font-size:12px;text-align:right;font-variant-numeric:tabular-nums}
+.tag{font-size:11px;color:var(--accent);background:rgba(94,106,210,.12);padding:2px 7px;border-radius:999px;justify-self:start}
+
+
+.detail{border-left:1px solid var(--line);padding:14px;background:var(--panel2);font-size:12px}
+.detail h3{font-size:13px;font-weight:500;margin-bottom:10px;letter-spacing:-.01em}
+.detail .id{color:var(--faint);font-variant-numeric:tabular-nums;margin-bottom:12px}
+.detail .kv{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--line);color:var(--muted)}
+.detail .kv b{color:var(--fg);font-weight:500}
+.detail .act{margin-top:16px;color:var(--muted)}
+.detail .act div{padding:6px 0;border-top:1px solid var(--line)}
+.row .id{color:var(--faint);font-size:11px;font-variant-numeric:tabular-nums;margin-right:8px}
+
+.logos{padding:8px 0 56px;text-align:center}
+.logos p{font-size:12px;color:var(--faint);margin-bottom:18px}
+.logo-row{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;color:var(--muted);font-size:14px;font-weight:500;opacity:.7}
+
+.section{padding:72px 0;border-top:1px solid var(--line)}
+.section h2{font-size:28px;font-weight:510;letter-spacing:-.03em;margin-bottom:10px;text-wrap:balance}
+.section .intro{color:var(--muted);max-width:48ch;margin-bottom:36px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.feat h3{font-size:14px;font-weight:500;margin-bottom:6px}
+.feat p{font-size:14px;color:var(--muted);max-width:32ch}
+
+.proof{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.quote{padding:20px 0;border-top:1px solid var(--line)}
+.quote p{font-size:15px;letter-spacing:-.01em;margin-bottom:12px;max-width:28ch}
+.quote .who{font-size:12px;color:var(--muted)}
+
+.pricing-table{width:100%;border-collapse:collapse;font-size:14px}
+.pricing-table th,.pricing-table td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line)}
+.pricing-table th{color:var(--muted);font-weight:500;font-size:12px}
+.pricing-table .price{font-variant-numeric:tabular-nums;font-weight:500}
+.pricing-table .rec{color:var(--accent);font-size:12px;font-weight:500}
+.pricing-table .btn{margin-top:0}
+
+.faq details{border-top:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-size:14px;font-weight:500;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{margin-top:8px;color:var(--muted);font-size:14px;max-width:60ch}
+
+.final{text-align:center;padding:80px 0}
+.final h2{font-size:32px;font-weight:510;letter-spacing:-.03em;margin-bottom:12px}
+.final p{color:var(--muted);margin-bottom:24px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 64px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+footer .cols{display:flex;gap:48px}
+footer a{display:block;margin:6px 0;color:var(--muted)}
+footer a:hover{color:var(--fg)}
+
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}.side,.detail{display:none}
+  .feat-grid,.proof{grid-template-columns:1fr}
+  .row{grid-template-columns:18px 1fr 64px}
+  .pri,.tag{display:none}
+}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="mark">NovaBoard</div>
+    <div class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <a class="login" href="#">Log in</a>
+      <a class="btn btn-light" href="#">Sign up</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>The board for teams who ship every week</h1>
+    <p class="lede">Plan work, assign owners, and keep due dates honest. Built for product and eng teams that already live in their backlog.</p>
+    <div class="actions">
+      <a class="btn btn-light" href="#">Sign up</a>
+      <a class="quiet-link" href="#product">See the board</a>
+    </div>
+  </header>
+
+  <section class="product-stage" id="product">
+    <div class="app" aria-label="NovaBoard product">
+      <aside class="side">
+        <div class="ws"><i></i> Northwind</div>
+        <a class="on" href="#">Board</a>
+        <a href="#">Inbox</a>
+        <a href="#">Cycles</a>
+        <div class="sec">Favorites</div>
+        <a href="#">Launch</a>
+        <a href="#">Mobile</a>
+      </aside>
+      <div class="main">
+        <div class="toolbar">
+          <h2>Launch checklist</h2>
+          <div class="meta">12 issues · 4 due this week</div>
+        </div>
+        <div class="filters">
+          <span class="chip">Status</span>
+          <span class="chip">Owner</span>
+          <span class="chip">Priority</span>
+        </div>
+        <div class="rows">
+          <div class="row"><span class="dot prog"></span><span><span class="id">NB-182</span>Ship pricing page</span><span class="tag">Launch</span><span class="owner">Maya</span><span class="due">Oct 16</span></div>
+          <div class="row"><span class="dot prog"></span><span><span class="id">NB-183</span>Invite design partners</span><span class="tag">Launch</span><span class="owner">Jon</span><span class="due">Oct 17</span></div>
+          <div class="row"><span class="dot todo"></span><span>Tighten empty states</span><span class="pri">Medium</span><span class="owner">Chloe</span><span class="due">Oct 21</span></div>
+          <div class="row"><span class="dot todo"></span><span>Cut unused motion on settings</span><span class="pri">Low</span><span class="owner">Jon</span><span class="due">Oct 22</span></div>
+          <div class="row"><span class="dot done"></span><span>Rename workspace labels</span><span class="pri">Done</span><span class="owner">Maya</span><span class="due">Oct 12</span></div>
+          <div class="row"><span class="dot done"></span><span>Wire keyboard shortcuts</span><span class="pri">Done</span><span class="owner">Chloe</span><span class="due">Oct 11</span></div>
+        </div>
+      </div>
+      <aside class="detail">
+        <div class="id">NB-182</div>
+        <h3>Ship pricing page</h3>
+        <div class="kv"><span>Status</span><b>In progress</b></div>
+        <div class="kv"><span>Owner</span><b>Maya</b></div>
+        <div class="kv"><span>Due</span><b>Oct 16</b></div>
+        <div class="kv"><span>Cycle</span><b>42</b></div>
+        <div class="act">
+          <div>Maya moved to In progress · 2h</div>
+          <div>Jon commented · 5h</div>
+          <div>Created by Chloe · Yesterday</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="logos">
+    <p>Used by product teams at</p>
+    <div class="logo-row"><span>Northwind</span><span>Fieldkit</span><span>Orbit</span><span>Pennyrile</span><span>Cascade</span></div>
+  </section>
+
+  <section class="section" id="features">
+    <h2>What the board actually does</h2>
+    <p class="intro">Not a kitchen sink. The few surfaces you open every day.</p>
+    <div class="feat-grid">
+      <div class="feat"><h3>Owners on every row</h3><p>Each issue names a person and a date. Filters stay out of the way until you need them.</p></div>
+      <div class="feat"><h3>Cycles, not endless backlogs</h3><p>Group work into weekly cycles so “later” does not become the default status.</p></div>
+      <div class="feat"><h3>Keyboard first</h3><p>Create, assign, and complete without reaching for the mouse. Motion stays under 150ms.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>From teams already on NovaBoard</h2>
+    <div class="proof">
+      <div class="quote"><p>We cut Friday status from thirty minutes to a glance at the board.</p><div class="who">Maya Chen · Product, Fieldkit</div></div>
+      <div class="quote"><p>Owners and dates in one place. That alone replaced two tools.</p><div class="who">Jon Park · Eng, Orbit</div></div>
+      <div class="quote"><p>The board feels fast enough that people actually keep it current.</p><div class="who">Sam Okonkwo · Design, Cascade</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <h2>Pricing</h2>
+    <p class="intro">Per seat, billed monthly. No glow badges.</p>
+    <table class="pricing-table">
+      <thead><tr><th>Plan</th><th>Price</th><th>Includes</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Free</td><td class="price">$0</td><td>3 boards · 5 seats</td><td><a class="btn btn-ghost" href="#">Start</a></td></tr>
+        <tr><td>Team <span class="rec">Recommended</span></td><td class="price">$12</td><td>Unlimited boards · cycles · priorities</td><td><a class="btn btn-light" href="#">Start</a></td></tr>
+        <tr><td>Business</td><td class="price">$20</td><td>SSO · audit log · priority support</td><td><a class="btn btn-ghost" href="#">Start</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section faq" id="faq">
+    <h2>FAQ</h2>
+    <details open><summary>Can we import an existing backlog?</summary><p>Yes. CSV and common issue trackers. Owners and dates map when the columns exist.</p></details>
+    <details><summary>Is there a free plan?</summary><p>Free covers small teams up to five seats and three boards.</p></details>
+    <details><summary>Do you support SSO?</summary><p>SSO and SCIM ship on Business.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Start a board today</h2>
+    <p>Free for small teams. Upgrade when the workspace grows.</p>
+    <a class="btn btn-light" href="#">Sign up</a>
+  </section>
+
+  <footer>
+    <div class="mark">NovaBoard</div>
+    <div class="cols">
+      <div><a href="#">Product</a><a href="#">Pricing</a><a href="#">Changelog</a></div>
+      <div><a href="#">Careers</a><a href="#">Blog</a><a href="#">Legal</a></div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

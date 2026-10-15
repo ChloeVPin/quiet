@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NovaBoard — Unlock the Future of Project Management</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#fff;background:#0f0720;line-height:1.5}
+a{color:inherit;text-decoration:none}
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 40px;background:rgba(255,255,255,.08);backdrop-filter:blur(18px);
+  position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.1)
+}
+.logo{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+nav .links a{margin-left:22px;font-size:14px;color:#ddd6fe}
+.nav-cta{
+  margin-left:28px!important;background:linear-gradient(90deg,#a78bfa,#f472b6);
+  color:#1e1b4b!important;padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px;
+  box-shadow:0 0 24px rgba(167,139,250,.7)
+}
+.hero{
+  text-align:center;padding:100px 24px 80px;
+  background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 40%,#db2777 100%);
+}
+.pill{
+  display:inline-block;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35);
+  padding:6px 14px;border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;margin-bottom:22px;box-shadow:0 0 30px rgba(244,114,184,.5)
+}
+.hero h1{font-size:58px;line-height:1.1;max-width:16ch;margin:0 auto 18px;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.hero h1 span{color:#fde68a;font-style:italic}
+.hero p{font-size:20px;color:#ede9fe;max-width:540px;margin:0 auto 36px}
+.cta-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;align-items:center}
+.btn-glow{
+  background:linear-gradient(90deg,#fbbf24,#f472b6,#a78bfa);color:#111;border:none;
+  padding:20px 40px;font-size:19px;font-weight:800;border-radius:16px;cursor:pointer;
+  box-shadow:0 0 40px rgba(251,191,36,.65),0 12px 40px rgba(0,0,0,.3)
+}
+.btn-ghost{
+  background:transparent;border:2px solid #fff;color:#fff;padding:10px 18px;
+  font-size:13px;border-radius:6px;cursor:pointer
+}
+.logos{
+  background:#150a2e;padding:36px 24px;text-align:center;border-top:1px solid rgba(255,255,255,.08)
+}
+.logos p{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a78bfa;margin-bottom:18px;font-weight:700}
+.logo-row{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;opacity:.75;font-weight:700;font-size:18px;color:#c4b5fd}
+.features{padding:72px 32px;max-width:1100px;margin:0 auto}
+.features h2{text-align:center;font-size:36px;margin-bottom:12px}
+.features .sub{text-align:center;color:#c4b5fd;margin-bottom:40px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border-radius:24px;padding:28px 22px;
+  text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12)
+}
+.card .emoji{font-size:44px;display:block;margin-bottom:12px}
+.card h3{font-size:22px;margin-bottom:8px}
+.card p{color:#ddd6fe;font-size:14px}
+.product{
+  padding:40px 24px 80px;text-align:center;
+  background:linear-gradient(180deg,transparent,#1a0b3a)
+}
+.product h2{font-size:32px;margin-bottom:10px}
+.fake-ui{
+  margin:28px auto 0;max-width:900px;height:320px;border-radius:20px;
+  background:linear-gradient(135deg,#312e81,#581c87);border:2px solid #a78bfa;
+  box-shadow:0 0 60px rgba(167,139,250,.45);display:flex;align-items:center;justify-content:center;
+  color:#e9d5ff;font-size:18px;font-weight:600
+}
+.testimonials{padding:72px 24px;background:#12081f}
+.testimonials h2{text-align:center;font-size:32px;margin-bottom:28px}
+.t-row{display:flex;gap:20px;max-width:1100px;margin:0 auto;overflow:hidden}
+.t-card{
+  min-width:280px;flex:1;background:rgba(255,255,255,.08);border-radius:18px;padding:22px;
+  border:1px solid rgba(167,139,250,.35)
+}
+.t-card .stars{color:#fbbf24;margin-bottom:10px;letter-spacing:2px}
+.t-card p{font-size:14px;color:#e9d5ff;margin-bottom:14px}
+.t-card .who{font-size:12px;color:#a78bfa;font-weight:700}
+.pricing{padding:80px 24px;text-align:center}
+.pricing h2{font-size:36px;margin-bottom:8px}
+.pricing .sub{color:#c4b5fd;margin-bottom:40px}
+.plans{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;max-width:1000px;margin:0 auto;align-items:stretch}
+.plan{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  border-radius:20px;padding:28px 24px;width:280px;text-align:left;position:relative
+}
+.plan.hot{
+  border:2px solid #f472b6;box-shadow:0 0 40px rgba(244,114,184,.55);
+  transform:scale(1.05);background:rgba(244,114,184,.12)
+}
+.badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(90deg,#fbbf24,#f472b6);color:#111;font-size:11px;font-weight:800;
+  padding:4px 12px;border-radius:999px;letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 0 20px rgba(251,191,36,.7)
+}
+.plan h3{font-size:20px;margin-bottom:6px}
+.plan .price{font-size:40px;font-weight:800;margin:12px 0}
+.plan .price span{font-size:14px;font-weight:500;color:#c4b5fd}
+.plan ul{list-style:none;padding:0;margin:16px 0 22px;font-size:14px;color:#ddd6fe}
+.plan li{margin:8px 0}
+.plan li::before{content:"✨ ";}
+.plan button{
+  width:100%;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;
+  background:linear-gradient(90deg,#a78bfa,#f472b6);color:#111
+}
+.faq{padding:64px 24px 80px;max-width:720px;margin:0 auto}
+.faq h2{text-align:center;font-size:32px;margin-bottom:28px}
+.faq details{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:14px 18px;margin-bottom:12px
+}
+.faq summary{cursor:pointer;font-weight:600}
+.faq p{margin-top:10px;color:#c4b5fd;font-size:14px}
+.bottom-cta{
+  text-align:center;padding:80px 24px;
+  background:linear-gradient(90deg,#4f46e5,#db2777);box-shadow:inset 0 0 80px rgba(0,0,0,.3)
+}
+.bottom-cta h2{font-size:40px;margin-bottom:12px}
+.bottom-cta p{color:#ede9fe;margin-bottom:24px}
+footer{
+  padding:40px 32px;background:#0a0418;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  font-size:13px;color:#a78bfa;border-top:1px solid rgba(255,255,255,.08)
+}
+footer .cols{display:flex;gap:40px}
+footer a{display:block;margin:6px 0;color:#c4b5fd}
+@media(max-width:800px){.cards{grid-template-columns:1fr}.hero h1{font-size:36px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">NovaBoard</div>
+  <div class="links">
+    <a href="#features">Product</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#">Get Started Free</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="pill">New · AI-Powered ✨</div>
+  <h1>Supercharge your workflow with <span>seamless</span> intelligence</h1>
+  <p>Unlock the future of productivity. In today's fast-paced world, NovaBoard elevates your team with delightful dashboards and magical automation.</p>
+  <div class="cta-row">
+    <button class="btn-glow">Get Started Free</button>
+    <button class="btn-ghost">Learn more</button>
+  </div>
+</section>
+
+<section class="logos">
+  <p>Trusted by innovative teams at</p>
+  <div class="logo-row">
+    <span>Acme</span><span>Globex</span><span>Initech</span><span>Umbrella</span><span>Hooli</span><span>Stark</span>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <h2>Everything you need to win</h2>
+  <p class="sub">Powerful features packed into one magical platform.</p>
+  <div class="cards">
+    <div class="card"><span class="emoji">🚀</span><h3>Lightning Fast</h3><p>Blazing performance that delights every stakeholder instantly.</p></div>
+    <div class="card"><span class="emoji">✨</span><h3>Smart Insights</h3><p>AI that just works — seamless, powerful, and fun.</p></div>
+    <div class="card"><span class="emoji">🔒</span><h3>Enterprise Ready</h3><p>Bank-grade security with a friendly purple glow.</p></div>
+  </div>
+</section>
+
+<section class="product">
+  <h2>See NovaBoard in action</h2>
+  <p style="color:#c4b5fd">A beautiful dashboard awaits.</p>
+  <div class="fake-ui">✨ Product screenshot coming soon ✨</div>
+</section>
+
+<section class="testimonials">
+  <h2>Loved by teams everywhere</h2>
+  <div class="t-row">
+    <div class="t-card"><div class="stars">★★★★★</div><p>"NovaBoard completely transformed how we ship. Absolute game changer!"</p><div class="who">Maya · Product Lead, Acme</div></div>
+    <div class="t-card"><div class="stars">★★★★★</div><p>"The AI features feel like magic. We can't imagine working without it."</p><div class="who">Jon · Eng Manager, Globex</div></div>
+    <div class="t-card"><div class="stars">★★★★★</div><p>"Seamless, delightful, powerful. Our whole org switched in a week."</p><div class="who">Sam · COO, Initech</div></div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <h2>Simple, transparent pricing</h2>
+  <p class="sub">Start free. Upgrade when you're ready to unlock the future.</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>Starter</h3>
+      <div class="price">$0<span>/mo</span></div>
+      <ul><li>3 boards</li><li>Basic views</li><li>Community support</li></ul>
+      <button>Get Started</button>
+    </div>
+    <div class="plan hot">
+      <div class="badge">Most popular</div>
+      <h3>Pro</h3>
+      <div class="price">$18<span>/seat/mo</span></div>
+      <ul><li>Unlimited boards</li><li>AI insights</li><li>Priority support</li><li>Advanced permissions</li></ul>
+      <button>Start Free Trial</button>
+    </div>
+    <div class="plan">
+      <h3>Enterprise</h3>
+      <div class="price">Custom</div>
+      <ul><li>SSO & SCIM</li><li>Audit logs</li><li>Dedicated success</li></ul>
+      <button>Contact Sales</button>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <h2>FAQ</h2>
+  <details open><summary>Is there a free plan?</summary><p>Yes! Starter is free forever for small teams getting started.</p></details>
+  <details><summary>Can I import from other tools?</summary><p>Absolutely. Import from spreadsheets, Trello, and more in a few clicks.</p></details>
+  <details><summary>Do you offer discounts?</summary><p>We love startups and nonprofits. Reach out and we'll take care of you.</p></details>
+</section>
+
+<section class="bottom-cta">
+  <h2>Ready to unlock the future?</h2>
+  <p>Join thousands of teams shipping faster with NovaBoard.</p>
+  <button class="btn-glow">Get Started Free</button>
+</section>
+
+<footer>
+  <div><strong>NOVABOARD</strong><div style="margin-top:8px">© 2026 NovaBoard Inc.</div></div>
+  <div class="cols">
+    <div><a href="#">Product</a><a href="#">Pricing</a><a href="#">Changelog</a></div>
+    <div><a href="#">Careers</a><a href="#">Blog</a><a href="#">Legal</a></div>
+  </div>
+</footer>
+</body>
+</html>
