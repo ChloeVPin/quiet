@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --stage: #e8e8e8;
+    --bg: #fafafa;
+    --fg: #171717;
+    --muted: #737373;
+    --line: #d4d4d4;
+    --accent: #ff5a1f; /* DD-like orange, used sparingly as annotation only */
+    --menu: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --stage: #141414;
+      --bg: #0a0a0a;
+      --fg: #ededed;
+      --muted: #8a8a8a;
+      --line: #2a2a2a;
+      --accent: #ff6a33;
+      --menu: #1a1a1a;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 880px; height: 520px;
+    background: var(--stage);
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: var(--fg);
+    overflow: hidden;
+    position: relative;
+  }
+  .mark {
+    position: absolute; top: 28px; left: 32px;
+    font-size: 12px; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .blurb {
+    position: absolute; top: 28px; right: 32px;
+    font-size: 11px; color: var(--muted); max-width: 22ch; text-align: right; line-height: 1.45;
+  }
+  /* Magnified menu, oversized as a specimen */
+  .specimen {
+    position: absolute;
+    left: 50%; top: 54%;
+    transform: translate(-50%, -50%) scale(1.55);
+    transform-origin: center;
+  }
+  .menu {
+    width: 240px;
+    background: var(--menu);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .hint { font-size: 10px; color: var(--muted); padding: 6px 9px 4px; }
+  .item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 9px; border-radius: 6px; /* concentric: 10 = 6 + 4 pad-ish */
+    font-size: 13px; letter-spacing: -0.01em;
+  }
+  .item.active { background: color-mix(in srgb, var(--fg) 6%, transparent); }
+  .k { font-size: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sep { height: 1px; background: var(--line); margin: 4px 7px; }
+
+  /* Quiet craft annotations (DD ruler energy, sparse) */
+  .anno {
+    position: absolute;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .anno b { color: var(--accent); font-weight: 500; }
+  .tick {
+    position: absolute;
+    background: var(--accent);
+  }
+  /* radius callout on top-right corner of menu */
+  .anno.r { left: calc(50% + 118px); top: calc(54% - 118px); }
+  .tick.r {
+    width: 18px; height: 1px;
+    left: calc(50% + 98px); top: calc(54% - 112px);
+  }
+  .tick.r2 {
+    width: 1px; height: 18px;
+    left: calc(50% + 116px); top: calc(54% - 112px);
+  }
+  /* active row optical note */
+  .anno.o { left: calc(50% - 210px); top: calc(54% - 28px); max-width: 14ch; white-space: normal; line-height: 1.35; }
+  .tick.o {
+    width: 24px; height: 1px;
+    left: calc(50% - 78px); top: calc(54% - 18px);
+  }
+  /* cursor */
+  .cursor {
+    position: absolute;
+    left: calc(50% + 36px); top: calc(54% - 8px);
+    width: 10px; height: 10px;
+    border: 1.5px solid var(--fg);
+    border-radius: 50%;
+    opacity: 0.85;
+  }
+  
+  /* DD-like vertical measure */
+  .ruler {
+    position: absolute;
+    left: 18px; top: 80px; bottom: 80px;
+    width: 10px;
+  }
+  .ruler i {
+    position: absolute; left: 0; right: 0;
+    border-top: 1px solid color-mix(in srgb, var(--muted) 55%, transparent);
+    height: 0;
+  }
+  .ruler i.major { border-top-color: var(--accent); width: 10px; }
+  .ruler .cap {
+    position: absolute; left: 14px; top: 0;
+    font-size: 8px; color: var(--muted); transform: translateY(-50%);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cursor::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 1px; height: 1px;
+    background: var(--fg);
+  }
+</style>
+</head>
+<body>
+  <div class="mark">Quiet</div>
+  <div class="blurb">Interaction detail as the specimen.</div>
+
+  <div class="specimen">
+    <div class="menu">
+      <div class="hint">Actions</div>
+      <div class="item active"><span>Open board</span><span class="k">↵</span></div>
+      <div class="item"><span>Invite…</span><span class="k">⌘I</span></div>
+      <div class="item"><span>Copy link</span><span class="k">⌘C</span></div>
+      <div class="sep"></div>
+      <div class="item"><span>Archive</span><span class="k"></span></div>
+    </div>
+  </div>
+
+  <div class="tick r"></div>
+  <div class="tick r2"></div>
+  <div class="anno r"><b>10</b> = 6 + 4</div>
+
+  <div class="tick o"></div>
+  <div class="anno o">active fill<br/>~6% ink</div>
+
+    <div class="ruler" aria-hidden="true">
+    <i class="major" style="top:0%"></i>
+    <i class="" style="top:2%"></i>
+    <i class="" style="top:4%"></i>
+    <i class="" style="top:6%"></i>
+    <i class="" style="top:8%"></i>
+    <i class="major" style="top:10%"></i>
+    <i class="" style="top:12%"></i>
+    <i class="" style="top:14%"></i>
+    <i class="" style="top:16%"></i>
+    <i class="" style="top:18%"></i>
+    <i class="major" style="top:20%"></i>
+    <i class="" style="top:22%"></i>
+    <i class="" style="top:24%"></i>
+    <i class="" style="top:26%"></i>
+    <i class="" style="top:28%"></i>
+    <i class="major" style="top:30%"></i>
+    <i class="" style="top:32%"></i>
+    <i class="" style="top:34%"></i>
+    <i class="" style="top:36%"></i>
+    <i class="" style="top:38%"></i>
+    <i class="major" style="top:40%"></i>
+    <i class="" style="top:42%"></i>
+    <i class="" style="top:44%"></i>
+    <i class="" style="top:46%"></i>
+    <i class="" style="top:48%"></i>
+    <i class="major" style="top:50%"></i>
+    <i class="" style="top:52%"></i>
+    <i class="" style="top:54%"></i>
+    <i class="" style="top:56%"></i>
+    <i class="" style="top:58%"></i>
+    <i class="major" style="top:60%"></i>
+    <i class="" style="top:62%"></i>
+    <i class="" style="top:64%"></i>
+    <i class="" style="top:66%"></i>
+    <i class="" style="top:68%"></i>
+    <i class="major" style="top:70%"></i>
+    <i class="" style="top:72%"></i>
+    <i class="" style="top:74%"></i>
+    <i class="" style="top:76%"></i>
+    <i class="" style="top:78%"></i>
+    <i class="major" style="top:80%"></i>
+    <i class="" style="top:82%"></i>
+    <i class="" style="top:84%"></i>
+    <i class="" style="top:86%"></i>
+    <i class="" style="top:88%"></i>
+    <i class="major" style="top:90%"></i>
+    <i class="" style="top:92%"></i>
+    <i class="" style="top:94%"></i>
+    <i class="" style="top:96%"></i>
+    <i class="" style="top:98%"></i>
+    <i class="major" style="top:100%"></i>
+    <span class="cap">0</span>
+  </div>
+<div class="cursor" aria-hidden="true"></div>
+</body>
+</html>

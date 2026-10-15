@@ -13,7 +13,8 @@
       --fg: #111111;
       --muted: #737373;
       --line: #ebebeb;
-      --surface: #f7f7f7;
+      --surface: #f4f4f4;
+      --accent: #ff5a1f;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     @media (prefers-color-scheme: dark) {
@@ -23,6 +24,7 @@
         --muted: #8a8a8a;
         --line: #222222;
         --surface: #141414;
+        --accent: #ff6a33;
       }
     }
     * { box-sizing: border-box; margin: 0; }
@@ -35,155 +37,104 @@
       font-weight: 400;
       line-height: 1.55;
     }
-    a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      text-decoration-color: transparent;
-    }
-    a:hover { text-decoration-color: currentColor; }
     .page {
       width: min(560px, calc(100% - 48px));
       margin: 0 auto;
       padding: 64px 0 120px;
     }
-    .name {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-    .role {
-      color: var(--muted);
-      margin-top: 2px;
-    }
+    .name { font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
+    .role { color: var(--muted); margin-top: 2px; }
     .lede {
       margin-top: 28px;
       color: var(--muted);
       max-width: 42ch;
       text-wrap: pretty;
     }
-    .actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+    .actions { display: flex; gap: 10px; margin-top: 20px; }
     button {
-      font: inherit;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: 6px;
-      padding: 7px 11px;
-      transition: transform 120ms var(--ease), background 120ms var(--ease);
+      font: inherit; font-size: 13px; font-weight: 500;
+      cursor: pointer; border-radius: 6px; padding: 7px 11px;
+      transition: transform 120ms var(--ease);
     }
     button:active { transform: scale(0.97); }
     @media (prefers-reduced-motion: reduce) {
       button { transition: none; }
       button:active { transform: none; }
     }
-    .primary {
-      background: var(--fg);
-      color: var(--bg);
-      border: none;
-    }
-    .ghost {
-      background: transparent;
-      color: var(--fg);
-      border: 1px solid var(--line);
-    }
+    .primary { background: var(--fg); color: var(--bg); border: none; }
+    .ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
 
-    /* Real product fragment: a quiet board */
-    .board {
+    /* Product fragment on a craft stage (Rauno card energy) */
+    .stage {
       margin-top: 40px;
       background: var(--surface);
-      border-radius: 10px;
+      border-radius: 14px;
+      padding: 28px 20px 22px;
+      position: relative;
+    }
+    .board {
+      background: var(--bg);
+      border-radius: 10px; /* concentric with stage 14 ≈ 10 + 4 pad feel */
       padding: 10px;
-      /* optical: soft inset feel without shadow soup */
+      border: 1px solid var(--line);
     }
     .board-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 4px 6px 10px;
     }
-    .board-title {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-    .board-meta {
-      font-size: 11px;
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-    }
-    .rows {
-      background: var(--bg);
-      border-radius: 6px; /* concentric: 10 outer ≈ 6 + ~4 pad */
-      overflow: hidden;
-    }
+    .board-title { font-size: 12px; font-weight: 500; letter-spacing: -0.01em; }
+    .board-meta { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .rows { border-radius: 6px; overflow: hidden; }
     .row {
       display: grid;
       grid-template-columns: 14px 1fr auto auto;
-      gap: 10px;
-      align-items: center;
-      padding: 9px 12px;
-      font-size: 13px;
+      gap: 10px; align-items: center;
+      padding: 9px 12px; font-size: 13px;
       border-top: 1px solid var(--line);
     }
     .row:first-child { border-top: none; }
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--muted);
-      opacity: 0.55;
-    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); opacity: 0.55; }
     .dot.on { background: var(--fg); opacity: 1; }
-    .row-title { letter-spacing: -0.01em; }
     .owner, .due {
-      color: var(--muted);
-      font-size: 12px;
+      color: var(--muted); font-size: 12px;
       font-variant-numeric: tabular-nums;
     }
     .owner { width: 72px; text-align: right; }
     .due { width: 56px; text-align: right; }
 
-    section {
-      margin-top: 64px;
+    /* One Rauno/DD craft annotation */
+    .craft-line {
+      position: absolute;
+      left: 0; right: 0; top: 18px;
+      height: 1px;
+      background: color-mix(in srgb, var(--accent) 50%, transparent);
     }
+    .craft-dot {
+      position: absolute;
+      left: 16px; top: 15px;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .craft-note {
+      position: absolute;
+      right: 16px; top: 8px;
+      font-size: 10px; color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .craft-note b { color: var(--accent); font-weight: 500; }
+
+    section { margin-top: 64px; }
     section h2 {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
+      font-size: 14px; font-weight: 500;
+      letter-spacing: -0.01em; margin-bottom: 14px;
     }
-    .list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .list strong {
-      display: block;
-      font-weight: 500;
-      font-size: 14px;
-      letter-spacing: -0.01em;
-    }
+    .list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .list strong { display: block; font-weight: 500; font-size: 14px; letter-spacing: -0.01em; }
     .list span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 2px;
-      max-width: 48ch;
-      text-wrap: pretty;
+      display: block; color: var(--muted); font-size: 13px;
+      margin-top: 2px; max-width: 48ch; text-wrap: pretty;
     }
-    footer {
-      margin-top: 80px;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    footer { margin-top: 80px; color: var(--muted); font-size: 13px; }
   </style>
 </head>
 <body>
@@ -196,16 +147,21 @@
       <button class="ghost" type="button">View pricing</button>
     </div>
 
-    <div class="board" aria-label="NovaBoard product preview">
-      <div class="board-bar">
-        <div class="board-title">Launch checklist</div>
-        <div class="board-meta">6 open</div>
-      </div>
-      <div class="rows">
-        <div class="row"><span class="dot on"></span><span class="row-title">Ship pricing page</span><span class="owner">Maya</span><span class="due">Oct 16</span></div>
-        <div class="row"><span class="dot on"></span><span class="row-title">Invite design partners</span><span class="owner">Jon</span><span class="due">Oct 17</span></div>
-        <div class="row"><span class="dot"></span><span class="row-title">Tighten empty states</span><span class="owner">Chloe</span><span class="due">Oct 21</span></div>
-        <div class="row"><span class="dot"></span><span class="row-title">Cut unused motion</span><span class="owner">Jon</span><span class="due">Oct 22</span></div>
+    <div class="stage" aria-label="NovaBoard product preview">
+      <div class="craft-line" aria-hidden="true"></div>
+      <div class="craft-dot" aria-hidden="true"></div>
+      <div class="craft-note">outer <b>14</b> · inner <b>10</b> · pad 4</div>
+      <div class="board">
+        <div class="board-bar">
+          <div class="board-title">Launch checklist</div>
+          <div class="board-meta">6 open</div>
+        </div>
+        <div class="rows">
+          <div class="row"><span class="dot on"></span><span>Ship pricing page</span><span class="owner">Maya</span><span class="due">Oct 16</span></div>
+          <div class="row"><span class="dot on"></span><span>Invite design partners</span><span class="owner">Jon</span><span class="due">Oct 17</span></div>
+          <div class="row"><span class="dot"></span><span>Tighten empty states</span><span class="owner">Chloe</span><span class="due">Oct 21</span></div>
+          <div class="row"><span class="dot"></span><span>Cut unused motion</span><span class="owner">Jon</span><span class="due">Oct 22</span></div>
+        </div>
       </div>
     </div>
 

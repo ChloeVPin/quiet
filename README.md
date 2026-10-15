@@ -1,13 +1,13 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/quiet-hero-dark.png" />
-    <img src="assets/quiet-hero-light.png" alt="Quiet" width="880" />
+    <img src="assets/quiet-hero-light.png" alt="Quiet specimen: magnified menu with craft annotations" width="880" />
   </picture>
 </p>
 
-Quiet is an agent skill for UI that feels like Rauno, Paco, and Emil: small grotesk type, narrow layouts, real components, almost no costume.
+Quiet is an agent skill for UI where **interaction is the art**: the Rauno / Devouring Details tradition. Magnified details, tactile motion, components as specimens. Not costume.
 
-Landing pages and product UI. Chat, sidebars, settings, dashboards.
+Landing pages and product UI.
 
 ## Install
 
@@ -16,6 +16,14 @@ npx skills add https://github.com/ChloeVPin/quiet --skill quiet
 ```
 
 Or copy `skills/quiet/` into your agent skills directory.
+
+## Press
+
+A Quiet control keeps mass. Scale to 0.97 over ~120ms, ease-out, interruptible. Never `scale(0)`.
+
+<p align="center">
+  <img src="assets/quiet-press.gif" alt="Button press sequence to scale 0.97" width="660" />
+</p>
 
 ## Before / after
 
@@ -36,11 +44,11 @@ Full pages in [`examples/messy-landing/`](examples/messy-landing/).
 
 ## Rules that matter
 
-One grotesk, about 14px. Near-monochrome. Strict 4px spacing and concentric radii. Product motion under 300ms, ease-out, interruptible, none on keyboard paths. Buttons name the action. No gradients, glass, emoji icons, stat-card heroes, hairline feature tables, corner version labels, or em dashes.
+Treat the interface like a specimen. One grotesk, about 14px. Near-monochrome, one craft accent at most (for measurement, not decoration). Concentric radii you can prove in math. Product motion under 300ms. Buttons name the action. Prefer a live component over a slogan.
 
-Encode taste. Plan. Wait for OK. One surface per pass. Check the rubric.
+No gradients, glass, emoji icons, stat-card heroes, hairline feature tables, corner version labels, or em dashes.
 
-Details live in `skills/quiet/SKILL.md` and `skills/quiet/references/`.
+Encode taste. Plan. Wait for OK. One surface per pass.
 
 ```bash
 node skills/quiet/scripts/lint.mjs path/to/ui
@@ -48,7 +56,7 @@ node skills/quiet/scripts/lint.mjs path/to/ui
 
 ## Credits
 
-Primary: [rauno.me](https://rauno.me), [devouringdetails.com](https://devouringdetails.com), [paco.me/craft](https://paco.me/craft). Also Emil Kowalski, Jakub Krehel, Linear Method and Quality. Sources: [`skills/quiet/references/sources.md`](skills/quiet/references/sources.md). Not affiliated.
+Primary: [rauno.me](https://rauno.me), [rauno.me/craft](https://rauno.me/craft), [devouringdetails.com](https://devouringdetails.com). Also Paco Coursey, Emil Kowalski, Jakub Krehel, Linear. Sources: [`skills/quiet/references/sources.md`](skills/quiet/references/sources.md).
 
 ## License
 

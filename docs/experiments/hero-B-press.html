@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --stage: #121212;
+    --fg: #f0f0f0;
+    --muted: #8a8a8a;
+    --line: #2c2c2c;
+    --btn: #f0f0f0;
+    --btnText: #111;
+    --accent: #ff5a1f;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --stage: #e9e9e9;
+      --fg: #171717;
+      --muted: #737373;
+      --line: #cfcfcf;
+      --btn: #171717;
+      --btnText: #fafafa;
+      --accent: #ff5a1f;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 880px; height: 520px;
+    background: var(--stage);
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: var(--fg);
+    position: relative;
+    overflow: hidden;
+  }
+  .mark { position: absolute; top: 28px; left: 32px; font-size: 12px; font-weight: 500; }
+  .meta { position: absolute; top: 28px; right: 32px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .strip {
+    position: absolute;
+    left: 48px; right: 48px; top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .frame {
+    background: color-mix(in srgb, var(--fg) 4%, transparent);
+    border-radius: 12px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    position: relative;
+  }
+  .btn {
+    background: var(--btn);
+    color: var(--btnText);
+    border: none;
+    border-radius: 7px;
+    padding: 9px 14px;
+    font: 500 13px/1 Inter, system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .f1 .btn { transform: scale(1); }
+  .f2 .btn { transform: scale(0.985); }
+  .f3 .btn { transform: scale(0.97); }
+  .f4 .btn { transform: scale(0.97); opacity: 0.92; }
+  .label {
+    position: absolute; bottom: 14px; left: 0; right: 0;
+    text-align: center;
+    font-size: 10px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .label b { color: var(--accent); font-weight: 500; }
+  .caption {
+    position: absolute; bottom: 28px; left: 32px; right: 32px;
+    font-size: 12px; color: var(--muted); max-width: 48ch; line-height: 1.45;
+  }
+</style>
+</head>
+<body>
+  <div class="mark">Quiet</div>
+  <div class="meta">press · 120ms · ease-out</div>
+  <div class="strip">
+    <div class="frame f1"><button class="btn">Start free board</button><div class="label">t=0 · scale <b>1.00</b></div></div>
+    <div class="frame f2"><button class="btn">Start free board</button><div class="label">t=40 · scale <b>0.985</b></div></div>
+    <div class="frame f3"><button class="btn">Start free board</button><div class="label">t=80 · scale <b>0.97</b></div></div>
+    <div class="frame f4"><button class="btn">Start free board</button><div class="label">t=120 · held</div></div>
+  </div>
+  <div class="caption">Never scale(0). Press to 0.97 so the control keeps a visible mass, like a balloon that never fully empties.</div>
+</body>
+</html>

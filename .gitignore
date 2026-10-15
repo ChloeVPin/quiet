@@ -1,10 +1,12 @@
-.DS_Store
-node_modules/
-.taste-skill/
-.quiet/
 *.log
+.DS_Store
 .cache/
+.quiet/
+.taste-skill/
 dist/
+docs/experiments/frames/
+docs/experiments/palette.png
+docs/north-star/*-full.png
+node_modules/
 playwright-report/
 test-results/
-docs/north-star/*-full.png

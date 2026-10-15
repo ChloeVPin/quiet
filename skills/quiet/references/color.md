@@ -25,3 +25,8 @@ Map to semantic roles, not raw hex in components:
 Design light and dark intentionally. Do not invert blindly. Recheck contrast in both.
 
 OKLCH ramps are welcome for even steps when building a system. Wide-gamut P3 is optional enrichment on capable displays. never a substitute for restraint.
+
+
+## Craft accent
+
+A single sharp accent (e.g. DD orange, Rauno yellow) may appear as **measurement or focus instrumentation** on craft specimens. It is not a CTA fill, not a gradient endpoint, and not a second brand color across the product.
