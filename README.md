@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-Quiet is an agent skill for UI that feels like Rauno, Paco, and Emil: small grotesk type, narrow layouts, real components, almost no costume.
+Quiet is an agent skill for UI built on small grotesk type, narrow layouts, real components, almost no costume.
 
 Landing pages and product UI. Chat, sidebars, settings, dashboards.
 
@@ -138,10 +138,6 @@ Surfaces beyond the landing pass. Each folder has before, after, and fold shots.
 </table>
 
 Also [`examples/messy-landing/`](examples/messy-landing/) and [`examples/saas/`](examples/saas/).
-
-## Credits
-
-Primary: [rauno.me](https://rauno.me), [devouringdetails.com](https://devouringdetails.com), [paco.me/craft](https://paco.me/craft). Also Emil Kowalski, Jakub Krehel, Linear Method and Quality. Sources: [`skills/quiet/references/sources.md`](skills/quiet/references/sources.md). Not affiliated.
 
 ## License
 

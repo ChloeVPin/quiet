@@ -22,7 +22,7 @@ Absolute. Treat as fail conditions in critique.
 
 ## Minimal-template slop (Quiet-specific)
 
-These look “clean” but are not the north star (Rauno / Paco / Emil / DD):
+These look “clean” but are not Quiet:
 
 - **Big-serif-on-beige** marketing posters (Newsreader hero on warm paper)
 - **Warm-craft SaaS** (“artisan” product sites): cream or paper grounds + serif display + terracotta/earthy accents, often with colored avatar dots as decoration

@@ -2,14 +2,12 @@
 name: quiet
 description: >-
   Quiet is a UI generalist skill that builds and redesigns interfaces in Chloe
-  Valesquez's taste: interaction-detail craft from Rauno Freiberg, Paco Coursey,
-  Emil Kowalski, Jakub Krehel, and Linear, dead simple, near-monochrome,
+  Valesquez's taste: interaction-detail craft, dead simple, near-monochrome,
   perfect type and spacing, purposeful motion under 300ms. Use whenever you
   build, redesign, restyle, polish, or review any UI: landing pages, marketing
   sites, product screens, chat, sidebars, settings, dashboards, or design
   systems. Also when the user says a page looks like slop, generic, AI-made,
-  over-decorated, or asks to make it quieter, sharper, more like Linear /
-  rauno.me / paco.me. Beats gallery-lottery skills by encoding one person's
+  over-decorated, or asks to make it quieter or sharper. Encodes one person's
   taste as hard rules, covering product UI (not just marketing), and requiring
   a plan-then-approve workflow.
 license: MIT
@@ -22,8 +20,7 @@ metadata:
 
 You do not invent a look. You apply Quiet.
 
-Quiet is interaction detail first, ornament never. Study the north star
-(rauno.me, paco.me, emilkowal.ski, devouringdetails.com): small grotesk type,
+Quiet is interaction detail first, ornament never: small grotesk type,
 narrow columns, real components, almost no marketing costume. A stranger must
 still recognize the product. Zero slop tells.
 
@@ -43,20 +40,14 @@ Read the reference that matches the decision. Do not skim them all up front.
 | Chat, sidebars, settings, dashboards | `references/product-ui.md` |
 | SaaS / marketing landings | `references/saas.md` |
 | Before/after self-check | `references/critique-rubric.md` |
-| Attributions and source essays | `references/sources.md` |
 
 Optional: `node <this-skill>/scripts/lint.mjs <paths…>` greps for common tells.
 
-## North star
+## Two questions
 
-Primary: Rauno Freiberg ([rauno.me](https://rauno.me),
-[Devouring Details](https://devouringdetails.com)), Paco’s craft archive
-([paco.me/craft](https://paco.me/craft)).
-
-Also: Emil Kowalski, Paco Coursey, Jakub Krehel, Linear (Method + Quality).
-
-Cite Rauno / Emil / Paco / Jakub for how it looks and moves. Cite Linear Method
-and Quality for whether something should exist at all.
+For how it looks and moves: is every detail deliberate? For whether it
+should exist at all: does it earn its place, or does it only survive because
+building is cheap?
 
 ## Hard rules (never negotiate)
 
@@ -136,4 +127,4 @@ dashboards, dense tools). This is the gap Quiet owns versus gallery-only skills.
 ## Success
 
 A stranger still recognizes the product. Every slop tell is gone. Type and
-spacing feel decided. It could sit next to rauno.me.
+spacing feel decided. Nothing on the page is there by default.

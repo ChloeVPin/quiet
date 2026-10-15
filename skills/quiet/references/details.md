@@ -2,7 +2,7 @@
 
 Skip any item that does not apply to the surface. When it applies, do it.
 
-## Emil checklist
+## Checklist
 
 - **Press:** scale interactive controls to ~**0.97** on `:active`.
 - **Origin-aware popovers:** set `transform-origin` to the trigger (Radix / Base UI expose CSS vars). Center origin is usually wrong.

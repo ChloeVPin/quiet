@@ -1,6 +1,6 @@
 # Layout
 
-## Sites / documents (Paco, Emil)
+## Sites / documents
 
 - **Narrow single column**, left aligned, wide side margins.
 - Vertical lists: title + muted one-liner. Occasional multi-column *link* grids with no cards.
@@ -16,7 +16,7 @@
 
 ## The one unconventional moment
 
-Allowed when earned (a craft demo, an asymmetric composition like Rauno’s carousel). Never a costume of asymmetry.
+Allowed when earned (a craft demo, a deliberately asymmetric composition). Never a costume of asymmetry.
 
 ## Forbidden layouts
 
@@ -24,4 +24,4 @@ Stat-card heroes. Hairline feature row tables. Big-serif poster heroes. Centered
 
 ## Product photography (e-commerce)
 
-Follow Aesop, Hay, Teenage Engineering, Apple: large real photos, image-first, no inventory-code captions overlaid on the image. Title, price, and meta live beside or below the photo. Use properly licensed stock (Unsplash / Pexels) and note attribution in the example README. Prefer photography over SVG silhouettes.
+Use large real photos, image-first, no inventory-code captions overlaid on the image. Title, price, and meta live beside or below the photo. Use properly licensed stock (Unsplash / Pexels) and note attribution in the example README. Prefer photography over SVG silhouettes.

@@ -18,7 +18,7 @@ A founder has a bad landing page. Keep the business sections: hero, product, fea
 
 Light SaaS follows the same rules as dark: neutral near-white (not cream), dark filled primary, product fragment first. Do not invent a separate “warm” look for light mode.
 
-## Avoid: shadcn / Vercel default grammar
+## Avoid: default component-kit grammar
 
 These read clean but generic. Do not treat them as Quiet taste:
 
@@ -26,7 +26,7 @@ These read clean but generic. Do not treat them as Quiet taste:
 - Black fill primary + outlined secondary CTA pair
 - Muted gray panel hosting a bordered white component as the default exhibit
 - Actions menu with keyboard hints presented as the taste centerpiece
-- Component-gallery collage heroes (Vercel/Geist marketing default)
+- Component-gallery collage heroes (component-kit marketing default)
 - Feature grids of identical bordered cards
 - Huge negative-tracked marketing display that outshouts the product
 

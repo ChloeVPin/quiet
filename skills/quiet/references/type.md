@@ -1,6 +1,6 @@
 # Type
 
-North star (Emil, Paco, Rauno, Devouring Details): **one grotesk, small, weight for hierarchy**.
+Default stance: **one grotesk, small, weight for hierarchy**.
 
 ## Default
 

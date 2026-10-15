@@ -15,7 +15,7 @@ Run after every pass. Judge the rendered UI, not the intent in the code.
 | 7 | `prefers-reduced-motion` respected |
 | 8 | Buttons name actions; no eyebrow kickers; no stock AI phrases |
 | 9 | No unrequested features; no duplicate primitives; colors via tokens |
-| 10 | Could sit next to rauno.me / paco.me / emilkowal.ski without embarrassment |
+| 10 | Every detail reads as decided; nothing is there by default |
 | 11 | No stat-card hero, hairline feature tables, corner version labels, or em dashes |
 
 ## Score each 1-5 (optional)
