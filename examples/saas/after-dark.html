@@ -9,7 +9,7 @@
 :root{
   --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
   --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
-  --accent:#5e6ad2; /* considered indigo as data/brand, not gradient soup */
+  --accent:#5e6ad2;
   --green:#4cb782;--amber:#f2c94c;
   --btn-bg:#e5e5e6;--btn-fg:#08090a;--hover:#fff;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -33,8 +33,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0
 .btn:active{transform:scale(.97)}
 .btn-light{background:var(--btn-bg);color:var(--btn-fg)}
 .btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 12px}
-/* NOT a shadcn pair: primary is light-on-dark only; secondary is text or quiet border, never competing outline twin */
-
 .hero{padding:72px 0 28px;text-align:center}
 .hero h1{
   font-size:clamp(36px,4.6vw,52px);font-weight:510;letter-spacing:-.035em;line-height:1.08;
@@ -44,7 +42,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0
 .hero .actions{display:flex;gap:12px;justify-content:center;align-items:center}
 .hero .actions .quiet-link{font-size:13px;color:var(--muted)}
 
-/* High-fidelity product */
 .product-stage{padding:12px 0 80px}
 .app{
   background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;

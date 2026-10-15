@@ -25,6 +25,7 @@ Absolute. Treat as fail conditions in critique.
 These look “clean” but are not the north star (Rauno / Paco / Emil / DD):
 
 - **Big-serif-on-beige** marketing posters (Newsreader hero on warm paper)
+- **Warm-craft SaaS** (“artisan” product sites): cream or paper grounds + serif display + terracotta/earthy accents, often with colored avatar dots as decoration
 - **Stat cards** as the hero (“Active boards · 128”)
 - **Hairline row tables** (label | description rows separated by rules) as a fake feature section
 - **Serif section heads + grotesk body** SaaS rhythm on product/marketing pages by default

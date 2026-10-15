@@ -1,6 +1,6 @@
 # Type
 
-North star (Emil, Paco, Rauno craft, Devouring Details): **one grotesk, small, weight for hierarchy**.
+North star (Emil, Paco, Rauno, Devouring Details): **one grotesk, small, weight for hierarchy**.
 
 ## Default
 
@@ -15,11 +15,12 @@ North star (Emil, Paco, Rauno craft, Devouring Details): **one grotesk, small, w
 
 ## Serif
 
-Optional and rare. Do **not** default to a big-serif-on-beige hero. Serif is for long reading or a deliberate craft moment, never the Quiet template.
+Optional and rare: long-reading documents only. Never on SaaS or product marketing. Do **not** pair serif display headlines with grotesk body on landings. Do **not** default to a big-serif-on-beige hero.
 
 ## Do not
 
 - Gallery display type (huge vw headlines) on product or skill surfaces
+- Serif headlines on SaaS to signal “craft” or editorial warmth
 - Fake weight with `text-shadow`
 - Tiny tracked uppercase labels as ornament
 - Em dashes in UI strings
