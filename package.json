@@ -1,0 +1,13 @@
+{
+  "name": "quiet",
+  "private": true,
+  "description": "Quiet — an agent skill for quieter UI",
+  "type": "module",
+  "scripts": {
+    "lint:example": "node skills/quiet/scripts/lint.mjs examples/messy-landing/after.html",
+    "render": "node docs/renders/capture.mjs && node docs/renders/capture-hero.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.0.0"
+  }
+}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NovaBoard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f5f2;
+      --bg-subtle: #eeede8;
+      --fg: #141414;
+      --fg-muted: #5c5c57;
+      --border: #e2e0d8;
+      --accent: #141414;
+      --radius-control: 6px;
+      --radius-surface: 10px;
+      --space: 4px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e0e0d;
+        --bg-subtle: #161614;
+        --fg: #f2f1ec;
+        --fg-muted: #a3a29a;
+        --border: #2a2a26;
+        --accent: #f2f1ec;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.72; }
+    .wrap { width: min(1080px, calc(100% - 48px)); margin: 0 auto; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: calc(var(--space) * 5) 0;
+      border-bottom: 1px solid transparent;
+    }
+    .mark {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+    nav { display: flex; gap: calc(var(--space) * 6); font-size: 14px; color: var(--fg-muted); }
+    .hero {
+      padding: calc(var(--space) * 24) 0 calc(var(--space) * 18);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: calc(var(--space) * 12);
+      align-items: end;
+    }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding-top: calc(var(--space) * 14); }
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: clamp(2.5rem, 5.2vw, 3.75rem); /* ~3–4× 16px body */
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 calc(var(--space) * 5);
+      text-wrap: balance;
+      max-width: 14ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 65ch;
+      color: var(--fg-muted);
+      font-size: 17px;
+      text-wrap: pretty;
+    }
+    .actions {
+      display: flex;
+      gap: calc(var(--space) * 3);
+      margin-top: calc(var(--space) * 8);
+      align-items: center;
+    }
+    button {
+      font: inherit;
+      cursor: pointer;
+      border-radius: var(--radius-control);
+      transition: transform 120ms var(--ease-out), opacity 120ms var(--ease-out);
+    }
+    button:active { transform: scale(0.97); }
+    @media (prefers-reduced-motion: reduce) {
+      button { transition: none; }
+      button:active { transform: none; }
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--fg-muted);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .aside {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-surface);
+      padding: calc(var(--space) * 6);
+      /* concentric: outer 10 = inner 6 + padding-ish visual for nested chip */
+    }
+    .aside-label {
+      font-size: 12px;
+      color: var(--fg-muted);
+      margin-bottom: calc(var(--space) * 3);
+    }
+    .stat {
+      font-family: var(--font-serif);
+      font-variant-numeric: tabular-nums;
+      font-size: 48px;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin: 0 0 calc(var(--space) * 3);
+    }
+    .stat-note { margin: 0; color: var(--fg-muted); font-size: 14px; text-wrap: pretty; }
+    .section {
+      padding: calc(var(--space) * 18) 0;
+      border-top: 1px solid var(--border);
+    }
+    .section h2 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      margin: 0 0 calc(var(--space) * 8);
+      text-wrap: balance;
+    }
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+    }
+    .list li {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: calc(var(--space) * 6);
+      padding: calc(var(--space) * 5) 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 640px) {
+      .list li { grid-template-columns: 1fr; gap: calc(var(--space) * 2); }
+    }
+    .list strong {
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .list p {
+      margin: 0;
+      color: var(--fg-muted);
+      font-size: 14px;
+      max-width: 65ch;
+      text-wrap: pretty;
+    }
+    footer {
+      padding: calc(var(--space) * 10) 0 calc(var(--space) * 14);
+      color: var(--fg-muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="mark">NovaBoard</div>
+      <nav>
+        <a href="#">Product</a>
+        <a href="#">Pricing</a>
+        <a href="#">Docs</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>A quieter place to run the work</h1>
+        <p class="lede">NovaBoard is a shared board for projects, decisions, and the numbers that matter. Same product — without the costume.</p>
+        <div class="actions">
+          <button class="btn-primary" type="button">Start free board</button>
+          <button class="btn-secondary" type="button">View pricing</button>
+        </div>
+      </div>
+      <aside class="aside" aria-label="Product snapshot">
+        <div class="aside-label">Active boards</div>
+        <p class="stat">128</p>
+        <p class="stat-note">Teams use NovaBoard to keep status, owners, and due dates in one calm surface.</p>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2>What stays</h2>
+      <ul class="list">
+        <li>
+          <strong>Fast boards</strong>
+          <p>Open a board, scan owners and dates, move on. Keyboard paths stay instant — no ceremonial motion.</p>
+        </li>
+        <li>
+          <strong>Clear ownership</strong>
+          <p>Every row names a person and a next step. Insights are plain language, not a glow.</p>
+        </li>
+        <li>
+          <strong>Sensible access</strong>
+          <p>Roles, invites, and audit history with the same type and spacing as the rest of the product.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>How teams begin</h2>
+      <ul class="list">
+        <li>
+          <strong>Connect tools</strong>
+          <p>Bring issues and docs you already have. No new ritual required.</p>
+        </li>
+        <li>
+          <strong>Invite the team</strong>
+          <p>Send invite links with roles attached. Buttons say what they do.</p>
+        </li>
+        <li>
+          <strong>Run the board</strong>
+          <p>Keep the weekly pass short. Quiet UI is the point.</p>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>NovaBoard</span>
+      <span>Quiet redesign example</span>
+    </footer>
+  </div>
+</body>
+</html>
