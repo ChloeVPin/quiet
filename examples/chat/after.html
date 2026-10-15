@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Muse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+:root{
+  --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
+  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
+  --accent:#5e6ad2;--green:#4cb782;--amber:#f2c94c;--red:#eb5757;
+  --btn:#e5e5e6;--btn-fg:#08090a;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn-block{width:100%;padding:10px 12px}
+
+body{background:var(--bg);color:var(--fg);font:14px/1.5 Inter,system-ui,sans-serif;height:100vh;display:grid;grid-template-columns:240px 1fr}
+.side{background:var(--panel2);border-right:1px solid var(--line);padding:14px 10px;display:flex;flex-direction:column}
+.side .mark{font-weight:600;font-size:13px;padding:6px 8px;margin-bottom:12px;letter-spacing:-.01em}
+.side .new{margin:0 0 12px}
+.side a{display:block;padding:7px 8px;border-radius:6px;color:var(--muted);font-size:13px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.side a.on{background:rgba(255,255,255,.06);color:var(--fg)}
+.side .sec{margin:14px 8px 6px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
+.main{display:flex;flex-direction:column;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line)}
+.top h1{font-size:13px;font-weight:500}
+.top .meta{font-size:12px;color:var(--muted)}
+.msgs{flex:1;overflow:auto;padding:24px 28px;display:flex;flex-direction:column;gap:18px;max-width:720px;width:100%;margin:0 auto}
+.msg{display:grid;grid-template-columns:56px 1fr;gap:12px}
+.msg .who{font-size:12px;color:var(--faint);padding-top:2px;font-variant-numeric:tabular-nums}
+.msg .body{font-size:14px;color:var(--fg);max-width:58ch}
+.msg .body p{margin-bottom:8px;color:var(--muted)}
+.msg.user .body{color:var(--fg)}
+.msg .body strong{color:var(--fg);font-weight:500}
+.composer-wrap{border-top:1px solid var(--line);padding:14px 20px 18px}
+.composer{max-width:720px;margin:0 auto;display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 8px 8px 12px}
+.composer input{flex:1;background:transparent;border:0;color:var(--fg);font:14px/1.4 Inter,system-ui,sans-serif;outline:none}
+.composer input::placeholder{color:var(--faint)}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<aside class="side">
+  <div class="mark">Muse</div>
+  <a class="btn btn-primary new" href="#">New chat</a>
+  <div class="sec">Today</div>
+  <a class="on" href="#">Rewrite landing copy</a>
+  <a href="#">Meeting notes · Oct 14</a>
+  <div class="sec">Earlier</div>
+  <a href="#">SQL: weekly active</a>
+  <a href="#">Outline Q4 memo</a>
+</aside>
+<div class="main">
+  <div class="top">
+    <h1>Rewrite landing copy</h1>
+    <div class="meta">Model · Muse 4</div>
+  </div>
+  <div class="msgs">
+    <div class="msg user"><div class="who">You</div><div class="body">Shorten the hero. Keep the product name Fieldkit. No marketing fluff.</div></div>
+    <div class="msg"><div class="who">Muse</div><div class="body"><p><strong>Fieldkit</strong></p><p>Field notes that stay with the team. Capture on site, search later.</p><p>Want a second option with a different verb?</p></div></div>
+    <div class="msg user"><div class="who">You</div><div class="body">Yes. Lead with the verb.</div></div>
+    <div class="msg"><div class="who">Muse</div><div class="body"><p><strong>Fieldkit</strong></p><p>Capture field notes that your team can find.</p></div></div>
+  </div>
+  <div class="composer-wrap">
+    <div class="composer">
+      <input placeholder="Message Muse" aria-label="Message"/>
+      <button class="btn btn-primary" type="button">Send</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

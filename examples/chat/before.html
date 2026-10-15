@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Muse AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(160deg,#1e1b4b,#4c1d95);color:#fff;height:100vh;display:grid;grid-template-columns:260px 1fr}
+.side{background:rgba(0,0,0,.35);backdrop-filter:blur(16px);padding:20px;border-right:1px solid rgba(255,255,255,.1)}
+.logo{font-weight:800;font-size:20px;margin-bottom:20px;background:linear-gradient(90deg,#e9d5ff,#fbcfe8);-webkit-background-clip:text;color:transparent}
+.side a{display:block;padding:12px;border-radius:14px;color:rgba(255,255,255,.7);text-decoration:none;margin-bottom:6px;font-size:14px}
+.side a.on{background:linear-gradient(90deg,#7c3aed,#db2777);color:#fff;font-weight:700}
+.main{display:flex;flex-direction:column}
+.top{padding:18px 24px;font-weight:800;border-bottom:1px solid rgba(255,255,255,.1)}
+.msgs{flex:1;padding:24px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.bubble{max-width:70%;padding:14px 18px;border-radius:20px;font-size:14px;line-height:1.5}
+.bubble.user{align-self:flex-end;background:linear-gradient(90deg,#8b5cf6,#ec4899);box-shadow:0 8px 24px rgba(236,72,153,.35)}
+.bubble.ai{align-self:flex-start;background:rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+.composer{margin:16px 24px 24px;display:flex;gap:10px;background:rgba(255,255,255,.12);border-radius:999px;padding:8px 8px 8px 20px;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.composer input{flex:1;background:transparent;border:0;color:#fff;font-size:14px;outline:none}
+.composer button{border:0;border-radius:999px;padding:12px 20px;font-weight:800;background:linear-gradient(90deg,#f472b6,#a78bfa);color:#fff;cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<aside class="side">
+  <div class="logo">Muse ✨</div>
+  <a class="on" href="#">New chat</a>
+  <a href="#">Rewrite landing</a>
+  <a href="#">Meeting notes</a>
+  <a href="#">SQL helper</a>
+</aside>
+<div class="main">
+  <div class="top">Rewrite landing — elevate everything</div>
+  <div class="msgs">
+    <div class="bubble user">Make my hero copy more magical</div>
+    <div class="bubble ai">Absolutely! Here's a supercharged version that unlocks the future of your brand...</div>
+    <div class="bubble user">Shorter please</div>
+    <div class="bubble ai">Done — seamless and elevated. Ready to paste!</div>
+  </div>
+  <div class="composer"><input placeholder="Ask Muse anything..."/><button>Send</button></div>
+</div>
+
+</body>
+</html>

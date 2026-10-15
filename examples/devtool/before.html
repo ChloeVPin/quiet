@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Relay API</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(160deg,#020617,#312e81 50%,#701a75);color:#fff;min-height:100vh}
+nav{display:flex;justify-content:space-between;padding:20px 40px;align-items:center}
+.logo{font-weight:800;font-size:22px}
+.hero{text-align:center;padding:60px 24px 40px}
+.hero h1{font-size:56px;font-weight:800;line-height:1.05;margin-bottom:16px;background:linear-gradient(90deg,#e9d5ff,#fbcfe8);-webkit-background-clip:text;color:transparent}
+.hero p{font-size:18px;opacity:.8;max-width:520px;margin:0 auto 28px}
+.btns{display:flex;gap:14px;justify-content:center}
+.btn{padding:16px 28px;border-radius:999px;font-weight:800;text-decoration:none;background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;box-shadow:0 12px 40px rgba(139,92,246,.45)}
+.btn2{padding:16px 28px;border-radius:999px;font-weight:800;text-decoration:none;border:2px solid rgba(255,255,255,.4);color:#fff}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:40px auto;padding:0 24px}
+.feat{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border-radius:24px;padding:28px;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.feat .e{font-size:32px;margin-bottom:12px}
+.feat h3{font-size:18px;margin-bottom:8px}
+.feat p{font-size:14px;opacity:.75}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="logo">Relay</div><a href="#" style="color:#e9d5ff;font-weight:700;text-decoration:none">Docs</a></nav>
+<header class="hero">
+  <h1>The API that supercharges webhooks</h1>
+  <p>Seamless delivery infrastructure to unlock the future of event-driven apps.</p>
+  <div class="btns"><a class="btn" href="#">Start free</a><a class="btn2" href="#">View docs</a></div>
+</header>
+<section class="feats">
+  <div class="feat"><div class="e">⚡</div><h3>Blazing fast</h3><p>Elevated throughput for every payload.</p></div>
+  <div class="feat"><div class="e">🔒</div><h3>Secure by default</h3><p>Enterprise-grade encryption soup.</p></div>
+  <div class="feat"><div class="e">🌍</div><h3>Global edge</h3><p>Deliver from everywhere, seamlessly.</p></div>
+</section>
+
+</body>
+</html>

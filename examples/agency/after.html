@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Loom</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+:root{
+  --bg:#fafafa;--panel:#ffffff;--panel2:#f3f3f4;--line:#e8e8ea;
+  --fg:#111113;--muted:#6b6f76;--faint:#9b9fa6;
+  --accent:#5e6ad2;--green:#1f8a5b;--amber:#b58105;--red:#c43c3c;
+  --btn:#111113;--btn-fg:#ffffff;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn-block{width:100%;padding:10px 12px}
+
+body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
+.wrap{width:min(880px,calc(100% - 48px));margin:0 auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
+.nav-r{display:flex;gap:18px;font-size:13px;color:var(--muted)}
+.hero{padding:56px 0 40px}
+.hero h1{font-size:clamp(36px,5vw,52px);font-weight:510;letter-spacing:-.04em;line-height:1.05;max-width:12ch;margin-bottom:18px;text-wrap:balance}
+.hero .lede{color:var(--muted);font-size:16px;max-width:36ch;margin-bottom:24px;text-wrap:pretty}
+.work{border-top:1px solid var(--line);padding:8px 0 64px}
+.work h2{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:0;margin:24px 0 4px}
+.row{display:grid;grid-template-columns:1fr 120px 100px;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row .name{font-weight:500;letter-spacing:-.01em}
+.row .meta{color:var(--muted);font-size:13px}
+.row .year{color:var(--faint);font-variant-numeric:tabular-nums;text-align:right;font-size:13px}
+footer{border-top:1px solid var(--line);padding:24px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="mark">Loom</div>
+    <div class="nav-r"><a href="#">Work</a><a href="#">Approach</a><a href="#">Contact</a></div>
+  </nav>
+  <header class="hero">
+    <h1>Product design for tools people open every day</h1>
+    <p class="lede">Loom is a small studio in Oakland. We design software interfaces and the sites that explain them.</p>
+    <a class="btn btn-primary" href="#">Email Loom</a>
+  </header>
+  <section class="work">
+    <h2>Selected work</h2>
+    <a class="row" href="#"><span class="name">Fieldkit</span><span class="meta">Product</span><span class="year">2026</span></a>
+    <a class="row" href="#"><span class="name">Relay</span><span class="meta">Marketing</span><span class="year">2025</span></a>
+    <a class="row" href="#"><span class="name">Pennyrile</span><span class="meta">Product</span><span class="year">2025</span></a>
+    <a class="row" href="#"><span class="name">Cascade</span><span class="meta">Design system</span><span class="year">2024</span></a>
+  </section>
+  <footer>
+    <span>Oakland, CA</span>
+    <a href="mailto:hello@loom.studio">hello@loom.studio</a>
+  </footer>
+</div>
+
+</body>
+</html>

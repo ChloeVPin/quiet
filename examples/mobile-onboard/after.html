@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=390, initial-scale=1"/>
+<title>Fitly</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+:root{
+  --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
+  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
+  --accent:#5e6ad2;--green:#4cb782;--amber:#f2c94c;--red:#eb5757;
+  --btn:#e5e5e6;--btn-fg:#08090a;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn-block{width:100%;padding:10px 12px}
+
+html,body{width:390px;min-height:844px;margin:0 auto}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 Inter,system-ui,sans-serif;padding:14px 20px 28px;display:flex;flex-direction:column}
+.time{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.top .mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
+.top a{font-size:13px;color:var(--muted)}
+h1{font-size:26px;font-weight:510;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;text-wrap:balance}
+.lede{font-size:14px;color:var(--muted);margin-bottom:24px;max-width:30ch}
+.plans{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.plan{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--panel);display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;text-align:left;width:100%;color:inherit;font:inherit}
+.plan.on{border-color:var(--fg)}
+.plan .name{font-size:14px;font-weight:500;margin-bottom:2px}
+.plan .sub{font-size:12px;color:var(--muted)}
+.plan .price{font-size:14px;font-weight:500;font-variant-numeric:tabular-nums}
+.plan .price span{display:block;font-size:11px;color:var(--muted);font-weight:400;text-align:right;margin-top:2px}
+.features{margin:0 0 24px;padding:0;list-style:none}
+.features li{font-size:13px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--line)}
+.features li strong{color:var(--fg);font-weight:500}
+.spacer{flex:1}
+.fine{font-size:11px;color:var(--faint);text-align:center;margin-top:12px;line-height:1.4}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="time">9:41</div>
+<div class="top">
+  <div class="mark">Fitly</div>
+  <a href="#">Restore</a>
+</div>
+<h1>Choose a plan</h1>
+<p class="lede">Track habits and weekly reviews. Cancel anytime in Settings.</p>
+<div class="plans">
+  <button class="plan on" type="button">
+    <div><div class="name">Annual</div><div class="sub">7-day trial</div></div>
+    <div class="price">$59.99<span>$5/mo</span></div>
+  </button>
+  <button class="plan" type="button">
+    <div><div class="name">Monthly</div><div class="sub">7-day trial</div></div>
+    <div class="price">$9.99<span>per month</span></div>
+  </button>
+</div>
+<ul class="features">
+  <li><strong>Unlimited habits</strong> and streaks</li>
+  <li><strong>Weekly review</strong> every Sunday</li>
+  <li><strong>Apple Health</strong> sync</li>
+</ul>
+<div class="spacer"></div>
+<button class="btn btn-primary btn-block" type="button">Start 7-day trial</button>
+<p class="fine">Then $59.99/year. Payment charged to Apple ID. Cancel at least 24 hours before renewal.</p>
+
+</body>
+</html>

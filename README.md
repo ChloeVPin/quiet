@@ -81,8 +81,58 @@ Surfaces beyond the landing pass. Each folder has before, after, and fold shots.
       <img src="examples/pricing/after-fold.png" alt="Pricing after" width="420" />
     </td>
     <td align="center" width="50%">
-      <a href="examples/mobile/"><strong>Mobile</strong></a><br/>
-      <img src="examples/mobile/after.png" alt="Mobile after" width="200" />
+      <a href="examples/docs/"><strong>Docs</strong></a><br/>
+      <img src="examples/docs/after-fold.png" alt="Docs after" width="420" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/blog/"><strong>Changelog</strong></a><br/>
+      <img src="examples/blog/after-fold.png" alt="Changelog after" width="420" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/devtool/"><strong>API landing</strong></a><br/>
+      <img src="examples/devtool/after-fold.png" alt="API landing after" width="420" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/ecommerce/"><strong>E-commerce</strong></a><br/>
+      <img src="examples/ecommerce/after-fold.png" alt="E-commerce after" width="420" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/signin/"><strong>Sign-in</strong></a><br/>
+      <img src="examples/signin/after-fold.png" alt="Sign-in after" width="420" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/chat/"><strong>Chat</strong></a><br/>
+      <img src="examples/chat/after-fold.png" alt="Chat after" width="420" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/empty/"><strong>404</strong></a><br/>
+      <img src="examples/empty/after-fold.png" alt="404 after" width="420" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/waitlist/"><strong>Waitlist</strong></a><br/>
+      <img src="examples/waitlist/after-fold.png" alt="Waitlist after" width="420" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/agency/"><strong>Studio</strong></a><br/>
+      <img src="examples/agency/after-fold.png" alt="Studio after" width="420" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="examples/mobile/"><strong>Mobile home</strong></a><br/>
+      <img src="examples/mobile/after.png" alt="Mobile home after" width="200" />
+    </td>
+    <td align="center" width="50%">
+      <a href="examples/mobile-onboard/"><strong>Mobile paywall</strong></a><br/>
+      <img src="examples/mobile-onboard/after.png" alt="Mobile paywall after" width="200" />
     </td>
   </tr>
 </table>

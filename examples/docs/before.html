@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Orbit Docs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(135deg,#1e1b4b,#4c1d95);color:#fff;min-height:100vh}
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.side{background:rgba(0,0,0,.35);backdrop-filter:blur(16px);padding:24px;border-right:1px solid rgba(255,255,255,.12)}
+.logo{font-size:22px;font-weight:800;background:linear-gradient(90deg,#a78bfa,#f0abfc);-webkit-background-clip:text;color:transparent;margin-bottom:20px}
+.side a{display:block;padding:10px 12px;border-radius:12px;color:rgba(255,255,255,.7);text-decoration:none;margin-bottom:4px;font-size:14px}
+.side a.on{background:linear-gradient(90deg,#7c3aed,#db2777);color:#fff;font-weight:700}
+.main{padding:40px 48px;max-width:820px}
+.eyebrow{display:inline-block;background:#ede9fe;color:#6d28d9;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:42px;font-weight:800;margin-bottom:14px}
+.lead{font-size:18px;opacity:.8;margin-bottom:28px}
+.card{background:rgba(255,255,255,.1);border-radius:20px;padding:24px;margin-bottom:18px;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.card h2{font-size:20px;margin-bottom:8px}
+pre{background:#0f172a;padding:16px;border-radius:14px;overflow:auto;font-size:13px;margin-top:12px}
+.btn{display:inline-block;margin-top:12px;padding:12px 20px;border-radius:999px;background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;font-weight:800;text-decoration:none}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="side">
+    <div class="logo">Orbit Docs</div>
+    <a class="on" href="#">Getting started</a>
+    <a href="#">Authentication</a>
+    <a href="#">API reference</a>
+    <a href="#">Webhooks</a>
+    <a href="#">SDKs</a>
+  </aside>
+  <main class="main">
+    <div class="eyebrow">Guide</div>
+    <h1>Supercharge your integration</h1>
+    <p class="lead">Unlock the future of Orbit — seamless docs for every builder.</p>
+    <div class="card">
+      <h2>Install the SDK</h2>
+      <p>Copy this magic snippet to get started in seconds.</p>
+      <pre>npm install @orbit/sdk</pre>
+      <a class="btn" href="#">Continue</a>
+    </div>
+    <div class="card">
+      <h2>Create a client</h2>
+      <pre>import { Orbit } from '@orbit/sdk'
+const client = new Orbit({ apiKey: process.env.ORBIT_KEY })</pre>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

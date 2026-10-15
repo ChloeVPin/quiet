@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Relay</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<style>
+
+:root{
+  --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
+  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
+  --accent:#5e6ad2;--green:#4cb782;--amber:#f2c94c;--red:#eb5757;
+  --btn:#e5e5e6;--btn-fg:#08090a;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.btn{display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+
+body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
+.wrap{width:min(1000px,calc(100% - 48px));margin:0 auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
+.nav-r{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--muted)}
+.hero{padding:64px 0 28px;display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(32px,4vw,44px);font-weight:510;letter-spacing:-.035em;line-height:1.08;margin-bottom:14px;text-wrap:balance;max-width:14ch}
+.hero .lede{color:var(--muted);font-size:15px;max-width:36ch;margin-bottom:24px;text-wrap:pretty}
+.actions{display:flex;gap:12px;align-items:center}
+.actions .quiet{font-size:13px;color:var(--muted)}
+.terminal{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+.terminal .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.terminal .bar i{width:8px;height:8px;border-radius:50%;background:var(--faint);display:block}
+.terminal pre{padding:16px 18px;color:var(--fg);line-height:1.55;margin:0;white-space:pre-wrap}
+.terminal .c{color:var(--faint)}
+.terminal .g{color:var(--green)}
+.section{padding:48px 0;border-top:1px solid var(--line)}
+.section h2{font-size:18px;font-weight:510;letter-spacing:-.02em;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.feat h3{font-size:14px;font-weight:500;margin-bottom:6px}
+.feat p{font-size:13px;color:var(--muted);max-width:28ch}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="mark">Relay</div>
+    <div class="nav-r"><a href="#">Docs</a><a href="#">Pricing</a><a class="btn btn-primary" href="#">Sign up</a></div>
+  </nav>
+  <header class="hero">
+    <div>
+      <h1>Webhooks that arrive on time</h1>
+      <p class="lede">Relay queues, retries, and signs your event deliveries. Built for teams who already have an API.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#">Sign up</a>
+        <a class="quiet" href="#">Read the docs</a>
+      </div>
+    </div>
+    <div class="terminal" aria-label="API example">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <pre><span class="c"># create an endpoint</span>
+curl -X POST https://api.relay.dev/v1/endpoints \
+  -H "Authorization: Bearer $RELAY_KEY" \
+  -d '{"url":"https://app.example/hooks"}'
+
+<span class="g">201</span> Created
+{ "id": "ep_8f2a", "status": "active" }</pre>
+    </div>
+  </header>
+  <section class="section">
+    <h2>What you get</h2>
+    <div class="grid">
+      <div class="feat"><h3>Signed deliveries</h3><p>HMAC signatures on every request. Rotate secrets without downtime.</p></div>
+      <div class="feat"><h3>Retry with backoff</h3><p>Automatic retries for 5xx and timeouts. Dead-letter when you need it.</p></div>
+      <div class="feat"><h3>Delivery log</h3><p>Every attempt with latency, status, and payload hash. Filter by endpoint.</p></div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
