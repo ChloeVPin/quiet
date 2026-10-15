@@ -21,8 +21,3 @@ Allowed when earned (a craft demo, an asymmetric composition like Rauno’s caro
 ## Forbidden layouts
 
 Stat-card heroes. Hairline feature row tables. Big-serif poster heroes. Centered SaaS stacks with mismatched buttons.
-
-
-## Craft stages
-
-For demos and marketing craft: a soft gray (or dark) rounded stage with a single component centered in empty space, Rauno craft style. Annotations optional and sparse. Do not turn every page into a stage; product UI stays dense and calm.
