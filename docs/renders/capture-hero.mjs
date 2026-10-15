@@ -11,15 +11,15 @@ const browser = await puppeteer.launch({
   args: ["--no-sandbox", "--disable-setuid-sandbox", "--hide-scrollbars"],
 });
 
-async function shot(file, out, dark) {
+async function shot(file, out, dark, { w = 880, h = 480 } = {}) {
   const page = await browser.newPage();
   await page.emulateMediaFeatures([
     { name: "prefers-color-scheme", value: dark ? "dark" : "light" },
   ]);
-  await page.setViewport({ width: 880, height: 420, deviceScaleFactor: 2 });
+  await page.setViewport({ width: w, height: h, deviceScaleFactor: 2 });
   await page.goto(pathToFileURL(file).href, { waitUntil: "networkidle0" });
   await page.evaluate(() => document.fonts.ready);
-  await new Promise((r) => setTimeout(r, 500));
+  await new Promise((r) => setTimeout(r, 400));
   await page.screenshot({ path: out, fullPage: false, type: "png" });
   await page.close();
   console.log(out);

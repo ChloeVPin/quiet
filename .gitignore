@@ -7,3 +7,4 @@ node_modules/
 dist/
 playwright-report/
 test-results/
+docs/north-star/*-full.png

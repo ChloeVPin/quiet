@@ -1,36 +1,25 @@
 # Type
 
-## Pairing
+North star (Emil, Paco, Rauno craft, Devouring Details): **one grotesk, small, weight for hierarchy**.
 
-Default refined pairing:
+## Default
 
-- **Grotesk / sans:** Inter, or a Söhne-class grotesk (Geist, similar optical size). UI and body.
-- **Serif (optional warmth):** Newsreader or equivalent for display moments, pull quotes, marketing heroes — not for dense app chrome.
+- **Single grotesk:** Inter, or a Söhne-class face. One family for UI and prose.
+- Body **13-16px** (prefer ~14px for product and calm sites).
+- Section titles often **the same size as body**, medium weight (500-600), not 3-4× display.
+- Secondary text via **muted color**, not a second size jump.
+- Measure comfortable (~45-65ch). Left aligned.
+- `text-wrap: balance` on multi-line titles; `pretty` on paragraphs.
+- Antialiased. Tabular nums on figures, dates, counts.
+- Real ellipsis `…`. Bold for UI emphasis.
 
-One family is fine for product UI. Two is the ceiling. Never three.
+## Serif
 
-Keep the project’s fonts when they already exist unless asked to replace them. Still enforce the rules below.
+Optional and rare. Do **not** default to a big-serif-on-beige hero. Serif is for long reading or a deliberate craft moment, never the Quiet template.
 
-## Scale
+## Do not
 
-- Headline ≈ **3–4×** body on marketing and calm document layouts.
-- Product chrome stays quieter: clear hierarchy, not gallery display.
-- Cap a page at about five visible sizes.
-- Body **16–20px**. Measure **~65ch** for running text.
-- Display tracking roughly **-0.02 to -0.05em**; leading **0.85–1.05** on large headlines.
-- Body leading **1.45–1.6**.
-
-## Details (always)
-
-- `text-wrap: balance` on titles; `text-wrap: pretty` on paragraphs (no orphans).
-- `-webkit-font-smoothing: antialiased` (Tailwind: `antialiased`) on the root layout.
-- `font-variant-numeric: tabular-nums` on counts, timers, prices, diffs, usage.
-- Right-align numeric columns; keep precision consistent for comparison.
-- Use the real ellipsis character `…`, not three periods.
-- Reserve underline for links. Bold for UI emphasis; italic for citations / linguistic stress.
-- Do not fake weight with `text-shadow`. If a weight change would shift layout, reserve space (e.g. pseudo-element with the bold face).
-- Fallbacks must match x-height and weight enough to avoid layout shift.
-
-## Alignment
-
-Left-aligned by default. Center at most one deliberate moment on a marketing page. Never center dense product UI.
+- Gallery display type (huge vw headlines) on product or skill surfaces
+- Fake weight with `text-shadow`
+- Tiny tracked uppercase labels as ornament
+- Em dashes in UI strings

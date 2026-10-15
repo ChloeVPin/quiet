@@ -3,7 +3,7 @@ name: quiet
 description: >-
   Quiet is a UI generalist skill that builds and redesigns interfaces in Chloe
   Valesquez's taste: interaction-detail craft from Rauno Freiberg, Paco Coursey,
-  Emil Kowalski, Jakub Krehel, and Linear — dead simple, near-monochrome,
+  Emil Kowalski, Jakub Krehel, and Linear, dead simple, near-monochrome,
   perfect type and spacing, purposeful motion under 300ms. Use whenever you
   build, redesign, restyle, polish, or review any UI: landing pages, marketing
   sites, product screens, chat, sidebars, settings, dashboards, or design
@@ -22,9 +22,10 @@ metadata:
 
 You do not invent a look. You apply Quiet.
 
-Quiet is interaction detail first, ornament never. A stranger must still
-recognize the product. Zero slop tells. The result should be able to sit next
-to [rauno.me](https://rauno.me) without embarrassment.
+Quiet is interaction detail first, ornament never. Study the north star
+(rauno.me, paco.me, emilkowal.ski, devouringdetails.com): small grotesk type,
+narrow columns, real components, almost no marketing costume. A stranger must
+still recognize the product. Zero slop tells.
 
 Read the reference that matches the decision. Do not skim them all up front.
 
@@ -59,10 +60,10 @@ and Quality for whether something should exist at all.
 ## Hard rules (never negotiate)
 
 1. **Near-monochrome.** One ground, one ink, one accent maximum. No gradients.
-2. **Type.** Refined pairing: Inter or a Söhne-class grotesk + a serif like
-   Newsreader when display needs warmth. Headline ~3–4× body. Measure ~65ch.
-   `text-wrap: balance` on titles, `pretty` on paragraphs. Tabular nums on
-   figures. Antialiased.
+2. **Type.** One grotesk (Inter or Söhne-class), body ~13-16px. Hierarchy by
+   weight and muted color, not giant display. Serif only when rare and earned,
+   never a big-serif-on-beige template. Measure ~45-65ch. `text-wrap: balance`
+   / `pretty`. Tabular nums. Antialiased. No em dashes in UI copy.
 3. **Space.** Strict 4px scale. Concentric radii: `outer = inner + padding`.
    Optical nudges only with a one-line comment explaining why.
 4. **Motion (product UI).** Purpose required. Under 300ms. Ease-out. Interruptible
@@ -70,11 +71,12 @@ and Quality for whether something should exist at all.
    keyboard actions. Richer earned moments only on marketing / onboarding.
    Honor `prefers-reduced-motion`.
 5. **Micro-details when relevant.** Press scale ~0.97. Origin-aware popovers.
-   Never animate from `scale(0)` (start ~0.9–0.95). Instant subsequent tooltips.
+   Never animate from `scale(0)` (start ~0.9-0.95). Instant subsequent tooltips.
    Freeze exiting content. Morph icons instead of crossfading. Skip what does
    not apply.
-6. **Layout.** Product density in apps. Dead-simple document layouts for sites,
-   with room for one purposeful unconventional moment — not a costume.
+6. **Layout.** Product density in apps. For sites: narrow left column, lists,
+   real UI fragments as the visual. No stat cards, no hairline feature tables,
+   no serif-section SaaS rhythm.
 7. **Copy.** Buttons name the action (“Send invite”, not “Submit”). No stock AI
    phrases. No eyebrow / pill kickers above headlines.
 8. **Bans.** See `references/bans.md`. Absolute.
@@ -92,7 +94,7 @@ List what is real: product name, audience, stack, existing brand tokens, surface
 in scope, and the one job this UI must do. For redesigns, inventory structure and
 content that must survive (see `references/redesign.md`).
 
-### 2. Short plan — then stop
+### 2. Short plan, then stop
 
 Write a plan of one screenful or less:
 

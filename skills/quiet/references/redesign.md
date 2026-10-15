@@ -8,7 +8,7 @@ Keep: information architecture, real content, behavior, data, routes, keybinding
 
 Kill: gradients, glass, emoji icons, mismatched controls, shadow soup, gallery costume, unrequested features.
 
-Default restyle: **near-monochrome**, one type pairing, one button system, concentric radii, semantic tokens.
+Default restyle: **near-monochrome**, one small grotesk, one button system, concentric radii, semantic tokens. Prefer a real UI fragment over marketing chrome.
 
 ## Procedure
 
@@ -24,4 +24,4 @@ Default restyle: **near-monochrome**, one type pairing, one button system, conce
 - Start over from a blank app when a restyle will do.
 - Invent sections, features, or copy facts.
 - “Improve” by adding marketing chrome to a product screen.
-- Break contract tests or pinned geometry to chase aesthetics — flag conflicts instead.
+- Break contract tests or pinned geometry to chase aesthetics, flag conflicts instead.

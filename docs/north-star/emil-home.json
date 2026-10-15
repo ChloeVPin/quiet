@@ -1,0 +1,27 @@
+{
+  "bg": "rgb(253, 253, 252)",
+  "bodyFont": "Sans, \"Sans Fallback\"",
+  "bodySize": "16px",
+  "bodyColor": "rgb(0, 0, 0)",
+  "p": {
+    "tag": "P",
+    "fontFamily": "Sans, \"Sans Fallback\"",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "lineHeight": "23.1px",
+    "color": "rgb(33, 32, 28)",
+    "letterSpacing": "normal"
+  },
+  "h1": null,
+  "a": {
+    "tag": "A",
+    "fontFamily": "Sans, \"Sans Fallback\"",
+    "fontSize": "14px",
+    "fontWeight": "500",
+    "lineHeight": "23.1px",
+    "color": "rgb(33, 32, 28)",
+    "letterSpacing": "normal"
+  },
+  "width": 1280,
+  "mainWidth": 644
+}

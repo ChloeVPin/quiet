@@ -1,28 +1,23 @@
 # Layout
 
+## Sites / documents (Paco, Emil)
+
+- **Narrow single column**, left aligned, wide side margins.
+- Vertical lists: title + muted one-liner. Occasional multi-column *link* grids with no cards.
+- Hierarchy from weight and space, not hairline tables or serif section posters.
+- Prefer a **real UI fragment** (component, board, menu) over a marketing diagram.
+- One primary action when the page has a job. No floating glass nav.
+
 ## Product UI
 
-Optimize for **density and scan**:
-
-- Sidebar + main, consistent row heights, shared column edges.
-- Reuse primitives; do not invent a new card chrome per feature.
-- Information first; decoration never.
-- Stress-test with long names, empty states, overflow.
-
-See `product-ui.md`.
-
-## Sites / documents
-
-Optimize for **dead-simple calm**:
-
-- Few left edges. Generous section gaps. Almost no cards.
-- One primary action above the fold when the page has a job.
-- Neighbouring sections should not share a clone layout — variety from composition, not ornament.
+- Density with rhythm: consistent rows, shared edges, calm empty states.
+- Shared primitives. No new card chrome per feature.
+- See `product-ui.md`.
 
 ## The one unconventional moment
 
-Allowed on marketing: one purposeful asymmetry, full-bleed, or signature interaction — then return to calm. It must earn its place and still look like the same product.
+Allowed when earned (a craft demo, an asymmetric composition like Rauno’s carousel). Never a costume of asymmetry.
 
-## Structure over chrome
+## Forbidden layouts
 
-No floating glass nav pills. No bento of identical icon tiles. No hairline grid cosplay. Space and type do the hierarchy.
+Stat-card heroes. Hairline feature row tables. Big-serif poster heroes. Centered SaaS stacks with mismatched buttons.

@@ -2,25 +2,19 @@
 
 ## Buttons and actions
 
-Name the action the user gets:
+Name the action: “Send invite”, “Start free board”, “View pricing”. Not “Submit”, “Get Started Free”, “Learn more” as a costume pair.
 
-- “Send invite” not “Submit”
-- “Save changes” not “OK”
-- “Delete project” not “Continue”
+## Headlines and labels
 
-One primary action per region when possible.
-
-## Headlines
-
-- Carry the information in the heading — **no eyebrow / pill / “New ·” kicker** above it.
-- Prefer short, concrete lines. Fit the layout; do not rely on tiny tracked labels.
+- No eyebrow / pill / “New ·” kicker above a heading.
+- Prefer short concrete lines. Same size as body is fine; weight does the work.
 
 ## Voice
 
 - No stock AI phrases (“unlock the future”, “seamless”, “supercharge”, “delve”, “in today’s fast-paced…”).
-- No fake proof (invented metrics, logos, testimonials).
-- Keep the product’s real words on redesigns unless asked to rewrite; fix placeholders and hierarchy.
+- **No em dashes** in UI copy or README-facing prose. Use a period, comma, or parentheses.
+- No fake proof. Keep real product words on redesigns unless asked to rewrite.
 
-## Lists and steps
+## Lists
 
-Prefer plain language and position over “01 / 02 / 03” costume numbering. Use a real ordered list when sequence matters.
+Plain language and position over “01 / 02 / 03” costume numbering.

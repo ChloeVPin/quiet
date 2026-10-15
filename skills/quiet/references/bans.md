@@ -16,10 +16,23 @@ Absolute. Treat as fail conditions in critique.
 
 - Monospace micro-labels / mono as fake “technical” voice (real code blocks OK)
 - Index cosplay: `01 / 02 / 03`, `(001)`, “Step 02” markers
-- Hairline grids, 1px outline boxes as structure, crop marks, crosshairs
+- Hairline grids, crop marks, crosshairs, design-tool chrome as ornament
 - Tiny tracked uppercase labels scattered as ornament
+- Corner version stamps (`UI skill · v1`, local time, coordinates, “© scroll”)
 
-## Quiet-specific
+## Minimal-template slop (Quiet-specific)
+
+These look “clean” but are not the north star (Rauno / Paco / Emil / DD):
+
+- **Big-serif-on-beige** marketing posters (Newsreader hero on warm paper)
+- **Stat cards** as the hero (“Active boards · 128”)
+- **Hairline row tables** (label | description rows separated by rules) as a fake feature section
+- **Serif section heads + grotesk body** SaaS rhythm on product/marketing pages by default
+- **Em dashes** in UI copy and README prose (use commas, periods, or parentheses)
+- Decorative divider lines used to prop up thin content
+- Tagline pairs flanking a rule (“Interaction detail first / Ornament never”)
+
+## Quiet craft bans
 
 - Decorative motion (see `motion.md`)
 - Unrequested features
@@ -29,4 +42,4 @@ Absolute. Treat as fail conditions in critique.
 - Centered dense app layouts
 - Animating high-frequency or keyboard actions
 
-Removing a ban is not enough — fill with type, space, real content, or calm empty. Do not replace one tell with another.
+Removing a ban is not enough. Fill with real content, a working UI fragment, type, and space. Do not replace one tell with another.

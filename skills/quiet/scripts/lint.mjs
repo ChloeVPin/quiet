@@ -67,6 +67,24 @@ const rules = [
     msg: "stock AI phrase",
   },
   {
+    id: "em-dash",
+    severity: "FAIL",
+    re: /\u2014|\u2013|&mdash;|&ndash;/,
+    msg: "em/en dash in copy. Quiet bans em dashes in UI prose",
+  },
+  {
+    id: "corner-label",
+    severity: "FAIL",
+    re: /UI skill\s*·|v\d+\.\d+|local time|©\s*scroll/i,
+    msg: "corner version / gallery meta label",
+  },
+  {
+    id: "stat-card",
+    severity: "WARN",
+    re: /Active boards|stat-card|stat\s*card/i,
+    msg: "stat-card hero language — prefer a real UI fragment",
+  },
+  {
     id: "index-cosplay",
     severity: "WARN",
     re: /\b0[1-9]\s*\/\s*0[1-9]\b|Step\s*0[1-9]\b/,

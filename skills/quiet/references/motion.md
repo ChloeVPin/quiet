@@ -6,9 +6,9 @@ Ask: **what is the purpose?** Feedback, spatial continuity, rare delight, explan
 
 | Kind | Duration | Notes |
 | --- | --- | --- |
-| Press / micro | 100–150ms | |
-| Tooltip / menu | 150–250ms | |
-| Modal / drawer | 200–300ms | Ceiling for product UI |
+| Press / micro | 100-150ms | |
+| Tooltip / menu | 150-250ms | |
+| Modal / drawer | 200-300ms | Ceiling for product UI |
 | High-frequency or keyboard | **0ms** | No animation |
 
 - **Ease-out** for enter/exit (custom curve; CSS defaults are weak).
@@ -20,7 +20,7 @@ Ask: **what is the purpose?** Feedback, spatial continuity, rare delight, explan
 
 ## Marketing / onboarding
 
-Richer earned moments allowed (signature scroll, explanatory sequence) — still purposeful, still reduced-motion safe. Do not paste marketing motion into app chrome.
+Richer earned moments allowed (signature scroll, explanatory sequence). still purposeful, still reduced-motion safe. Do not paste marketing motion into app chrome.
 
 ## Never
 

@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500&family=Newsreader:opsz,ital,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #f4f3ee;
-    --fg: #121211;
-    --muted: #6a6963;
-    --rule: #dcdad2;
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #737373;
+    --line: #ebebeb;
+    --surface: #f7f7f7;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0c0c0b;
-      --fg: #f3f2ed;
-      --muted: #9a9890;
-      --rule: #2c2c28;
+      --bg: #0a0a0a;
+      --fg: #ededed;
+      --muted: #8a8a8a;
+      --line: #222;
+      --surface: #141414;
     }
   }
   * { box-sizing: border-box; margin: 0; }
@@ -26,78 +27,99 @@
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-size: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .frame {
     width: 880px;
-    height: 420px;
-    padding: 56px 64px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 480px;
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 48px;
+    align-items: center;
   }
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .brand {
+  .copy .mark {
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
+  }
+  .copy .blurb {
+    margin-top: 10px;
     color: var(--muted);
-  }
-  .meta {
-    font-size: 12px;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
-  .title {
-    font-family: "Newsreader", Georgia, serif;
-    font-weight: 500;
-    font-size: 72px;
-    line-height: 0.95;
-    letter-spacing: -0.035em;
-    text-wrap: balance;
-    max-width: 9ch;
-  }
-  .bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: end;
-    border-top: 1px solid var(--rule);
-    padding-top: 28px;
-  }
-  .line {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.5;
-    color: var(--muted);
-    max-width: 36ch;
+    max-width: 28ch;
     text-wrap: pretty;
   }
-  .rule-note {
+  .stage {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+  }
+  /* Precise craft vignette: a quiet popover menu */
+  .menu {
+    width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 4px;
+    /* optical: transform-origin would sit at trigger top-left in product */
+    transform-origin: top left;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 8px;
+    border-radius: 5px; /* concentric with 8 outer + pad */
     font-size: 13px;
-    color: var(--fg);
-    text-align: right;
     letter-spacing: -0.01em;
+  }
+  .item.active {
+    background: var(--surface);
+  }
+  .item .k {
+    color: var(--muted);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .sep {
+    height: 1px;
+    background: var(--line);
+    margin: 4px 6px;
+  }
+  .hint {
+    padding: 6px 8px 4px;
+    color: var(--muted);
+    font-size: 11px;
   }
 </style>
 </head>
 <body>
   <div class="frame">
-    <div class="top">
-      <div class="brand">Quiet</div>
-      <div class="meta">UI skill · v1</div>
+    <div class="copy">
+      <div class="mark">Quiet</div>
+      <p class="blurb">An agent skill for interfaces with interaction detail, not costume.</p>
     </div>
-    <h1 class="title">Make it quieter.</h1>
-    <div class="bottom">
-      <p class="line">An agent skill for interfaces that could sit next to rauno.me — near-monochrome, decided type, motion under 300ms.</p>
-      <p class="rule-note">Interaction detail first.<br />Ornament never.</p>
+    <div class="stage" aria-hidden="true">
+      <div class="menu">
+        <div class="hint">Actions</div>
+        <div class="item active"><span>Open board</span><span class="k">↵</span></div>
+        <div class="item"><span>Invite…</span><span class="k">⌘I</span></div>
+        <div class="item"><span>Copy link</span><span class="k">⌘C</span></div>
+        <div class="sep"></div>
+        <div class="item"><span>Archive</span><span class="k"></span></div>
+      </div>
     </div>
   </div>
 </body>
