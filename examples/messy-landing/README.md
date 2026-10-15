@@ -1,7 +1,5 @@
-# Example: messy landing to Quiet
+# Example: Personal / portfolio landing
 
-`before.html` is deliberate slop: purple gradient, glass, eyebrow pill, mismatched buttons, emoji cards, step cosplay, stock copy.
-
-`after.html` is the same NovaBoard, rebuilt the way the north star builds pages: narrow column, ~14px Inter, muted secondary text, a real board UI fragment instead of a stat card, list sections with weight hierarchy, no serif posters or hairline feature tables.
+Labeled as the personal and portfolio pass. `before.html` is deliberate slop. `after.html` is the same NovaBoard restyled Quiet: narrow column, real board fragment, list sections.
 
 Screenshots at 2x: `before.png`, `after-light.png`, `after-dark.png`.

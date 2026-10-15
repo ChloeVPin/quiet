@@ -1,3 +1,3 @@
 # Example: Analytics
 
-Pulse overview: sidebar, KPI strip, chart, and top pages. Same product as the noisy before, restyled as dense dark product UI.
+Pulse overview: sidebar wordmark (no logo tile), KPI strip, chart, top pages, plus sources and recent events so the fold stays filled like a real dashboard.

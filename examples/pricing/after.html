@@ -13,34 +13,40 @@
 }
 *{box-sizing:border-box;margin:0}
 html{-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
-.wrap{width:min(960px,calc(100% - 48px));margin:0 auto}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
+.wrap{width:min(1080px,calc(100% - 48px));margin:0 auto}
 nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
 .mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
 .nav-r{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--muted)}
 .btn{
-  display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;
-  border-radius:8px;padding:8px 12px;border:0;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;width:100%;
+  font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:10px 12px;border:0;cursor:pointer;
   transition:transform 120ms var(--ease);
 }
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--btn);color:var(--btn-fg)}
 .btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.hero{padding:56px 0 36px;text-align:center}
-.hero h1{font-size:clamp(28px,4vw,40px);font-weight:510;letter-spacing:-.035em;line-height:1.1;margin-bottom:12px;text-wrap:balance}
-.hero p{color:var(--muted);max-width:40ch;margin:0 auto;font-size:15px;text-wrap:pretty}
-.table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:56px}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:12px;font-weight:500;color:var(--muted)}
-tr:last-child td{border-bottom:0}
-.plan{font-weight:500;font-size:14px}
-.price{font-variant-numeric:tabular-nums;font-weight:500;font-size:18px;letter-spacing:-.02em}
-.price span{font-size:13px;color:var(--muted);font-weight:400}
-.rec{color:var(--accent);font-size:12px;font-weight:500;margin-left:6px}
-.includes{color:var(--muted);font-size:13px;max-width:28ch}
-.faq{padding:0 0 80px}
+.hero{padding:48px 0 32px;text-align:center}
+.hero h1{font-size:clamp(28px,4vw,40px);font-weight:510;letter-spacing:-.035em;line-height:1.1;margin-bottom:10px}
+.hero p{color:var(--muted);max-width:42ch;margin:0 auto;font-size:15px;text-wrap:pretty}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:56px;align-items:stretch}
+.plan{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:22px 22px 20px;display:flex;flex-direction:column;min-height:100%;
+}
+.plan.rec{border-color:var(--fg)}
+.plan .name{font-size:14px;font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.plan .tag{font-size:12px;color:var(--accent);font-weight:500}
+.plan .blurb{font-size:13px;color:var(--muted);margin-bottom:18px;min-height:2.6em}
+.plan .price{font-size:32px;font-weight:510;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-bottom:2px}
+.plan .price span{font-size:14px;color:var(--muted);font-weight:400;letter-spacing:0}
+.plan .bill{font-size:12px;color:var(--faint);margin-bottom:18px;font-variant-numeric:tabular-nums}
+.plan ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
+.plan li{font-size:13px;color:var(--muted);padding:7px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan li strong{color:var(--fg);font-weight:500}
+.faq{padding:0 0 80px;max-width:640px}
 .faq h2{font-size:18px;font-weight:510;letter-spacing:-.02em;margin-bottom:16px}
 .faq details{border-top:1px solid var(--line);padding:14px 0}
 .faq summary{cursor:pointer;font-size:14px;font-weight:500;list-style:none}
@@ -48,6 +54,7 @@ tr:last-child td{border-bottom:0}
 .faq p{margin-top:8px;color:var(--muted);font-size:14px;max-width:60ch}
 footer{border-top:1px solid var(--line);padding:28px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -57,41 +64,54 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;display:flex;justify
     <div class="nav-r">
       <a href="#">Docs</a>
       <a href="#">Log in</a>
-      <a class="btn btn-primary" href="#">Sign up</a>
+      <a class="btn btn-primary" href="#" style="width:auto;padding:8px 12px">Sign up</a>
     </div>
   </nav>
 
   <header class="hero">
     <h1>Pricing</h1>
-    <p>Per seat, billed monthly. Same product on every plan. Upgrade when the team needs SSO and audit.</p>
+    <p>Per seat, billed monthly. Same product on every plan. Pick the tier that matches how you ship field notes.</p>
   </header>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>Plan</th><th>Price</th><th>Includes</th><th></th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="plan">Free</td>
-          <td class="price">$0 <span>/ seat</span></td>
-          <td class="includes">3 projects · 5 seats · community support</td>
-          <td><a class="btn btn-ghost" href="#">Start</a></td>
-        </tr>
-        <tr>
-          <td class="plan">Team <span class="rec">Recommended</span></td>
-          <td class="price">$16 <span>/ seat</span></td>
-          <td class="includes">Unlimited projects · shared libraries · priority sync</td>
-          <td><a class="btn btn-primary" href="#">Start</a></td>
-        </tr>
-        <tr>
-          <td class="plan">Business</td>
-          <td class="price">$32 <span>/ seat</span></td>
-          <td class="includes">SSO · audit log · dedicated support</td>
-          <td><a class="btn btn-ghost" href="#">Start</a></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="plans">
+    <div class="plan">
+      <div class="name">Free</div>
+      <div class="blurb">For trying Fieldkit on a small team.</div>
+      <div class="price">$0 <span>/ seat</span></div>
+      <div class="bill">Up to 5 seats</div>
+      <ul>
+        <li><strong>3 projects</strong></li>
+        <li>Community support</li>
+        <li>Basic sync</li>
+      </ul>
+      <a class="btn btn-ghost" href="#">Get started free</a>
+    </div>
+    <div class="plan rec">
+      <div class="name">Team <span class="tag">Recommended</span></div>
+      <div class="blurb">For product teams capturing notes every week.</div>
+      <div class="price">$16 <span>/ seat</span></div>
+      <div class="bill">Billed monthly · 14-day trial</div>
+      <ul>
+        <li><strong>Unlimited projects</strong></li>
+        <li>Shared libraries</li>
+        <li>Priority sync</li>
+        <li>Keyboard shortcuts</li>
+      </ul>
+      <a class="btn btn-primary" href="#">Start Team trial</a>
+    </div>
+    <div class="plan">
+      <div class="name">Business</div>
+      <div class="blurb">For companies that need SSO and audit.</div>
+      <div class="price">$32 <span>/ seat</span></div>
+      <div class="bill">Billed monthly</div>
+      <ul>
+        <li><strong>Everything in Team</strong></li>
+        <li>SSO and SCIM</li>
+        <li>Audit log</li>
+        <li>Dedicated support</li>
+      </ul>
+      <a class="btn btn-ghost" href="#">Get Business</a>
+    </div>
   </div>
 
   <section class="faq">

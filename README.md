@@ -87,8 +87,8 @@ Surfaces beyond the landing pass. Each folder has before, after, and fold shots.
   </tr>
   <tr>
     <td align="center" width="50%">
-      <a href="examples/blog/"><strong>Changelog</strong></a><br/>
-      <img src="examples/blog/after-fold.png" alt="Changelog after" width="420" />
+      <a href="examples/changelog/"><strong>Changelog</strong></a><br/>
+      <img src="examples/changelog/after-fold.png" alt="Changelog after" width="420" />
     </td>
     <td align="center" width="50%">
       <a href="examples/devtool/"><strong>API landing</strong></a><br/>

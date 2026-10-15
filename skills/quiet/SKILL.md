@@ -80,7 +80,7 @@ and Quality for whether something should exist at all.
    no serif-section SaaS rhythm.
 7. **Copy.** Buttons name the action (“Send invite”, not “Submit”). No stock AI
    phrases. No eyebrow / pill kickers above headlines.
-8. **Bans.** See `references/bans.md`. Absolute.
+8. **Bans.** See `references/bans.md`. Absolute. Includes: no AI-colliding brand names, no sidebar logo tiles, no needless dividers, Boxicons (not Lucide) where icons are conventional, fill empty app chrome, grid-aligned buttons, paid-sounding CTAs, real product photos without overlay SKUs.
 9. **No unrequested features.** Restraint is the point.
 10. **No duplicate components / raw hex sprawl.** Reuse primitives; colors live
     in tokens.

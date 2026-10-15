@@ -1,3 +1,3 @@
 # Example: Chat / AI app
 
-Muse chat: sidebar history, message rhythm, composer. No bubble gradients or costume.
+Kin chat: sidebar history, message rhythm, Boxicons send control. No bubble gradients or costume.

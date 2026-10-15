@@ -6,32 +6,23 @@
 <title>Northwind · Arc Floor Lamp</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
 <style>
-
 :root{
   --bg:#fafafa;--panel:#ffffff;--panel2:#f3f3f4;--line:#e8e8ea;
   --fg:#111113;--muted:#6b6f76;--faint:#9b9fa6;
-  --accent:#5e6ad2;--green:#1f8a5b;--amber:#b58105;--red:#c43c3c;
   --btn:#111113;--btn-fg:#ffffff;
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0}
 html{-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-
-.btn{display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
-.btn:active{transform:scale(.97)}
-.btn-primary{background:var(--btn);color:var(--btn-fg)}
-.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-
 body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
 .wrap{width:min(1040px,calc(100% - 48px));margin:0 auto}
 nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:13px}
 .mark{font-weight:600;font-size:14px;letter-spacing:-.02em}
 .nav-r{display:flex;gap:16px;color:var(--muted)}
 .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;padding:28px 0 64px;align-items:start}
-.photo{aspect-ratio:1/1;background:var(--panel2);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;justify-content:space-between;padding:28px 20px 20px;position:relative}
-.photo .lamp{width:70%;max-width:280px;margin:12px auto 0;display:block;flex:1}
-.photo .cap{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.photo{aspect-ratio:1/1;background:var(--panel2);border-radius:0;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
 .info .brand{font-size:12px;color:var(--muted);margin-bottom:8px}
 .info h1{font-size:28px;font-weight:510;letter-spacing:-.03em;margin-bottom:10px}
 .price{font-size:18px;font-weight:500;font-variant-numeric:tabular-nums;margin-bottom:16px}
@@ -41,14 +32,20 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0
 .swatch{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);cursor:pointer;background:var(--sw)}
 .swatch.on{outline:2px solid var(--fg);outline-offset:2px}
 .actions{display:flex;gap:10px;margin-bottom:20px}
-.meta{font-size:12px;color:var(--muted);line-height:1.6}
-.meta div{margin-bottom:4px}
-
+.btn{
+  display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;
+  border-radius:8px;padding:10px 14px;border:0;cursor:pointer;
+  transition:transform 120ms var(--ease);
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn);color:var(--btn-fg)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.meta{font-size:12px;color:var(--muted);line-height:1.7}
+.meta div{margin-bottom:2px}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <nav>
     <div class="mark">Northwind</div>
@@ -56,21 +53,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0
   </nav>
   <div class="grid">
     <div class="photo">
-      <svg class="lamp" viewBox="0 0 320 320" aria-hidden="true">
-        <!-- base -->
-        <ellipse cx="96" cy="286" rx="36" ry="6" fill="none" stroke="var(--faint)" stroke-width="1.5"/>
-        <!-- stem -->
-        <path d="M96 280 V168" fill="none" stroke="var(--fg)" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- arc arm -->
-        <path d="M96 168 C96 96, 168 48, 248 56" fill="none" stroke="var(--fg)" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- shade (truncated cone) -->
-        <path d="M228 56 L268 56 L278 108 L218 108 Z" fill="var(--panel)" stroke="var(--fg)" stroke-width="1.5" stroke-linejoin="round"/>
-        <!-- shade seam -->
-        <path d="M248 56 V108" fill="none" stroke="var(--line)" stroke-width="1"/>
-        <!-- joint -->
-        <circle cx="96" cy="168" r="3.5" fill="var(--fg)"/>
-      </svg>
-      <div class="cap">NW-1042 · Matte black</div>
+      <img src="assets/arc-floor-lamp.jpg" alt="Arc floor lamp over a leather chair"/>
     </div>
     <div class="info">
       <div class="brand">Lighting</div>
@@ -88,13 +71,12 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0
         <a class="btn btn-ghost" href="#">Save</a>
       </div>
       <div class="meta">
-        <div>In stock · 14 left</div>
+        <div>In stock</div>
         <div>Free shipping over $150</div>
         <div>30-day returns</div>
       </div>
     </div>
   </div>
 </div>
-
 </body>
 </html>

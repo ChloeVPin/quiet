@@ -30,8 +30,14 @@ These look “clean” but are not the north star (Rauno / Paco / Emil / DD):
 - **Hairline row tables** (label | description rows separated by rules) as a fake feature section
 - **Serif section heads + grotesk body** SaaS rhythm on product/marketing pages by default
 - **Em dashes** in UI copy and README prose (use commas, periods, or parentheses)
-- Decorative divider lines used to prop up thin content
+- Decorative divider lines used to prop up thin content (including a line above a chat composer when the composer already has its own border)
 - Tagline pairs flanking a rule (“Interaction detail first / Ornament never”)
+- Colored logo squares / brand marks in app sidebars (text wordmark only; keep alignment with nav)
+- Brand names that collide with existing AI models or famous products (e.g. Muse). Invent neutral names.
+- Empty half-screens in app UI (bottom or trailing column left blank). Fill with real content or size the layout the way real apps do.
+- Buttons that float mid-container instead of aligning to the layout grid
+- Generic paid CTAs (“Start”) for paid plans. Prefer “Start trial”, “Get Pro”, “Get Business” with price context
+- SVG / AI product silhouettes on e-commerce when a real photo is expected; no inventory-code captions overlaid on product images
 
 ## Quiet craft bans
 

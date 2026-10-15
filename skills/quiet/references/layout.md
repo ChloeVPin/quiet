@@ -21,3 +21,7 @@ Allowed when earned (a craft demo, an asymmetric composition like Rauno’s caro
 ## Forbidden layouts
 
 Stat-card heroes. Hairline feature row tables. Big-serif poster heroes. Centered SaaS stacks with mismatched buttons.
+
+## Product photography (e-commerce)
+
+Follow Aesop, Hay, Teenage Engineering, Apple: large real photos, image-first, no inventory-code captions overlaid on the image. Title, price, and meta live beside or below the photo. Use properly licensed stock (Unsplash / Pexels) and note attribution in the example README. Prefer photography over SVG silhouettes.

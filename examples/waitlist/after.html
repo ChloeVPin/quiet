@@ -31,11 +31,12 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0
 .nav-r{font-size:13px;color:var(--muted)}
 h1{font-size:clamp(28px,4vw,36px);font-weight:510;letter-spacing:-.035em;line-height:1.1;margin-bottom:12px;text-wrap:balance;max-width:14ch}
 .lede{color:var(--muted);font-size:15px;max-width:38ch;margin-bottom:28px;text-wrap:pretty}
-form{display:flex;gap:8px;align-items:center;max-width:420px}
-input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);font:14px/1.4 Inter,system-ui,sans-serif}
+form{display:flex;gap:8px;align-items:stretch;max-width:440px}
+input{flex:1;height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);font:14px/1.4 Inter,system-ui,sans-serif}
 input:focus{outline:2px solid var(--fg);outline-offset:1px}
-.meta{font-size:12px;color:var(--faint);margin-top:14px;font-variant-numeric:tabular-nums}
-footer{border-top:1px solid var(--line);padding:20px 0;font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+form .btn{height:40px;padding:0 14px;border-radius:8px}
+.meta{font-size:12px;color:var(--faint);margin-top:20px;margin-bottom:0;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);padding:28px 0 0;margin-top:56px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
 
 @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
 </style>
@@ -45,7 +46,6 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:12px;color:var(
 <div class="wrap">
   <nav>
     <div class="mark">Pennyrile</div>
-    <div class="nav-r"><a href="#">Sign in</a></div>
   </nav>
   <h1>Private beta for research teams</h1>
   <p class="lede">Pennyrile is a quiet workspace for literature review. Join the waitlist for the next cohort.</p>
