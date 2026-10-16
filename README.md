@@ -103,6 +103,36 @@ Every screen below was built by an agent following the skill. Each folder has th
       <a href="examples/mobile/">Mobile home</a> and <a href="examples/mobile-onboard/">paywall</a>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/company/result-fold.png" alt="Company page" width="420" /><br/>
+      <a href="examples/company/">Company page</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/pricing-compare/result-s1.png" alt="Pricing comparison" width="420" /><br/>
+      <a href="examples/pricing-compare/">Pricing comparison</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/features/result-fold.png" alt="How it works" width="420" /><br/>
+      <a href="examples/features/">How it works</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/docs-reference/result-fold.png" alt="API reference" width="420" /><br/>
+      <a href="examples/docs-reference/">API reference</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/forgot-password/result-fold.png" alt="Forgot password" width="420" /><br/>
+      <a href="examples/forgot-password/">Forgot password</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/brand-variants/result-fold.png" alt="Three brand styles" width="420" /><br/>
+      <a href="examples/brand-variants/">Three brand styles</a>
+    </td>
+  </tr>
 </table>
 
 ## License

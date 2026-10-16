@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Reschedule webhooks · Pinecrest Docs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<style>
+:root{--k04:rgb(0 0 0/.04);--k05:rgb(0 0 0/.05);--k06:rgb(0 0 0/.06);--k08:rgb(0 0 0/.08);--k20:rgb(0 0 0/.2);--k40:rgb(0 0 0/.4);--k60:rgb(0 0 0/.6)}
+:root{--bg:#fff;--bg2:#fafafa;--fg:#09090b;--fg2:#52525c;--fg3:#9f9fa9;--line:rgb(9 9 11/.1);--line2:rgb(9 9 11/.06);--card:#fff;
+--btn:#18181b;--btnfg:#fff;--btn2:#fff;--btn2fg:#09090b;--ring:rgb(9 9 11/.12);--ok:#16a34a;--warn:#d97706;--info:#2563eb;--shadow:0 1px 2px var(--k06),0 10px 15px -3px var(--k05)}
+.dark{--bg:#09090b;--bg2:#0e0e11;--fg:#fafafa;--fg2:#a1a1aa;--fg3:#71717b;--line:rgb(255 255 255/.1);--line2:rgb(255 255 255/.06);--card:#111113;
+--btn:#fafafa;--btnfg:#09090b;--btn2:rgb(255 255 255/.06);--btn2fg:#fafafa;--ring:rgb(255 255 255/.12);--ok:#4ade80;--warn:#fbbf24;--info:#60a5fa;--shadow:0 20px 40px -12px var(--k60)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--fg);font:400 16px/24px Inter,system-ui,sans-serif;font-feature-settings:"cv11","ss01"}
+a{color:inherit;text-decoration:none}
+.c{width:min(1104px,calc(100% - 48px));margin:0 auto}
+.c-md{width:min(1024px,calc(100% - 48px));margin:0 auto}
+.num{font-variant-numeric:tabular-nums}
+/* nav */
+.nav{height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.nav .brand{font:600 16px/1 Inter;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.nav .links{display:flex;gap:32px;font-size:14px;color:var(--fg2)}
+.nav .links a:hover{color:var(--fg)}
+.nav .act{display:flex;gap:8px;justify-content:flex-end}
+.bar{border-bottom:1px solid var(--line)}
+/* buttons: one height per row, 6px radius, ring + tiny drop */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;font:500 14px/20px Inter;white-space:nowrap;cursor:pointer;border:0;transition:opacity .15s,background .15s}
+.b.sm{height:32px;padding:0 12px;font-size:13px;border-radius:6px}
+.b.p{background:var(--btn);color:var(--btnfg);box-shadow:0 0 0 1px var(--btn),0 1px 2px var(--k20)}
+.b.s{background:var(--btn2);color:var(--btn2fg);box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k06)}
+.b.p:hover{opacity:.9}.b.s:hover{background:var(--line2)}
+.b.w{width:100%}
+/* type */
+.h1{font:600 60px/60px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h2{font:600 40px/44px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h3{font:600 20px/28px Inter;letter-spacing:-.01em}
+.lead{font-size:18px;line-height:28px;color:var(--fg2);text-wrap:pretty}
+.mute{color:var(--fg2)}.faint{color:var(--fg3)}
+.tone{color:var(--fg3)}
+.stmt{font:500 20px/28px Inter;letter-spacing:-.01em;text-wrap:pretty}.stmt span{color:var(--fg2)}
+.sm-t{font-size:14px;line-height:20px}
+.xs-t{font-size:12px;line-height:16px}
+.sec{padding:96px 0}
+/* bezel frame for product shots */
+.bezel{padding:4px;border-radius:14px;background:var(--bg2);box-shadow:0 0 0 1px var(--line),var(--shadow)}
+.bezel>.in{border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line);background:var(--card)}
+/* hairline grid shell */
+.rails{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hr{border-top:1px solid var(--line)}
+i.bx{font-size:16px;line-height:1;vertical-align:-2px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;color:var(--fg2)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+@media (max-width:760px){
+ .nav{grid-template-columns:1fr auto}.nav .links{display:none}
+ .h1{font-size:40px;line-height:44px}.h2{font-size:30px;line-height:36px}
+ .lead{font-size:17px;line-height:26px}
+ [class*="grid"],.cells,.three,.head,.quote,.stats,.logos,footer .c{grid-template-columns:1fr!important}
+ .cell+.cell,.three>div+div,.stats div+div{border-left:0!important;border-top:1px solid var(--line)}
+ .head,.cell,.three>div,.quote,.end,.hero{padding-left:20px!important;padding-right:20px!important}
+ .shot{padding:0 12px!important}
+ .app{grid-template-columns:1fr!important}.app .side{display:none}
+ .app .row{grid-template-columns:56px 16px 1fr 48px}.app .row .lb,.app .row .av{display:none}.app .tb .pill:first-of-type{display:none}.hero{padding-top:64px!important;padding-bottom:48px!important}
+ .tb .faint.xs-t{display:none}
+ .logos{height:auto!important;padding:24px 0;gap:16px}
+}
+/* ---------- app kit ---------- */
+:root{--danger:#dc2626;--focus:#2563eb;--hl:rgb(245 158 11/.22)}
+.dark{--danger:#f87171;--focus:#60a5fa;--hl:rgb(245 158 11/.28)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);height:100vh;min-height:620px}
+.rail{background:var(--bg2);border-right:1px solid var(--line);padding:10px 8px;display:flex;flex-direction:column;font-size:13px;line-height:18px;overflow:hidden}
+.rail .ws{display:flex;align-items:center;gap:6px;height:32px;padding:0 8px;font-weight:600;font-size:14px;margin-bottom:6px}
+.rail .ws .sp{flex:1}.rail .ws i{color:var(--fg3)}
+.rail a{display:flex;align-items:center;gap:8px;height:32px;padding:0 8px;border-radius:6px;color:var(--fg2);transition:background .15s,color .15s}
+.rail a i{font-size:16px;color:var(--fg3)}
+.rail a:hover{background:var(--line2);color:var(--fg)}
+.rail a.on{background:var(--line2);color:var(--fg);font-weight:500}.rail a.on i{color:var(--fg)}
+.rail .ct{margin-left:auto;font-size:12px;color:var(--fg3)}
+.rail .gl{font-size:12px;color:var(--fg3);padding:16px 8px 6px}
+.rail .me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px}
+.av{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--fg2);font-size:10px;font-weight:600;display:inline-grid;place-items:center;flex:none}
+.top{display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-bottom:1px solid var(--line);font-size:13px}
+.top .sp{flex:1}.top .crumb{color:var(--fg2)}.top .crumb b{color:var(--fg);font-weight:500}
+.ib{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:6px;color:var(--fg2)}.ib:hover{background:var(--line2);color:var(--fg)}.ib i{font-size:18px}
+.panel{background:var(--card);border-radius:12px;box-shadow:0 0 0 1px var(--line)}
+.panel>.ph{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--line2);font-size:13px;font-weight:500}
+.panel>.ph .sp{flex:1}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{height:36px;padding:0 16px;text-align:left;font-weight:500;font-size:12px;color:var(--fg3);border-bottom:1px solid var(--line2)}
+.tbl td{height:40px;padding:0 16px;border-bottom:1px solid var(--line2);color:var(--fg2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.p{color:var(--fg);font-weight:500}.tbl .r{text-align:right}
+.tbl tr:hover td{background:var(--line2)}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:8px}
+.inp{height:36px;width:100%;padding:0 12px;border-radius:8px;border:0;background:var(--card);color:var(--fg);font:400 14px Inter;box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k05);transition:box-shadow .15s}
+.inp::placeholder{color:var(--fg3)}
+.inp:focus{outline:none;box-shadow:0 0 0 1px var(--fg3),0 0 0 3px var(--line)}
+.seg{display:inline-flex;padding:2px;border-radius:8px;background:var(--line2);box-shadow:inset 0 0 0 1px var(--line)}
+.seg a{height:28px;padding:0 10px;display:flex;align-items:center;font-size:12px;font-weight:500;border-radius:6px;color:var(--fg2)}
+.seg a.on{background:var(--card);color:var(--fg);box-shadow:0 0 0 1px var(--line),0 1px 2px var(--k08)}
+kbd{font:500 11px/1 Inter;color:var(--fg3);padding:3px 5px;border-radius:4px;box-shadow:0 0 0 1px var(--line);background:var(--bg2)}
+.up{color:var(--ok)}.dn{color:var(--danger)}
+.b:active{transform:scale(.97)}
+.sec2{padding:96px 48px}.sh{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}.sh .h2{font-size:36px;line-height:40px;letter-spacing:-.025em}.sh p{font-size:16px;line-height:24px;color:var(--fg2);max-width:440px}
+.legal{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;font-size:13px;color:var(--fg3)}.legal .st{display:inline-flex;align-items:center;gap:8px}.legal .st .dot{background:var(--ok)}
+.gap1{display:grid;gap:1px;background:var(--line)}.gap1>*{background:var(--bg)}
+.arrow{transition:transform .15s cubic-bezier(.4,0,.2,1)}a:hover>.arrow,a:hover .arrow{transform:translateX(2px)}
+@media (max-width:1023px){.sec2{padding:64px 20px}.sh{grid-template-columns:1fr;gap:12px;margin-bottom:32px}.sh .h2{font-size:30px;line-height:36px}.legal{padding:20px;flex-direction:column;gap:8px;align-items:flex-start}}
+
+body{font-size:15px;line-height:24px}
+.dnav{height:56px;display:flex;align-items:center;gap:16px;padding:0 20px;border-bottom:1px solid var(--line);font-size:13px}
+.dnav .brand{font:600 15px/1 Inter;letter-spacing:-.02em}.dnav .brand span{color:var(--fg3);font-weight:500;margin-left:6px}
+.srch{margin-left:24px;width:280px;height:32px;border-radius:8px;box-shadow:0 0 0 1px var(--line);display:flex;align-items:center;gap:8px;padding:0 8px 0 10px;color:var(--fg3)}.srch .sp{flex:1}
+.dnav .sp{flex:1}.dnav nav{display:flex;gap:20px;color:var(--fg2)}
+.lay{display:grid;grid-template-columns:248px minmax(0,1fr) 220px;max-width:1440px;margin:0 auto}
+.side{padding:20px 12px;border-right:1px solid var(--line);font-size:13px;line-height:18px;height:calc(100vh - 56px);position:sticky;top:0;overflow:auto}
+.side h4{font:500 12px/16px Inter;color:var(--fg3);padding:16px 8px 6px}.side h4:first-child{padding-top:4px}
+.side a{display:flex;align-items:center;height:28px;padding:0 8px;border-radius:6px;color:var(--fg2);transition:background .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1)}.side a:hover{background:var(--line2);color:var(--fg)}.side a.on{background:var(--line2);color:var(--fg);font-weight:500}
+.side a .m{margin-left:auto;font-size:11px;color:var(--fg3)}
+.art{padding:40px 64px 96px;max-width:800px;margin:0 auto;width:100%}
+.crumb{font-size:13px;color:var(--fg3);display:flex;gap:6px;align-items:center}.crumb i{font-size:14px}
+.art h1{font:500 30px/36px Inter;letter-spacing:-.025em;margin-top:12px}
+.art .ld{font-size:16px;line-height:26px;color:var(--fg2);margin-top:10px}
+.art h2{font:600 18px/26px Inter;letter-spacing:-.01em;margin-top:40px}
+.art p{color:var(--fg2);margin-top:12px}.art p b{color:var(--fg);font-weight:500}
+code{font:500 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--line2);box-shadow:0 0 0 1px var(--line2);border-radius:4px;padding:2px 5px;color:var(--fg)}
+.code{margin-top:16px;border-radius:12px;box-shadow:0 0 0 1px var(--line);overflow:hidden;background:var(--bg2)}
+.code .fb{display:flex;align-items:center;gap:8px;height:36px;padding:0 6px 0 14px;border-bottom:1px solid var(--line2);font-size:12px;color:var(--fg2)}.code .fb .sp{flex:1}
+.code pre{margin:0;padding:14px 16px;font:400 13px/21px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg);overflow:auto}
+.code .k{color:var(--fg3)}.code .s{color:var(--info)}
+.prm{margin-top:16px;border-top:1px solid var(--line)}.prm div{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line2);font-size:14px;line-height:21px}.prm b{font:500 13px/21px ui-monospace,Menlo,monospace}.prm em{font-style:normal;color:var(--fg3);display:block;font-size:12px}.prm span{color:var(--fg2)}
+.note{margin-top:20px;display:flex;gap:12px;padding:12px 14px;border-radius:10px;background:var(--line2);font-size:14px;line-height:21px;color:var(--fg2)}.note i{font-size:16px;color:var(--fg);margin-top:2px}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px}.pn a{border-radius:10px;box-shadow:0 0 0 1px var(--line);padding:12px 16px;font-size:13px;color:var(--fg3);transition:box-shadow .15s cubic-bezier(.4,0,.2,1)}.pn a:hover{box-shadow:0 0 0 1px var(--fg3)}.pn a b{display:block;font:500 14px/20px Inter;color:var(--fg);margin-top:2px}.pn a:last-child{text-align:right}
+.toc{padding:40px 20px;font-size:13px;line-height:18px;position:sticky;top:0;height:calc(100vh - 56px)}.toc h4{font:500 12px/16px Inter;color:var(--fg3);margin-bottom:8px}.toc a{display:block;padding:5px 0;color:var(--fg3);transition:color .15s cubic-bezier(.4,0,.2,1)}.toc a:hover,.toc a.on{color:var(--fg)}.toc a.sub{padding-left:12px}
+.toc .ed{margin-top:20px;padding-top:16px;border-top:1px solid var(--line2);display:flex;flex-direction:column;gap:8px}.toc .ed a{display:flex;gap:6px;align-items:center;color:var(--fg2);padding:0}
+@media (max-width:1023px){.lay{grid-template-columns:minmax(0,1fr)}.side,.toc,.dnav nav,.srch{display:none}.art{padding:28px 20px 64px}.prm div{grid-template-columns:1fr;gap:2px}.pn{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="dnav"><a class="brand">Pinecrest<span>Docs</span></a><div class="srch"><i class="bx bx-search"></i><span>Search docs</span><span class="sp"></span><kbd>⌘K</kbd></div><span class="sp"></span><nav><a>Guides</a><a style="color:var(--fg)">API reference</a><a>Changelog</a></nav><a class="b s sm">Dashboard</a></header>
+<div class="lay">
+<aside class="side">
+<h4>Getting started</h4><a>Authentication</a><a>Rate limits</a><a>Errors</a>
+<h4>Resources</h4><a>Jobs</a><a>Crews</a><a>Customers</a><a>Arrival windows</a>
+<h4>Webhooks</h4><a>Overview</a><a>Verifying signatures</a><a>job.created</a><a class="on">job.rescheduled</a><a>job.completed</a><a>crew.clocked_in</a>
+<h4>SDKs</h4><a>Node.js</a><a>Python</a><a>Ruby</a>
+</aside>
+<main class="art">
+<div class="crumb">Webhooks<i class="bx bx-chevron-right"></i>Events</div>
+<h1>job.rescheduled</h1>
+<p class="ld">Sent when a job moves to a new crew, day or arrival window, whether a dispatcher dragged it or the board reshuffled after a delay.</p>
+<h2 id="payload">Payload</h2>
+<p>Each delivery is a <code>POST</code> with a JSON body. The <b>previous</b> and <b>current</b> objects let you diff the change without fetching the job again.</p>
+<div class="code"><div class="fb"><i class="bx bx-file"></i>job.rescheduled.json<span class="sp"></span><a class="ib" title="Copy" style="width:28px;height:28px"><i class="bx bx-copy" style="font-size:16px"></i></a></div>
+<pre><span class="k">{</span>
+  "id": <span class="s">"evt_8Kq2fW1"</span>,
+  "type": <span class="s">"job.rescheduled"</span>,
+  "created": <span class="s">"2026-10-15T15:41:07Z"</span>,
+  "reason": <span class="s">"auto_reshuffle"</span>,
+  "job": <span class="k">{</span> "id": <span class="s">"job_31907"</span>, "address": <span class="s">"87 Pine Ct, Denver, CO"</span> <span class="k">}</span>,
+  "previous": <span class="k">{</span> "crew": <span class="s">"crew_4"</span>, "window": [<span class="s">"09:00"</span>, <span class="s">"10:00"</span>] <span class="k">}</span>,
+  "current":  <span class="k">{</span> "crew": <span class="s">"crew_4"</span>, "window": [<span class="s">"09:20"</span>, <span class="s">"10:20"</span>] <span class="k">}</span>
+<span class="k">}</span></pre></div>
+<h2 id="fields">Fields</h2>
+<div class="prm">
+<div><b>reason<em>string</em></b><span>One of <code>dispatcher</code>, <code>auto_reshuffle</code> or <code>customer_request</code>.</span></div>
+<div><b>previous.window<em>array</em></b><span>Arrival window before the change, in the job's time zone.</span></div>
+<div><b>current.crew<em>string</em></b><span>Crew now assigned. Equal to <code>previous.crew</code> when only the time moved.</span></div>
+</div>
+<div class="note"><i class="bx bx-info-circle"></i><div>Customers are texted by Pinecrest before this event is sent. Do not send your own message unless you turned off arrival texts in <b>Settings → Notifications</b>.</div></div>
+<h2 id="retries">Retries</h2>
+<p>Return any <code>2xx</code> within 10 seconds. Failed deliveries retry 8 times over 24 hours with exponential backoff, then show as failed in the dashboard.</p>
+<div class="pn"><a>Previous<b>job.created</b></a><a>Next<b>job.completed</b></a></div>
+</main>
+<aside class="toc"><h4>On this page</h4><a class="on" href="#payload">Payload</a><a href="#fields">Fields</a><a class="sub">reason</a><a class="sub">previous.window</a><a href="#retries">Retries</a>
+<div class="ed"><a><i class="bx bx-edit-alt"></i>Edit this page</a><a><i class="bx bx-message-square-detail"></i>Send feedback</a></div></aside>
+</div>
+</body>
+</html>

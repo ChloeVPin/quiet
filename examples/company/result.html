@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About · Pinecrest</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<style>
+:root{--k04:rgb(0 0 0/.04);--k05:rgb(0 0 0/.05);--k06:rgb(0 0 0/.06);--k08:rgb(0 0 0/.08);--k20:rgb(0 0 0/.2);--k40:rgb(0 0 0/.4);--k60:rgb(0 0 0/.6)}
+:root{--bg:#fff;--bg2:#fafafa;--fg:#09090b;--fg2:#52525c;--fg3:#9f9fa9;--line:rgb(9 9 11/.1);--line2:rgb(9 9 11/.06);--card:#fff;
+--btn:#18181b;--btnfg:#fff;--btn2:#fff;--btn2fg:#09090b;--ring:rgb(9 9 11/.12);--ok:#16a34a;--warn:#d97706;--info:#2563eb;--shadow:0 1px 2px var(--k06),0 10px 15px -3px var(--k05)}
+.dark{--bg:#09090b;--bg2:#0e0e11;--fg:#fafafa;--fg2:#a1a1aa;--fg3:#71717b;--line:rgb(255 255 255/.1);--line2:rgb(255 255 255/.06);--card:#111113;
+--btn:#fafafa;--btnfg:#09090b;--btn2:rgb(255 255 255/.06);--btn2fg:#fafafa;--ring:rgb(255 255 255/.12);--ok:#4ade80;--warn:#fbbf24;--info:#60a5fa;--shadow:0 20px 40px -12px var(--k60)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--fg);font:400 16px/24px Inter,system-ui,sans-serif;font-feature-settings:"cv11","ss01"}
+a{color:inherit;text-decoration:none}
+.c{width:min(1104px,calc(100% - 48px));margin:0 auto}
+.c-md{width:min(1024px,calc(100% - 48px));margin:0 auto}
+.num{font-variant-numeric:tabular-nums}
+/* nav */
+.nav{height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.nav .brand{font:600 16px/1 Inter;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.nav .links{display:flex;gap:32px;font-size:14px;color:var(--fg2)}
+.nav .links a:hover{color:var(--fg)}
+.nav .act{display:flex;gap:8px;justify-content:flex-end}
+.bar{border-bottom:1px solid var(--line)}
+/* buttons: one height per row, 6px radius, ring + tiny drop */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;font:500 14px/20px Inter;white-space:nowrap;cursor:pointer;border:0;transition:opacity .15s,background .15s}
+.b.sm{height:32px;padding:0 12px;font-size:13px;border-radius:6px}
+.b.p{background:var(--btn);color:var(--btnfg);box-shadow:0 0 0 1px var(--btn),0 1px 2px var(--k20)}
+.b.s{background:var(--btn2);color:var(--btn2fg);box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k06)}
+.b.p:hover{opacity:.9}.b.s:hover{background:var(--line2)}
+.b.w{width:100%}
+/* type */
+.h1{font:600 60px/60px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h2{font:600 40px/44px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h3{font:600 20px/28px Inter;letter-spacing:-.01em}
+.lead{font-size:18px;line-height:28px;color:var(--fg2);text-wrap:pretty}
+.mute{color:var(--fg2)}.faint{color:var(--fg3)}
+.tone{color:var(--fg3)}
+.stmt{font:500 20px/28px Inter;letter-spacing:-.01em;text-wrap:pretty}.stmt span{color:var(--fg2)}
+.sm-t{font-size:14px;line-height:20px}
+.xs-t{font-size:12px;line-height:16px}
+.sec{padding:96px 0}
+/* bezel frame for product shots */
+.bezel{padding:4px;border-radius:14px;background:var(--bg2);box-shadow:0 0 0 1px var(--line),var(--shadow)}
+.bezel>.in{border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line);background:var(--card)}
+/* hairline grid shell */
+.rails{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hr{border-top:1px solid var(--line)}
+i.bx{font-size:16px;line-height:1;vertical-align:-2px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;color:var(--fg2)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+@media (max-width:760px){
+ .nav{grid-template-columns:1fr auto}.nav .links{display:none}
+ .h1{font-size:40px;line-height:44px}.h2{font-size:30px;line-height:36px}
+ .lead{font-size:17px;line-height:26px}
+ [class*="grid"],.cells,.three,.head,.quote,.stats,.logos,footer .c{grid-template-columns:1fr!important}
+ .cell+.cell,.three>div+div,.stats div+div{border-left:0!important;border-top:1px solid var(--line)}
+ .head,.cell,.three>div,.quote,.end,.hero{padding-left:20px!important;padding-right:20px!important}
+ .shot{padding:0 12px!important}
+ .app{grid-template-columns:1fr!important}.app .side{display:none}
+ .app .row{grid-template-columns:56px 16px 1fr 48px}.app .row .lb,.app .row .av{display:none}.app .tb .pill:first-of-type{display:none}.hero{padding-top:64px!important;padding-bottom:48px!important}
+ .tb .faint.xs-t{display:none}
+ .logos{height:auto!important;padding:24px 0;gap:16px}
+}
+/* ---------- app kit ---------- */
+:root{--danger:#dc2626;--focus:#2563eb;--hl:rgb(245 158 11/.22)}
+.dark{--danger:#f87171;--focus:#60a5fa;--hl:rgb(245 158 11/.28)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);height:100vh;min-height:620px}
+.rail{background:var(--bg2);border-right:1px solid var(--line);padding:10px 8px;display:flex;flex-direction:column;font-size:13px;line-height:18px;overflow:hidden}
+.rail .ws{display:flex;align-items:center;gap:6px;height:32px;padding:0 8px;font-weight:600;font-size:14px;margin-bottom:6px}
+.rail .ws .sp{flex:1}.rail .ws i{color:var(--fg3)}
+.rail a{display:flex;align-items:center;gap:8px;height:32px;padding:0 8px;border-radius:6px;color:var(--fg2);transition:background .15s,color .15s}
+.rail a i{font-size:16px;color:var(--fg3)}
+.rail a:hover{background:var(--line2);color:var(--fg)}
+.rail a.on{background:var(--line2);color:var(--fg);font-weight:500}.rail a.on i{color:var(--fg)}
+.rail .ct{margin-left:auto;font-size:12px;color:var(--fg3)}
+.rail .gl{font-size:12px;color:var(--fg3);padding:16px 8px 6px}
+.rail .me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px}
+.av{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--fg2);font-size:10px;font-weight:600;display:inline-grid;place-items:center;flex:none}
+.top{display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-bottom:1px solid var(--line);font-size:13px}
+.top .sp{flex:1}.top .crumb{color:var(--fg2)}.top .crumb b{color:var(--fg);font-weight:500}
+.ib{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:6px;color:var(--fg2)}.ib:hover{background:var(--line2);color:var(--fg)}.ib i{font-size:18px}
+.panel{background:var(--card);border-radius:12px;box-shadow:0 0 0 1px var(--line)}
+.panel>.ph{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--line2);font-size:13px;font-weight:500}
+.panel>.ph .sp{flex:1}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{height:36px;padding:0 16px;text-align:left;font-weight:500;font-size:12px;color:var(--fg3);border-bottom:1px solid var(--line2)}
+.tbl td{height:40px;padding:0 16px;border-bottom:1px solid var(--line2);color:var(--fg2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.p{color:var(--fg);font-weight:500}.tbl .r{text-align:right}
+.tbl tr:hover td{background:var(--line2)}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:8px}
+.inp{height:36px;width:100%;padding:0 12px;border-radius:8px;border:0;background:var(--card);color:var(--fg);font:400 14px Inter;box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k05);transition:box-shadow .15s}
+.inp::placeholder{color:var(--fg3)}
+.inp:focus{outline:none;box-shadow:0 0 0 1px var(--fg3),0 0 0 3px var(--line)}
+.seg{display:inline-flex;padding:2px;border-radius:8px;background:var(--line2);box-shadow:inset 0 0 0 1px var(--line)}
+.seg a{height:28px;padding:0 10px;display:flex;align-items:center;font-size:12px;font-weight:500;border-radius:6px;color:var(--fg2)}
+.seg a.on{background:var(--card);color:var(--fg);box-shadow:0 0 0 1px var(--line),0 1px 2px var(--k08)}
+kbd{font:500 11px/1 Inter;color:var(--fg3);padding:3px 5px;border-radius:4px;box-shadow:0 0 0 1px var(--line);background:var(--bg2)}
+.up{color:var(--ok)}.dn{color:var(--danger)}
+.b:active{transform:scale(.97)}
+.sec2{padding:96px 48px}.sh{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}.sh .h2{font-size:36px;line-height:40px;letter-spacing:-.025em}.sh p{font-size:16px;line-height:24px;color:var(--fg2);max-width:440px}
+.legal{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;font-size:13px;color:var(--fg3)}.legal .st{display:inline-flex;align-items:center;gap:8px}.legal .st .dot{background:var(--ok)}
+.gap1{display:grid;gap:1px;background:var(--line)}.gap1>*{background:var(--bg)}
+.arrow{transition:transform .15s cubic-bezier(.4,0,.2,1)}a:hover>.arrow,a:hover .arrow{transform:translateX(2px)}
+@media (max-width:1023px){.sec2{padding:64px 20px}.sh{grid-template-columns:1fr;gap:12px;margin-bottom:32px}.sh .h2{font-size:30px;line-height:36px}.legal{padding:20px;flex-direction:column;gap:8px;align-items:flex-start}}
+
+.hero{padding:128px 48px 80px}.hero .h1{max-width:820px}.hero .lead{max-width:560px;margin-top:20px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr)}.facts>div{padding:32px 48px}.facts>div+div{border-left:1px solid var(--line)}.facts b{display:block;font:600 30px/36px Inter;letter-spacing:-.02em}.facts span{font-size:14px;color:var(--fg2)}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:48px}.story p{font-size:16px;line-height:26px;color:var(--fg2)}.story p+p{margin-top:16px}.story p b{color:var(--fg);font-weight:500}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px}
+.team figure{margin:0}.team .ph{aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--bg2);box-shadow:0 0 0 1px var(--line2)}.team img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);display:block}
+.team figcaption{margin-top:14px}.team b{display:block;font:500 15px/22px Inter}.team span{font-size:14px;line-height:20px;color:var(--fg2)}
+.funds{display:grid;grid-template-columns:repeat(4,1fr);height:112px;align-items:center;text-align:center;color:var(--fg2)}
+.funds span{font:600 17px/1 Inter;letter-spacing:-.03em}.funds span:nth-child(2){font:500 13px/1 Inter;letter-spacing:.1em}.funds span:nth-child(3){font-style:italic;font-weight:500}.funds span:nth-child(4){font-weight:700;letter-spacing:-.05em}
+.angels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}.angels>div{display:flex;gap:12px;align-items:center}.angels .av{width:40px;height:40px;font-size:13px}.angels b{display:block;font:500 14px/20px Inter}.angels span{font-size:14px;line-height:20px;color:var(--fg2)}
+.roles h3{font:500 14px/20px Inter;padding:24px 0 8px;color:var(--fg)}
+.role{display:grid;grid-template-columns:1fr 260px 24px;align-items:center;height:52px;border-top:1px solid var(--line);font-size:15px;transition:background .15s cubic-bezier(.4,0,.2,1);padding:0 12px;margin:0 -12px;border-radius:8px}
+.role:hover{background:var(--line2)}.role span{font-size:14px;color:var(--fg2)}.role i{color:var(--fg3);font-size:16px}
+.roles .grp+.grp{margin-top:16px}
+.end{padding:96px 48px;display:flex;justify-content:space-between;align-items:end;gap:32px}.end .h2{font-size:36px;line-height:40px}.end p{margin-top:12px;color:var(--fg2)}
+@media (max-width:1023px){.hero{padding:72px 20px 48px}.facts{grid-template-columns:1fr 1fr}.facts>div{padding:24px 20px}.facts>div:nth-child(3){border-left:0}.facts>div:nth-child(n+3){border-top:1px solid var(--line)}
+.story{grid-template-columns:1fr;gap:16px}.team{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.funds{grid-template-columns:1fr 1fr;height:auto;padding:24px 0;row-gap:28px}.angels{grid-template-columns:1fr}
+.role{grid-template-columns:1fr 24px;height:auto;padding:14px 12px}.role span{grid-row:2}.end{padding:64px 20px;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="c nav"><a class="brand">Pinecrest</a><nav class="links"><a>Product</a><a>Customers</a><a>Pricing</a><a style="color:var(--fg)">Company</a></nav><div class="act"><a class="b s sm">Log in</a><a class="b p sm">Book a demo</a></div></div></header>
+<div class="c rails">
+<section class="hero"><h1 class="h1">We ran repair crews first.<br/><span class="tone">Then we fixed the schedule.</span></h1>
+<p class="lead">Pinecrest schedules field crews for home repair companies. Every job gets a crew, a truck and an arrival window customers can trust.</p></section>
+</div>
+<div class="hr"></div>
+<div class="c rails facts num"><div><b>4,100</b><span>crews scheduled daily</span></div><div><b>38</b><span>people in Denver and remote</span></div><div><b>2019</b><span>founded in a garage office</span></div><div><b>$14M</b><span>raised through Series A</span></div></div>
+<div class="hr"></div>
+<div class="c rails"><section class="sec2"><div class="story">
+<h2 class="h2" style="font-size:36px;line-height:40px">Paper boards and phone tag cost a crew two jobs a week.</h2>
+<div><p>Our founders spent nine years dispatching roofers and plumbers from a whiteboard. <b>Every rain day meant forty phone calls.</b> Customers waited at home for a truck that was across town.</p><p>Pinecrest started as the tool we wanted then: one board that reshuffles crews when a job runs long, and texts each customer a real arrival window. <b>Today it moves 31,000 jobs a week.</b></p></div>
+</div></section></div>
+<div class="hr"></div>
+<div class="c rails"><section class="sec2">
+<div class="sh"><h2 class="h2">The people behind the board</h2><p>Half of us have worked a dispatch desk or a job site. The other half build the software they asked for.</p></div>
+<div class="team">
+<figure><div class="ph"><img src="assets/p-0fN7Fxv1eWA.jpg" alt="Portrait of Dana Whitfield"/></div><figcaption><b>Dana Whitfield</b><span>Co-founder, CEO</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-BBmi4nJjKk8.jpg" alt="Portrait of Marcus Ortega"/></div><figcaption><b>Marcus Ortega</b><span>Co-founder, Head of Product</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-6xv4A1VA1rU.jpg" alt="Portrait of Priya Raman"/></div><figcaption><b>Priya Raman</b><span>VP of Engineering</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-RFFR1JjkJx8.jpg" alt="Portrait of Owen Pratt"/></div><figcaption><b>Owen Pratt</b><span>Head of Customer Success</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-YEbFUPYfUlo.jpg" alt="Portrait of Lena Hoffmann"/></div><figcaption><b>Lena Hoffmann</b><span>Design Lead</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-GsLxMF4CVJg.jpg" alt="Portrait of Theo Nakamura"/></div><figcaption><b>Theo Nakamura</b><span>Staff Engineer, Routing</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-Ef3AOkt6hHg.jpg" alt="Portrait of Grace Mensah"/></div><figcaption><b>Grace Mensah</b><span>Head of Finance</span></figcaption></figure>
+<figure><div class="ph"><img src="assets/p-NTjSR3zYpsY.jpg" alt="Portrait of Sofia Lindqvist"/></div><figcaption><b>Sofia Lindqvist</b><span>Dispatch Specialist</span></figcaption></figure>
+</div></section></div>
+<div class="hr"></div>
+<div class="c rails"><section class="sec2" style="padding-bottom:72px">
+<div class="sh"><h2 class="h2">Backed by people who build trades software</h2><p>Our Series A was led by Harbor Lane, with operators from field service and logistics companies.</p></div>
+<div class="funds"><span>Harbor Lane</span><span>CROSSCUT</span><span>Foundry Row</span><span>Elm Street</span></div>
+<div class="angels">
+<div><span class="av">RB</span><div><b>Ruth Bauer</b><span>Former COO, a national roofing group</span></div></div>
+<div><span class="av">JA</span><div><b>Jonah Abara</b><span>Founder, a fleet telematics company</span></div></div>
+<div><span class="av">MK</span><div><b>Mei Kurosawa</b><span>VP Operations, a plumbing franchise</span></div></div>
+</div></section></div>
+<div class="hr"></div>
+<div class="c rails"><section class="sec2 roles">
+<div class="sh" style="margin-bottom:16px"><h2 class="h2">Open roles</h2><p>Six roles, all remote in US time zones, or at our Denver office if you like a desk.</p></div>
+<div class="grp"><h3>Engineering</h3>
+<a class="role" href="mailto:jobs@pinecrest.example?subject=Senior%20Backend%20Engineer%2C%20Routing"><b style="font-weight:500">Senior Backend Engineer, Routing</b><span>Remote, US · Full-time</span><i class="bx bx-right-arrow-alt arrow"></i></a>
+<a class="role" href="mailto:jobs@pinecrest.example?subject=Mobile%20Engineer%2C%20iOS"><b style="font-weight:500">Mobile Engineer, iOS</b><span>Remote, US · Full-time</span><i class="bx bx-right-arrow-alt arrow"></i></a>
+<a class="role" href="mailto:jobs@pinecrest.example?subject=Data%20Engineer"><b style="font-weight:500">Data Engineer</b><span>Denver · Full-time</span><i class="bx bx-right-arrow-alt arrow"></i></a></div>
+<div class="grp"><h3>Design</h3>
+<a class="role" href="mailto:jobs@pinecrest.example?subject=Product%20Designer%2C%20Dispatch%20board"><b style="font-weight:500">Product Designer, Dispatch board</b><span>Remote, US · Full-time</span><i class="bx bx-right-arrow-alt arrow"></i></a></div>
+<div class="grp"><h3>Customer</h3>
+<a class="role" href="mailto:jobs@pinecrest.example?subject=Implementation%20Manager"><b style="font-weight:500">Implementation Manager</b><span>Denver · Full-time</span><i class="bx bx-right-arrow-alt arrow"></i></a>
+<a class="role" href="mailto:jobs@pinecrest.example?subject=Support%20Specialist%2C%20evenings"><b style="font-weight:500">Support Specialist, evenings</b><span>Remote, US · Part-time</span><i class="bx bx-right-arrow-alt arrow"></i></a></div>
+</section></div>
+<div class="hr"></div>
+<div class="c rails"><div class="end"><div><h2 class="h2">Not seeing your role?</h2><p>Send a note about the work you want to do. We read every one.</p></div><div style="display:flex;gap:12px"><a class="b s">Read our handbook</a><a class="b p">Email the team</a></div></div></div>
+<div class="hr"></div>
+<div class="c rails legal"><span>© 2026 Pinecrest Software, Inc.</span><span class="st"><span class="dot"></span>All systems normal</span></div>
+</body>
+</html>

@@ -25,3 +25,6 @@ Invent neutral product names that do not collide with existing AI models or famo
 ## Lists
 
 Plain language and position over “01 / 02 / 03” costume numbering.
+
+## Word budgets per slot
+H1 2–8 words (aim for 4). H2 1–7 (aim for 4). Feature or card title 1–4 (aim for 2). Lead 7–19 words (aim for 13). CTA 1–4 words (aim for 2), a verb plus an object. If a slot runs over budget, cut words; do not shrink the type.

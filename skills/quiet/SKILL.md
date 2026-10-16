@@ -41,6 +41,7 @@ Read the reference that matches the decision. Do not skim them all up front.
 | SaaS / marketing landings | `references/saas.md` |
 | Landing page numbers (grid, type, buttons, product bezel, pricing) | `references/landing.md` |
 | App shell, forms, states, auth, docs, 404, chat, mobile numbers | `references/app-specs.md` |
+| Comparison table, team, roles, investors, how it works, bento, feature art | `references/sections.md` |
 | Before/after self-check | `references/critique-rubric.md` |
 
 Optional: `node <this-skill>/scripts/lint.mjs <paths…>` greps for common tells.
@@ -70,7 +71,7 @@ building is cheap?
    not apply.
 6. **Layout.** Product density in apps. For product marketing: a 1104px
    container on structural rails, a two-line hero, the real product in a bezel
-   inside the fold, features as grid cells. Numbers and recipes (hero composition, product fragment, feature cells, wordmarks, pricing anatomy) in `references/landing.md`; follow them literally.
+   inside the fold (product marketing pages only: home, product, feature and pricing pages; company, about, careers, legal, docs and auth pages do not need a product shot), features as grid cells. Numbers and recipes (hero composition, product fragment, feature cells, wordmarks, pricing anatomy) in `references/landing.md`; follow them literally.
    No stat-card heroes, no fake feature row tables, no serif-section rhythm.
 7. **Copy.** Buttons name the action (“Send invite”, not “Submit”). No stock AI
    phrases. No eyebrow / pill kickers above headlines.
@@ -131,3 +132,6 @@ dashboards, dense tools). This is the gap Quiet owns versus gallery-only skills.
 
 A stranger still recognizes the product. Every slop tell is gone. Type and
 spacing feel decided. Nothing on the page is there by default.
+
+## Demo content
+Examples are demo content. When a brief leaves a slot empty (names, numbers, dates, addresses, prices), invent plausible, specific fictional values that fit the brief, and never leave blanks or placeholders such as "Lorem" or "Name Surname". Keep invented companies and people clearly fictional, and never fake real customer logos or credentials.

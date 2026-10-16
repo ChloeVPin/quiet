@@ -27,3 +27,8 @@ Map to semantic roles, not raw hex in components:
 Design light and dark intentionally. Do not invert blindly. Recheck contrast in both. Light mode stays neutral near-white, not warm paper. Dark mode stays near-black, not tinted navy costume.
 
 OKLCH ramps are welcome for even steps when building a system. Wide-gamut P3 is optional enrichment on capable displays, never a substitute for restraint.
+
+## Hairline and elevation values
+- Light: hairlines are the foreground at 10% (or 7.5% / 5% for quieter splits). Dark: white at 7%, or 10% for emphasis. Prefer alpha over a fixed grey so lines sit right on any surface.
+- A card may use a 1px ring (`0 0 0 1px` at 5–10%) instead of a border, plus at most `0 1px 3px rgb(0 0 0/.1)`. No larger resting shadow.
+- Hover tint is the foreground at 5%. The focus ring is the ring color at 50%.

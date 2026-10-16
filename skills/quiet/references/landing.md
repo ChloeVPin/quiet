@@ -5,7 +5,7 @@ Use these numbers unless the product has a reason to differ. They describe a cal
 ## Grid and space
 - Rails: 1px vertical lines at the edges of a 1104px centered box (so at 1440px they sit at x=168 and x=1272). Content width is 1008px (1104 minus 48px gutters each side). The product shot is 1024px wide, centered, breaking 8px past the content edge toward the rails; it never touches or crosses them. Mobile: rails at the viewport edge, 20px gutter, product shot full width minus 12px each side.
 - Structural rails: 1px lines on the container edges for the full page height, and a full-bleed 1px rule between major sections. Cells inside a section split with the same 1px line. On the marketing layer nothing else draws a line: no decorative rules, ticks, or lines that align to nothing. Inside app UI, tables, panels and form groups, functional separators are allowed at the soft line alpha (6%), rows and headers only.
-- Section padding 96px top and bottom. Hero 96 to 120px top, 64 to 72px bottom. Cells 40px by 48px.
+- Section padding 96px top and bottom. Hero 96px top, 64px bottom (mobile 64 / 48). Cells 40px by 48px.
 - Nav 64px tall, three columns: brand left, links centered (14px, gap 32px, secondary color), actions right. A 1px rule under it.
 
 ## Type
@@ -85,5 +85,5 @@ Chips are gray (secondary text, 1px line, no fill) for categories, teams, and ta
 14px, 1.5px stroke. Backlog: dashed circle, tertiary. Todo: open circle, tertiary. In progress: circle with right half filled, amber. In review: circle with three-quarters filled, blue. Done: filled green circle with a white check. Canceled: filled gray circle with a white x.
 
 ## Mobile
-- H1 40/44 (H2 32/36). Each headline sentence may wrap to at most two lines; four lines total max. Over that, shorten the copy.
-- The fold at 390x844 shows the H1, lead, buttons, and the top edge (at least 80px) of the product shot. If it does not, cut the lead to two lines and reduce hero top padding to 64px.
+- H1 40/44, H2 30/36 (the single mobile scale; see `sections.md`). Each headline sentence may wrap to at most two lines; four lines total max. Over that, shorten the copy.
+- The fold at 390x844 shows the H1, lead, buttons, and the top edge (at least 80px) of the product shot. If it does not, cut the lead to two lines and cut the lead further; hero top padding stays 64px.

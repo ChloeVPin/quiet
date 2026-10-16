@@ -33,7 +33,7 @@ const rules = [
   {
     id: "emoji-icon",
     severity: "FAIL",
-    re: /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u,
+    re: /[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2705}\u{2728}\u{274C}\u{2764}\u{2B50}]/u,
     msg: "emoji character — Quiet bans emoji-as-icon",
   },
   {
@@ -117,7 +117,7 @@ function isThemePath(p) {
 
 function isTokenDefinition(line) {
   // CSS custom properties are where hex belongs
-  return /--[\w-]+\s*:\s*(?:#|(?:rgba?|hsla?|oklch)\s*\()/i.test(line);
+  return /--[\w-]+\s*:/.test(line);
 }
 
 const files = roots.flatMap((r) => walk(path.resolve(r)));

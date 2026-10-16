@@ -59,3 +59,10 @@ Numbers to follow literally when building product surfaces. They pair with `prod
 ## Mobile
 - Design at 390pt. 16–20px side padding, 44px minimum touch targets, a fixed tab bar 84px tall including the safe area, and a 52px primary button.
 - A paywall lists its plans as rows with the price per period, the saving as plain text, the trial length, and the renewal terms under the button.
+
+## Additions
+- Forgot password: H1 20/28 at 600, one 36px email field, one full-width 36px button, then "Back to sign in". Nothing else.
+- Docs chrome is smaller than marketing: H1 24/32 at 500 with slight negative tracking, H2 15–18 at 500–600, body 15/24, sidebar rows 24px, article measure 624–672px. Code blocks have a filename bar and a copy button; inline code is a 4px-radius tint. The sticky "On this page" list shows the active item in foreground and the rest muted.
+- Header menus: 32px triggers at radius 8, 12px chevrons with stroke 2.5, menu rows 32px, and items with a 16px icon, a 14/500 title and one muted line.
+- A 404 can offer two thumbnail cards to the main sections, each with a count, in addition to the home button.
+- One-time pricing says "One-time payment" under the figure. Subscription pricing says "per month, billed yearly" or similar. Never leave the period unstated.
