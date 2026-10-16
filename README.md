@@ -1,13 +1,11 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/quiet-hero-dark.png" />
-    <img src="assets/quiet-hero-light.png" alt="Quiet" width="880" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png" />
+    <img src="assets/hero-light.png" alt="Quiet examples: a SaaS landing, analytics, chat and a mobile app" width="880" />
   </picture>
 </p>
 
-Quiet is an agent skill for UI built on small grotesk type, narrow layouts, real components, almost no costume.
-
-Landing pages and product UI. Chat, sidebars, settings, dashboards.
+<p align="center">A design skill for coding agents. Calm, product-first interfaces from landing page to app.</p>
 
 ## Install
 
@@ -17,130 +15,106 @@ npx skills add https://github.com/ChloeVPin/quiet --skill quiet
 
 Or copy `skills/quiet/` into your agent skills directory.
 
-## Before / after
+## What it does
 
-Same NovaBoard. Different judgment.
+Quiet gives an agent a fixed taste and the numbers to hold it: one grotesk type scale, near-monochrome tokens, a 1104px grid on visible rails, real product UI in the fold, 32 and 36px controls, 40px table rows, and motion under 300ms. It bans the usual tells: gradients, glass, emoji icons, pill labels, stat-card heroes, serif headlines and placeholder copy.
 
-<p align="center">
-  <img src="assets/before-hero.png" alt="Before" width="880" />
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png" />
-    <img src="assets/hero-light.png" alt="After Quiet" width="880" />
-  </picture>
-</p>
-
-Full pages in [`examples/messy-landing/`](examples/messy-landing/).
-
-## Rules that matter
-
-One grotesk, about 14px. Near-monochrome. Strict 4px spacing and concentric radii. Product motion under 300ms, ease-out, interruptible, none on keyboard paths. Buttons name the action. No gradients, glass, emoji icons, stat-card heroes, hairline feature tables, corner version labels, or em dashes.
-
-Encode taste. Plan. Wait for OK. One surface per pass. Check the rubric.
-
-Details live in `skills/quiet/SKILL.md` and `skills/quiet/references/`.
+The agent plans first, waits for approval, builds one surface per pass and checks itself against a rubric. Rules live in [`skills/quiet/SKILL.md`](skills/quiet/SKILL.md) and [`skills/quiet/references/`](skills/quiet/references/).
 
 ```bash
 node skills/quiet/scripts/lint.mjs path/to/ui
 ```
 
-## SaaS landing
-
-A noisy product page restyled as calm SaaS. Real board UI in the hero, one primary CTA, pricing without costume.
-
 <p align="center">
-  <img src="examples/saas/before-fold.png" alt="SaaS before" width="880" />
+  <img src="assets/tour.webp" alt="A tour of six example screens" width="880" />
 </p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="examples/saas/after-dark-fold.png" />
-    <img src="examples/saas/after-light-fold.png" alt="SaaS after Quiet" width="880" />
-  </picture>
-</p>
-
-Full pages in [`examples/saas/`](examples/saas/).
 
 ## Examples
 
-Surfaces beyond the landing pass. Each folder has before, after, and fold shots.
+Every screen below was built by an agent following the skill. Each folder has the HTML and 2x screenshots.
 
 <table>
   <tr>
-    <td align="center" width="50%">
-      <a href="examples/analytics/"><strong>Analytics</strong></a><br/>
-      <img src="examples/analytics/after-fold.png" alt="Analytics after" width="420" />
+    <td width="50%" valign="top">
+      <picture><source media="(prefers-color-scheme: dark)" srcset="examples/saas/after-dark-fold.png" /><img src="examples/saas/after-light-fold.png" alt="SaaS landing" width="420" /></picture><br/>
+      <a href="examples/saas/">SaaS landing</a>
     </td>
-    <td align="center" width="50%">
-      <a href="examples/settings/"><strong>Settings</strong></a><br/>
-      <img src="examples/settings/after-fold.png" alt="Settings after" width="420" />
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <a href="examples/pricing/"><strong>Pricing</strong></a><br/>
-      <img src="examples/pricing/after-fold.png" alt="Pricing after" width="420" />
-    </td>
-    <td align="center" width="50%">
-      <a href="examples/docs/"><strong>Docs</strong></a><br/>
-      <img src="examples/docs/after-fold.png" alt="Docs after" width="420" />
+    <td width="50%" valign="top">
+      <img src="examples/analytics/after-fold.png" alt="Analytics" width="420" /><br/>
+      <a href="examples/analytics/">Analytics</a>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <a href="examples/changelog/"><strong>Changelog</strong></a><br/>
-      <img src="examples/changelog/after-fold.png" alt="Changelog after" width="420" />
+    <td width="50%" valign="top">
+      <img src="examples/chat/after-fold.png" alt="Chat" width="420" /><br/>
+      <a href="examples/chat/">Chat</a>
     </td>
-    <td align="center" width="50%">
-      <a href="examples/devtool/"><strong>API landing</strong></a><br/>
-      <img src="examples/devtool/after-fold.png" alt="API landing after" width="420" />
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <a href="examples/ecommerce/"><strong>E-commerce</strong></a><br/>
-      <img src="examples/ecommerce/after-fold.png" alt="E-commerce after" width="420" />
-    </td>
-    <td align="center" width="50%">
-      <a href="examples/signin/"><strong>Sign-in</strong></a><br/>
-      <img src="examples/signin/after-fold.png" alt="Sign-in after" width="420" />
+    <td width="50%" valign="top">
+      <img src="examples/settings/after-fold.png" alt="Settings" width="420" /><br/>
+      <a href="examples/settings/">Settings</a>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <a href="examples/chat/"><strong>Chat</strong></a><br/>
-      <img src="examples/chat/after-fold.png" alt="Chat after" width="420" />
+    <td width="50%" valign="top">
+      <img src="examples/docs/after-fold.png" alt="Docs" width="420" /><br/>
+      <a href="examples/docs/">Docs</a>
     </td>
-    <td align="center" width="50%">
-      <a href="examples/empty/"><strong>404</strong></a><br/>
-      <img src="examples/empty/after-fold.png" alt="404 after" width="420" />
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <a href="examples/waitlist/"><strong>Waitlist</strong></a><br/>
-      <img src="examples/waitlist/after-fold.png" alt="Waitlist after" width="420" />
-    </td>
-    <td align="center" width="50%">
-      <a href="examples/agency/"><strong>Studio</strong></a><br/>
-      <img src="examples/agency/after-fold.png" alt="Studio after" width="420" />
+    <td width="50%" valign="top">
+      <img src="examples/pricing/after-fold.png" alt="Pricing" width="420" /><br/>
+      <a href="examples/pricing/">Pricing</a>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <a href="examples/mobile/"><strong>Mobile home</strong></a><br/>
-      <img src="examples/mobile/after.png" alt="Mobile home after" width="200" />
+    <td width="50%" valign="top">
+      <img src="examples/signin/after-fold.png" alt="Sign in" width="420" /><br/>
+      <a href="examples/signin/">Sign in</a>
     </td>
-    <td align="center" width="50%">
-      <a href="examples/mobile-onboard/"><strong>Mobile paywall</strong></a><br/>
-      <img src="examples/mobile-onboard/after.png" alt="Mobile paywall after" width="200" />
+    <td width="50%" valign="top">
+      <img src="examples/changelog/after-fold.png" alt="Changelog" width="420" /><br/>
+      <a href="examples/changelog/">Changelog</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/devtool/after-fold.png" alt="API landing" width="420" /><br/>
+      <a href="examples/devtool/">API landing</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/ecommerce/after-fold.png" alt="Product page" width="420" /><br/>
+      <a href="examples/ecommerce/">Product page</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/waitlist/after-fold.png" alt="Waitlist" width="420" /><br/>
+      <a href="examples/waitlist/">Waitlist</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/agency/after-fold.png" alt="Studio" width="420" /><br/>
+      <a href="examples/agency/">Studio</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/empty/after-fold.png" alt="404 and empty state" width="420" /><br/>
+      <a href="examples/empty/">404 and empty state</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/messy-landing/before-fold.png" alt="Redesign: before" width="420" /><br/>
+      <a href="examples/messy-landing/">Redesign: before</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="examples/messy-landing/after-fold.png" alt="Redesign: after" width="420" /><br/>
+      <a href="examples/messy-landing/">Redesign: after</a>
+    </td>
+    <td width="50%" valign="top">
+      <img src="examples/mobile/after.png" alt="Mobile home" width="140" />&nbsp;&nbsp;<img src="examples/mobile-onboard/after.png" alt="Mobile paywall" width="140" /><br/>
+      <a href="examples/mobile/">Mobile home</a> and <a href="examples/mobile-onboard/">paywall</a>
     </td>
   </tr>
 </table>
-
-Also [`examples/messy-landing/`](examples/messy-landing/) and [`examples/saas/`](examples/saas/).
 
 ## License
 
