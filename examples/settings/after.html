@@ -1,146 +1,377 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Orbit · Settings</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>General · Settings · Trestle</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 <style>
-:root{
-  --bg:#f7f7f8;--panel:#ffffff;--line:#e6e6e8;--line2:#ececee;
-  --fg:#111113;--muted:#6b6f76;--faint:#9b9fa6;
-  --accent:#5e6ad2;--danger:#c43c3c;--danger-bg:#faf0f0;
-  --btn:#111113;--btn-fg:#ffffff;--track:#e6e6e8;--thumb:#ffffff;
-  --input-bg:#ffffff;--on-danger:#ffffff;
-  --ease:cubic-bezier(.22,1,.36,1);
+/* Quiet base: tokens, type, rails, controls */
+:root {
+  --bg: #ffffff;
+  --bg-raised: #fafafa;
+  --bg-card: #ffffff;
+  --fg: #09090b;
+  --fg-muted: #52525c;
+  --fg-faint: #9f9fa9;
+  --line: rgb(9 9 11 / 0.10);
+  --line-soft: rgb(9 9 11 / 0.06);
+  --ring: rgb(9 9 11 / 0.12);
+  --tint: rgb(9 9 11 / 0.06);
+  --sh-1: rgb(9 9 11 / 0.05);
+  --sh-2: rgb(9 9 11 / 0.06);
+  --on-fg: #ffffff;
+  --check: #ffffff;
+  --focus: #2563eb;
+  --green: #16a34a;
+  --amber: #d97706;
+  --blue: #2563eb;
+  --danger: #dc2626;
+  --highlight: rgb(245 158 11 / 0.22);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --r-control: 6px;
+  --r-button: 8px;
+  --r-inner: 10px;
+  --r-panel: 12px;
+  --r-bezel: 14px;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-*{box-sizing:border-box;margin:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--fg);font:14px/1.5 Inter,system-ui,sans-serif}
-a{color:inherit;text-decoration:none}
-.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
-.side{background:var(--panel);border-right:1px solid var(--line);padding:16px 12px}
-.side .mark{font-size:13px;font-weight:600;letter-spacing:-.01em;padding:6px 8px;margin-bottom:14px}
-.side a{display:block;padding:7px 8px;border-radius:6px;color:var(--muted);font-size:13px;margin-bottom:1px}
-.side a.on{background:var(--bg);color:var(--fg);font-weight:500}
-.side .sec{margin:16px 8px 6px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
-.main{padding:28px 36px 64px;max-width:640px;width:100%}
-.main h1{font-size:16px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
-.main .lede{color:var(--muted);font-size:13px;margin-bottom:28px}
-.group{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
-.group .hd{padding:14px 16px;border-bottom:1px solid var(--line);font-size:13px;font-weight:500}
-.group .bd{padding:4px 16px 16px}
-.field{padding:12px 0;border-bottom:1px solid var(--line2)}
-.field:last-child{border-bottom:0}
-.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-.field input,.field select{
-  width:100%;max-width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
-  background:var(--input-bg);color:var(--fg);font:14px/1.4 Inter,system-ui,sans-serif;
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/24px var(--font);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.field input:disabled{color:var(--muted);background:var(--bg)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.toggle{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line2);gap:16px}
-.toggle:last-child{border-bottom:0}
-.toggle .t{font-size:13px;font-weight:500}
-.toggle .d{font-size:12px;color:var(--muted);margin-top:2px}
-.sw{width:36px;height:22px;background:var(--btn);border-radius:999px;position:relative;flex-shrink:0;border:0;cursor:pointer}
-.sw::after{content:"";position:absolute;width:16px;height:16px;background:var(--thumb);border-radius:50%;top:3px;right:3px}
-.sw.off{background:var(--track)}.sw.off::after{right:auto;left:3px}
-.actions{display:flex;gap:8px;margin-top:14px}
-.btn{
-  display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;
-  border-radius:8px;padding:8px 12px;border:0;cursor:pointer;
-  transition:transform 120ms var(--ease);
-}
-.btn:active{transform:scale(.97)}
-.btn-primary{background:var(--btn);color:var(--btn-fg)}
-.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.btn-danger{background:var(--danger);color:var(--on-danger)}
-.danger .hd{color:var(--danger)}
-.danger .bd{background:var(--danger-bg)}
-.meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:8px}
-.billing-row{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%}
-.billing-name{font-weight:500;font-size:13px}
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; color: inherit; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--fg-muted); }
+.faint { color: var(--fg-faint); }
 
-@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+/* Rails: every band is full-bleed with a 1px rule under it; the 1104px box draws the edge lines */
+.band { border-bottom: 1px solid var(--line); }
+.wrap {
+  max-width: 1104px;
+  margin: 0 auto;
+  padding: 0 48px;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+.wrap.flush { padding: 0; }
+
+/* Nav */
+.nav .wrap {
+  height: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.brand { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 32px; font-size: 14px; color: var(--fg-muted); }
+.nav-links a { transition: color 150ms var(--ease-out); }
+.nav-links a:hover { color: var(--fg); }
+.nav-actions { display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 36px; padding: 0 14px;
+  border: 0; border-radius: var(--r-button);
+  font-size: 14px; font-weight: 500; line-height: 20px;
+  white-space: nowrap; cursor: pointer;
+  transition: transform 120ms var(--ease-out), background-color 150ms var(--ease-out);
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--fg); color: var(--on-fg); box-shadow: 0 0 0 1px var(--fg), 0 1px 2px var(--sh-1); }
+.btn-secondary { background: var(--bg); color: var(--fg); box-shadow: 0 0 0 1px var(--ring); }
+.btn-secondary:hover { background: var(--tint); }
+.btn-sm { height: 32px; font-size: 13px; border-radius: var(--r-control); padding: 0 12px; }
+.btn-block { width: 100%; }
+.btn i { font-size: 16px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Type */
+.h1 {
+  font-size: 60px; line-height: 60px; font-weight: 600; letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.h1 .second, .h2 .second { color: var(--fg-faint); }
+.h2 { font-size: 40px; line-height: 44px; font-weight: 600; letter-spacing: -0.025em; text-wrap: balance; }
+.lead { font-size: 18px; line-height: 28px; color: var(--fg-muted); }
+.small { font-size: 14px; line-height: 20px; }
+.meta { font-size: 12px; line-height: 16px; }
+.line { display: block; }
+
+/* Status glyphs (14px, 1.5 stroke) */
+.st { width: 14px; height: 14px; flex: none; display: block; }
+.st-todo, .st-backlog { color: var(--fg-faint); }
+.st-progress { color: var(--amber); }
+.st-review { color: var(--blue); }
+.st-done { color: var(--green); }
+.st-canceled { color: var(--fg-faint); }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex: none; display: inline-block; }
+.dot.green { background: var(--green); }
+.dot.amber { background: var(--amber); }
+.dot.blue { background: var(--blue); }
+.dot.red { background: var(--danger); }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 20px; padding: 0 8px; border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--line);
+  font-size: 12px; line-height: 16px; color: var(--fg-muted); white-space: nowrap;
+}
+.avatar {
+  width: 20px; height: 20px; border-radius: 50%; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--tint); color: var(--fg-muted);
+  font-size: 9px; font-weight: 600; letter-spacing: 0;
+}
+
+/* Bezel */
+.bezel {
+  padding: 4px; border-radius: var(--r-bezel);
+  background: var(--bg-raised);
+  box-shadow: 0 0 0 1px var(--line), 0 1px 2px var(--sh-1), 0 10px 15px -3px var(--sh-2);
+}
+.bezel > .screen {
+  border-radius: var(--r-inner); background: var(--bg-card);
+  box-shadow: 0 0 0 1px var(--line); overflow: hidden;
+}
+.ellipsis { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+  .btn:active { transform: none; }
+}
+
+
+body { background: var(--bg-raised); font-size: 14px; line-height: 20px; }
+.app { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: 100vh; }
+
+/* Rail */
+.rail { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 12px; box-shadow: 1px 0 0 var(--line-soft); }
+.rail-top { height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; color: var(--fg-muted); font-size: 13px; }
+.rail-top i { font-size: 16px; }
+.wordmark { padding: 12px 8px 4px; font-weight: 600; font-size: 14px; }
+.rail-group { font-size: 12px; line-height: 16px; color: var(--fg-faint); padding: 16px 8px 4px; }
+.rail-item { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 8px; border-radius: var(--r-control); color: var(--fg-muted); font-size: 13px; cursor: pointer; }
+.rail-item i { font-size: 16px; color: var(--fg-faint); }
+.rail-item:hover { background: var(--tint); }
+.rail-item[aria-current="page"] { background: var(--tint); color: var(--fg); font-weight: 500; }
+.rail-item[aria-current="page"] i { color: var(--fg); }
+.rail-item .chev { display: none; }
+.rail-foot { margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 13px; }
+.rail-foot .who { min-width: 0; }
+.rail-foot .who span { display: block; font-size: 12px; line-height: 16px; color: var(--fg-faint); }
+.avatar.lg { width: 28px; height: 28px; font-size: 11px; }
+
+/* Content: left-aligned reading column, 48px from the rail, max 680 */
+.content { padding: 40px 48px 64px; }
+.col { max-width: 680px; }
+.page-title { font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.01em; }
+.page-desc { margin-top: 4px; color: var(--fg-muted); }
+.mhead { display: none; }
+
+.panel { margin-top: 24px; background: var(--bg-card); border-radius: var(--r-panel); box-shadow: 0 0 0 1px var(--line); }
+.panel-head { height: 48px; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid var(--line-soft); font-weight: 600; }
+.panel-head.danger { color: var(--danger); }
+.panel-body { padding: 24px; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 16px; }
+.field label { display: block; font-size: 13px; line-height: 20px; font-weight: 500; margin-bottom: 4px; }
+.hint { margin-top: 4px; font-size: 12px; line-height: 16px; color: var(--fg-faint); }
+.hint.error { color: var(--danger); }
+.control {
+  width: 100%; height: 32px; padding: 0 10px; border: 0; border-radius: var(--r-control);
+  background: var(--bg-card); box-shadow: 0 0 0 1px var(--ring); font-size: 13px; line-height: 20px;
+  transition: box-shadow 150ms var(--ease-out);
+}
+.control::placeholder { color: var(--fg-faint); }
+.control:focus { outline: none; }
+.control:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.control[aria-invalid="true"] { box-shadow: 0 0 0 1px var(--danger); }
+.prefixed { display: flex; align-items: center; height: 32px; border-radius: var(--r-control); box-shadow: 0 0 0 1px var(--ring); background: var(--bg-card); }
+.prefixed span { padding: 0 0 0 10px; color: var(--fg-faint); font-size: 13px; white-space: nowrap; }
+.prefixed .control { box-shadow: none; padding-left: 0; }
+.prefixed:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.prefixed .control:focus-visible { outline: none; }
+.select { position: relative; }
+.select select { appearance: none; -webkit-appearance: none; padding-right: 32px; cursor: pointer; }
+.select i { position: absolute; right: 8px; top: 8px; font-size: 16px; color: var(--fg-faint); pointer-events: none; }
+.actions { display: flex; gap: 8px; align-items: center; margin-top: 24px; }
+.saved { font-size: 12px; line-height: 16px; color: var(--success, var(--green)); display: inline-flex; align-items: center; gap: 4px; opacity: 0; transition: opacity 150ms var(--ease-out); }
+.saved.on { opacity: 1; }
+.saved i { font-size: 14px; }
+.btn-app { height: 32px; font-size: 13px; border-radius: var(--r-control); padding: 0 12px; }
+.btn-danger { color: var(--danger); }
+
+/* Setting rows: label + one-line description left, control right */
+.srow { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 24px; }
+.srow + .srow { border-top: 1px solid var(--line-soft); }
+.srow .txt { min-width: 0; }
+.srow .txt b { font-weight: 500; display: block; }
+.srow .txt span { color: var(--fg-muted); font-size: 13px; }
+.srow .btn { flex: none; }
+
+/* Switch: 32x20 track, 16px thumb, 2px inset */
+.switch { flex: none; width: 32px; height: 20px; padding: 2px; border: 0; border-radius: 10px; background: var(--ring); cursor: pointer; transition: background-color 150ms var(--ease-out); position: relative; }
+.switch::after { content: ""; display: block; width: 16px; height: 16px; border-radius: 8px; background: var(--bg-card); box-shadow: 0 1px 2px var(--sh-2); transition: transform 150ms var(--ease-out); }
+.switch[aria-checked="true"] { background: var(--fg); }
+.switch[aria-checked="true"]::after { transform: translateX(12px); }
+.switch::before { content: ""; position: absolute; inset: -12px -6px; } /* 44px hit target without growing the visual */
+
+.plan-meta { color: var(--fg-muted); font-size: 13px; }
+
+@media (max-width: 760px) {
+  body { background: var(--bg-raised); }
+  .app { display: block; }
+  .rail { position: static; height: auto; min-height: 100vh; padding: 0 0 24px; box-shadow: none; }
+  .rail-top { display: none; }
+  .mhead { display: flex; height: 48px; align-items: center; gap: 4px; padding: 0 8px; border-bottom: 1px solid var(--line-soft); background: var(--bg-raised); font-weight: 600; }
+  .mhead .back { width: 44px; height: 44px; border: 0; background: transparent; display: inline-flex; align-items: center; justify-content: center; font-size: 20px; border-radius: var(--r-control); cursor: pointer; }
+  .wordmark { padding: 20px 20px 4px; }
+  .rail-group { padding: 20px 20px 8px; }
+  .rail-list { margin: 0 12px; background: var(--bg-card); border-radius: var(--r-panel); box-shadow: 0 0 0 1px var(--line); overflow: hidden; }
+  .rail-item { height: 44px; border-radius: 0; padding: 0 12px; font-size: 14px; color: var(--fg); }
+  .rail-item + .rail-item { border-top: 1px solid var(--line-soft); }
+  .rail-item[aria-current="page"] { background: transparent; font-weight: 400; }
+  .rail-item i { color: var(--fg-muted); }
+  .rail-item .chev { display: block; margin-left: auto; color: var(--fg-faint); }
+  .rail-foot { margin: 20px 12px 0; padding: 12px; background: var(--bg-card); border-radius: var(--r-panel); box-shadow: 0 0 0 1px var(--line); }
+  .content { display: none; padding: 0 0 48px; }
+  body[data-view="detail"] .rail { display: none; }
+  body[data-view="detail"] .content { display: block; }
+  .content .col { padding: 0 12px; }
+  .page-title, .page-desc { display: none; }
+  .panel:first-of-type { margin-top: 16px; }
+  .fields { grid-template-columns: minmax(0, 1fr); }
+  .panel-head, .panel-body { padding-left: 16px; padding-right: 16px; }
+  .srow { padding: 16px; }
+}
 </style>
 </head>
-<body>
-<div class="shell">
-  <aside class="side">
-    <div class="mark">Orbit</div>
-    <a class="on" href="#">Profile</a>
-    <a href="#">Billing</a>
-    <a href="#">Team</a>
-    <a href="#">Notifications</a>
-    <div class="sec">Workspace</div>
-    <a href="#">Danger zone</a>
-  </aside>
-  <main class="main">
-    <h1>Profile</h1>
-    <p class="lede">Account details for maya@orbit.dev</p>
+<body data-view="list">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="g-todo" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.75" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="g-backlog" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.75" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></symbol>
+  <symbol id="g-progress" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.75" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 3.5 A3.5 3.5 0 0 1 7 10.5 Z" fill="currentColor"/></symbol>
+  <symbol id="g-review" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.75" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 3.5 A3.5 3.5 0 1 1 3.5 7 L7 7 Z" fill="currentColor"/></symbol>
+  <symbol id="g-done" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6.5" fill="currentColor"/><path d="M4.4 7.2 L6.2 9 L9.6 5.4" fill="none" style="stroke: var(--check)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="g-canceled" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6.5" fill="currentColor"/><path d="M5 5 L9 9 M9 5 L5 9" fill="none" style="stroke: var(--check)" stroke-width="1.5" stroke-linecap="round"/></symbol>
+</svg>
 
-    <section class="group">
-      <div class="hd">Account</div>
-      <div class="bd">
-        <div class="row2">
-          <div class="field"><label for="name">Display name</label><input id="name" value="Maya Chen"/></div>
-          <div class="field"><label for="email">Email</label><input id="email" type="email" value="maya@orbit.dev"/></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label for="tz">Timezone</label>
-            <select id="tz"><option>America/Los_Angeles</option><option>America/New_York</option><option>UTC</option></select>
-          </div>
-          <div class="field"><label for="role">Role</label><input id="role" value="Admin" disabled/></div>
-        </div>
-        <div class="actions">
-          <button class="btn btn-primary">Save changes</button>
-          <button class="btn btn-ghost">Cancel</button>
-        </div>
-      </div>
-    </section>
+<div class="app">
+  <nav class="rail" aria-label="Settings">
+    <div class="mhead"><span style="padding-left:12px">Settings</span></div>
+    <a class="rail-top" href="#"><i class="bx bx-chevron-left"></i>Back to issues</a>
+    <div class="wordmark">Northwind</div>
+    <div class="rail-group">Account</div>
+    <div class="rail-list">
+      <a class="rail-item"><i class="bx bx-user"></i>Profile<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-slider-alt"></i>Preferences<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-bell"></i>Notifications<i class="bx bx-chevron-right chev"></i></a>
+    </div>
+    <div class="rail-group">Workspace</div>
+    <div class="rail-list">
+      <a class="rail-item" aria-current="page" data-open href="#general"><i class="bx bx-cog"></i>General<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-group"></i>Members<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-sitemap"></i>Teams<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-purchase-tag-alt"></i>Labels<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-plug"></i>Integrations<i class="bx bx-chevron-right chev"></i></a>
+      <a class="rail-item"><i class="bx bx-transfer-alt"></i>Import and export<i class="bx bx-chevron-right chev"></i></a>
+    </div>
+    <div class="rail-foot">
+      <span class="avatar lg">AK</span>
+      <span class="who ellipsis">Ana Kim<span class="ellipsis">ana@northwind.co</span></span>
+    </div>
+  </nav>
 
-    <section class="group">
-      <div class="hd">Notifications</div>
-      <div class="bd">
-        <div class="toggle">
-          <div><div class="t">Product updates</div><div class="d">Weekly digest of shipping notes</div></div>
-          <button class="sw" aria-label="Product updates on"></button>
-        </div>
-        <div class="toggle">
-          <div><div class="t">Billing alerts</div><div class="d">Invoices and failed payments</div></div>
-          <button class="sw" aria-label="Billing alerts on"></button>
-        </div>
-        <div class="toggle">
-          <div><div class="t">Mention emails</div><div class="d">When someone @mentions you</div></div>
-          <button class="sw off" aria-label="Mention emails off"></button>
-        </div>
-      </div>
-    </section>
+  <main class="content" id="general">
+    <div class="mhead"><button class="back" type="button" aria-label="Back to settings" data-back><i class="bx bx-chevron-left"></i></button>General</div>
+    <div class="col">
+      <h1 class="page-title">General</h1>
+      <p class="page-desc">Settings for everyone in the Northwind workspace.</p>
 
-    <section class="group">
-      <div class="hd">Billing</div>
-      <div class="bd">
-        <div class="field billing" style="border:0;padding-top:12px">
-          <div class="billing-row">
-            <div>
-              <div class="billing-name">Team plan</div>
-              <div class="meta">$12 / seat · 14 seats · renews Nov 1</div>
+      <form class="panel" id="ws-form" novalidate>
+        <div class="panel-head">Workspace</div>
+        <div class="panel-body">
+          <div class="fields">
+            <div class="field">
+              <label for="ws-name">Workspace name</label>
+              <input class="control" id="ws-name" value="Northwind" data-initial="Northwind" aria-describedby="ws-name-hint">
+              <p class="hint" id="ws-name-hint">Shown in emails and on shared links.</p>
             </div>
-            <button class="btn btn-ghost">Manage billing</button>
+            <div class="field">
+              <label for="ws-url">Workspace URL</label>
+              <div class="prefixed"><span>trestle.app/</span><input class="control" id="ws-url" value="northwind" data-initial="northwind"></div>
+              <p class="hint">Changing this breaks old links for 30 days.</p>
+            </div>
+            <div class="field">
+              <label for="ws-tz">Time zone</label>
+              <div class="select"><select class="control" id="ws-tz"><option>Pacific Time (Los Angeles)</option><option>Eastern Time (New York)</option><option>Central European Time (Berlin)</option></select><i class="bx bx-chevron-down"></i></div>
+            </div>
+            <div class="field">
+              <label for="ws-week">Week starts on</label>
+              <div class="select"><select class="control" id="ws-week"><option>Monday</option><option>Sunday</option></select><i class="bx bx-chevron-down"></i></div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary btn-app" type="submit">Save changes</button>
+            <button class="btn btn-secondary btn-app" type="reset">Cancel</button>
+            <span class="saved" aria-live="polite"><i class="bx bx-check"></i>Saved</span>
           </div>
         </div>
-      </div>
-    </section>
+      </form>
 
-    <section class="group danger">
-      <div class="hd">Danger zone</div>
-      <div class="bd">
-        <p class="meta" style="margin:12px 0 14px;color:var(--muted)">Delete the Orbit workspace and all issues. This cannot be undone.</p>
-        <button class="btn btn-danger">Delete workspace</button>
-      </div>
-    </section>
+      <section class="panel">
+        <div class="panel-head">Features</div>
+        <div class="srow"><div class="txt"><b>Cycles</b><span>Two-week sprints for each team, with automatic rollover.</span></div><button class="switch" role="switch" aria-checked="true" aria-label="Cycles"></button></div>
+        <div class="srow"><div class="txt"><b>Triage</b><span>Send issues from Slack and email to a review queue first.</span></div><button class="switch" role="switch" aria-checked="true" aria-label="Triage"></button></div>
+        <div class="srow"><div class="txt"><b>Estimates</b><span>Add point estimates to issues and show them on cycles.</span></div><button class="switch" role="switch" aria-checked="false" aria-label="Estimates"></button></div>
+        <div class="srow"><div class="txt"><b>Project update reminders</b><span>Ask project leads for a short update every Friday.</span></div><button class="switch" role="switch" aria-checked="true" aria-label="Project update reminders"></button></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">Plan</div>
+        <div class="srow"><div class="txt"><b>Team plan</b><span class="plan-meta num">12 of 15 seats · $96 per month · Renews Nov 3, 2026</span></div><a class="btn btn-secondary btn-app" href="#">Manage billing</a></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head danger">Danger zone</div>
+        <div class="srow"><div class="txt"><b>Export workspace</b><span class="num">Download 1,284 issues and 46 projects as CSV.</span></div><button class="btn btn-secondary btn-app" type="button">Export data</button></div>
+        <div class="srow"><div class="txt"><b>Delete workspace</b><span>Removes Northwind and every team in it. This cannot be undone.</span></div><button class="btn btn-secondary btn-app btn-danger" type="button">Delete workspace</button></div>
+      </section>
+    </div>
   </main>
 </div>
+
+<script>
+  document.querySelectorAll(".switch").forEach((s) => s.addEventListener("click", () => {
+    s.setAttribute("aria-checked", String(s.getAttribute("aria-checked") !== "true"));
+  }));
+  const form = document.getElementById("ws-form");
+  const saved = form.querySelector(".saved");
+  const name = document.getElementById("ws-name");
+  const hint = document.getElementById("ws-name-hint");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const empty = name.value.trim() === "";
+    name.setAttribute("aria-invalid", String(empty));
+    hint.className = "hint" + (empty ? " error" : "");
+    hint.textContent = empty ? "Enter a workspace name, such as Northwind." : "Shown in emails and on shared links.";
+    saved.classList.toggle("on", !empty);
+    if (!empty) setTimeout(() => saved.classList.remove("on"), 2000);
+  });
+  form.addEventListener("reset", () => { saved.classList.remove("on"); name.removeAttribute("aria-invalid"); hint.className = "hint"; hint.textContent = "Shown in emails and on shared links."; });
+  const mq = matchMedia("(max-width: 760px)");
+  document.querySelector("[data-open]").addEventListener("click", (e) => { if (mq.matches) { e.preventDefault(); document.body.dataset.view = "detail"; scrollTo(0, 0); } });
+  document.querySelector("[data-back]").addEventListener("click", () => { document.body.dataset.view = "list"; });
+</script>
 </body>
 </html>

@@ -40,6 +40,7 @@ Read the reference that matches the decision. Do not skim them all up front.
 | Chat, sidebars, settings, dashboards | `references/product-ui.md` |
 | SaaS / marketing landings | `references/saas.md` |
 | Landing page numbers (grid, type, buttons, product bezel, pricing) | `references/landing.md` |
+| App shell, forms, states, auth, docs, 404, chat, mobile numbers | `references/app-specs.md` |
 | Before/after self-check | `references/critique-rubric.md` |
 
 Optional: `node <this-skill>/scripts/lint.mjs <paths…>` greps for common tells.
@@ -69,7 +70,7 @@ building is cheap?
    not apply.
 6. **Layout.** Product density in apps. For product marketing: a 1104px
    container on structural rails, a two-line hero, the real product in a bezel
-   inside the fold, features as grid cells. Numbers in `references/landing.md`.
+   inside the fold, features as grid cells. Numbers and recipes (hero composition, product fragment, feature cells, wordmarks, pricing anatomy) in `references/landing.md`; follow them literally.
    No stat-card heroes, no fake feature row tables, no serif-section rhythm.
 7. **Copy.** Buttons name the action (“Send invite”, not “Submit”). No stock AI
    phrases. No eyebrow / pill kickers above headlines.
@@ -97,7 +98,7 @@ Write a plan of one screenful or less:
 - what stays vs what dies
 - risks / contract tests / unknowns
 
-**Wait for explicit OK before writing code.** If the user already approved a
+**Wait for explicit OK before writing code.** A brief that says build, make, or ship now counts as approval: state the plan in three lines and proceed. If the user already approved a
 plan in-thread, proceed. Do not silently expand scope.
 
 ### 3. One surface per pass

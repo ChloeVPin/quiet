@@ -61,6 +61,12 @@ const rules = [
     msg: "scale(0) — enter from ~0.9–0.95 instead",
   },
   {
+    id: "raw-color-fn",
+    severity: "WARN",
+    re: /\b(?:rgba?|hsla?|oklch)\s*\(/i,
+    msg: "raw rgb()/hsl() color — move into a token definition",
+  },
+  {
     id: "stock-copy",
     severity: "WARN",
     re: /supercharge|seamless experience|unlock the future|in today's fast-paced|delve into|elevate your/i,
@@ -111,7 +117,7 @@ function isThemePath(p) {
 
 function isTokenDefinition(line) {
   // CSS custom properties are where hex belongs
-  return /--[\w-]+\s*:\s*#/.test(line);
+  return /--[\w-]+\s*:\s*(?:#|(?:rgba?|hsla?|oklch)\s*\()/i.test(line);
 }
 
 const files = roots.flatMap((r) => walk(path.resolve(r)));
@@ -124,7 +130,7 @@ for (const file of files) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     for (const rule of rules) {
-      if (rule.id === "raw-hex" && (isThemePath(file) || isTokenDefinition(line))) continue;
+      if ((rule.id === "raw-hex" || rule.id === "raw-color-fn") && (isThemePath(file) || isTokenDefinition(line))) continue;
       if (!rule.re.test(line)) continue;
       const tag = rule.severity;
       if (tag === "FAIL") fails++;

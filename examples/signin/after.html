@@ -3,63 +3,198 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Orbit · Sign in</title>
+<title>Sign in · Trestle</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <style>
-
-:root{
-  --bg:#fafafa;--panel:#ffffff;--panel2:#f3f3f4;--line:#e8e8ea;
-  --fg:#111113;--muted:#6b6f76;--faint:#9b9fa6;
-  --accent:#5e6ad2;--green:#1f8a5b;--amber:#b58105;--red:#c43c3c;
-  --btn:#111113;--btn-fg:#ffffff;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{box-sizing:border-box;margin:0}
-html{-webkit-font-smoothing:antialiased}
+:root{--k04:rgb(0 0 0/.04);--k05:rgb(0 0 0/.05);--k06:rgb(0 0 0/.06);--k08:rgb(0 0 0/.08);--k20:rgb(0 0 0/.2);--k40:rgb(0 0 0/.4);--k60:rgb(0 0 0/.6)}
+:root{--bg:#fff;--bg2:#fafafa;--fg:#09090b;--fg2:#52525c;--fg3:#9f9fa9;--line:rgb(9 9 11/.1);--line2:rgb(9 9 11/.06);--card:#fff;
+--btn:#18181b;--btnfg:#fff;--btn2:#fff;--btn2fg:#09090b;--ring:rgb(9 9 11/.12);--ok:#16a34a;--warn:#d97706;--info:#2563eb;--shadow:0 1px 2px var(--k06),0 10px 15px -3px var(--k05)}
+.dark{--bg:#09090b;--bg2:#0e0e11;--fg:#fafafa;--fg2:#a1a1aa;--fg3:#71717b;--line:rgb(255 255 255/.1);--line2:rgb(255 255 255/.06);--card:#111113;
+--btn:#fafafa;--btnfg:#09090b;--btn2:rgb(255 255 255/.06);--btn2fg:#fafafa;--ring:rgb(255 255 255/.12);--ok:#4ade80;--warn:#fbbf24;--info:#60a5fa;--shadow:0 20px 40px -12px var(--k60)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--fg);font:400 16px/24px Inter,system-ui,sans-serif;font-feature-settings:"cv11","ss01"}
 a{color:inherit;text-decoration:none}
+.c{width:min(1104px,calc(100% - 48px));margin:0 auto}
+.c-md{width:min(1024px,calc(100% - 48px));margin:0 auto}
+.num{font-variant-numeric:tabular-nums}
+/* nav */
+.nav{height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.nav .brand{font:600 16px/1 Inter;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.nav .links{display:flex;gap:32px;font-size:14px;color:var(--fg2)}
+.nav .links a:hover{color:var(--fg)}
+.nav .act{display:flex;gap:8px;justify-content:flex-end}
+.bar{border-bottom:1px solid var(--line)}
+/* buttons: one height per row, 6px radius, ring + tiny drop */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;font:500 14px/20px Inter;white-space:nowrap;cursor:pointer;border:0;transition:opacity .15s,background .15s}
+.b.sm{height:32px;padding:0 12px;font-size:13px;border-radius:6px}
+.b.p{background:var(--btn);color:var(--btnfg);box-shadow:0 0 0 1px var(--btn),0 1px 2px var(--k20)}
+.b.s{background:var(--btn2);color:var(--btn2fg);box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k06)}
+.b.p:hover{opacity:.9}.b.s:hover{background:var(--line2)}
+.b.w{width:100%}
+/* type */
+.h1{font:600 60px/60px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h2{font:600 40px/44px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h3{font:600 20px/28px Inter;letter-spacing:-.01em}
+.lead{font-size:18px;line-height:28px;color:var(--fg2);text-wrap:pretty}
+.mute{color:var(--fg2)}.faint{color:var(--fg3)}
+.tone{color:var(--fg3)}
+.stmt{font:500 20px/28px Inter;letter-spacing:-.01em;text-wrap:pretty}.stmt span{color:var(--fg2)}
+.sm-t{font-size:14px;line-height:20px}
+.xs-t{font-size:12px;line-height:16px}
+.sec{padding:96px 0}
+/* bezel frame for product shots */
+.bezel{padding:4px;border-radius:14px;background:var(--bg2);box-shadow:0 0 0 1px var(--line),var(--shadow)}
+.bezel>.in{border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line);background:var(--card)}
+/* hairline grid shell */
+.rails{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hr{border-top:1px solid var(--line)}
+i.bx{font-size:16px;line-height:1;vertical-align:-2px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;color:var(--fg2)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+@media (max-width:760px){
+ .nav{grid-template-columns:1fr auto}.nav .links{display:none}
+ .h1{font-size:40px;line-height:44px}.h2{font-size:30px;line-height:36px}
+ .lead{font-size:17px;line-height:26px}
+ [class*="grid"],.cells,.three,.head,.quote,.stats,.logos,footer .c{grid-template-columns:1fr!important}
+ .cell+.cell,.three>div+div,.stats div+div{border-left:0!important;border-top:1px solid var(--line)}
+ .head,.cell,.three>div,.quote,.end,.hero{padding-left:20px!important;padding-right:20px!important}
+ .shot{padding:0 12px!important}
+ .app{grid-template-columns:1fr!important}.app .side{display:none}
+ .app .row{grid-template-columns:56px 16px 1fr 48px}.app .row .lb,.app .row .av{display:none}.app .tb .pill:first-of-type{display:none}.hero{padding-top:64px!important;padding-bottom:48px!important}
+ .tb .faint.xs-t{display:none}
+ .logos{height:auto!important;padding:24px 0;gap:16px}
+}
+/* ---------- app kit ---------- */
+:root{--danger:#dc2626;--focus:#2563eb;--hl:rgb(245 158 11/.22)}
+.dark{--danger:#f87171;--focus:#60a5fa;--hl:rgb(245 158 11/.28)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);height:100vh;min-height:620px}
+.rail{background:var(--bg2);border-right:1px solid var(--line);padding:10px 8px;display:flex;flex-direction:column;font-size:13px;line-height:18px;overflow:hidden}
+.rail .ws{display:flex;align-items:center;gap:6px;height:32px;padding:0 8px;font-weight:600;font-size:14px;margin-bottom:6px}
+.rail .ws .sp{flex:1}.rail .ws i{color:var(--fg3)}
+.rail a{display:flex;align-items:center;gap:8px;height:32px;padding:0 8px;border-radius:6px;color:var(--fg2);transition:background .15s,color .15s}
+.rail a i{font-size:16px;color:var(--fg3)}
+.rail a:hover{background:var(--line2);color:var(--fg)}
+.rail a.on{background:var(--line2);color:var(--fg);font-weight:500}.rail a.on i{color:var(--fg)}
+.rail .ct{margin-left:auto;font-size:12px;color:var(--fg3)}
+.rail .gl{font-size:12px;color:var(--fg3);padding:16px 8px 6px}
+.rail .me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px}
+.av{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--fg2);font-size:10px;font-weight:600;display:inline-grid;place-items:center;flex:none}
+.top{display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-bottom:1px solid var(--line);font-size:13px}
+.top .sp{flex:1}.top .crumb{color:var(--fg2)}.top .crumb b{color:var(--fg);font-weight:500}
+.ib{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:6px;color:var(--fg2)}.ib:hover{background:var(--line2);color:var(--fg)}.ib i{font-size:18px}
+.panel{background:var(--card);border-radius:12px;box-shadow:0 0 0 1px var(--line)}
+.panel>.ph{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--line2);font-size:13px;font-weight:500}
+.panel>.ph .sp{flex:1}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{height:36px;padding:0 16px;text-align:left;font-weight:500;font-size:12px;color:var(--fg3);border-bottom:1px solid var(--line2)}
+.tbl td{height:40px;padding:0 16px;border-bottom:1px solid var(--line2);color:var(--fg2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.p{color:var(--fg);font-weight:500}.tbl .r{text-align:right}
+.tbl tr:hover td{background:var(--line2)}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:8px}
+.inp{height:36px;width:100%;padding:0 12px;border-radius:8px;border:0;background:var(--card);color:var(--fg);font:400 14px Inter;box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k05);transition:box-shadow .15s}
+.inp::placeholder{color:var(--fg3)}
+.inp:focus{outline:none;box-shadow:0 0 0 1px var(--fg3),0 0 0 3px var(--line)}
+.seg{display:inline-flex;padding:2px;border-radius:8px;background:var(--line2);box-shadow:inset 0 0 0 1px var(--line)}
+.seg a{height:28px;padding:0 10px;display:flex;align-items:center;font-size:12px;font-weight:500;border-radius:6px;color:var(--fg2)}
+.seg a.on{background:var(--card);color:var(--fg);box-shadow:0 0 0 1px var(--line),0 1px 2px var(--k08)}
+kbd{font:500 11px/1 Inter;color:var(--fg3);padding:3px 5px;border-radius:4px;box-shadow:0 0 0 1px var(--line);background:var(--bg2)}
+.up{color:var(--ok)}.dn{color:var(--danger)}
+.b:active{transform:scale(.97)}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;font:500 13px/1 Inter,system-ui,sans-serif;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;transition:transform 120ms var(--ease)}
-.btn:active{transform:scale(.97)}
-.btn-primary{background:var(--btn);color:var(--btn-fg)}
-.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.btn-block{width:100%;padding:10px 12px}
+.app{display:grid;grid-template-columns:232px 1fr;font-size:13px;line-height:18px;min-height:560px;text-align:left}
+.side{border-right:1px solid var(--line);padding:10px 8px;background:var(--bg2)}
+.side .ws{display:flex;align-items:center;gap:6px;padding:6px 8px 12px;font-weight:600}
+.side .ws .sp{flex:1}
+.side a{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:6px;color:var(--fg2)}
+.side a.on{background:var(--line2);color:var(--fg)}
+.side a.sub{padding-left:28px}
+.side .ct{margin-left:auto;font-size:12px;color:var(--fg3)}
+.side .gl{font-size:12px;color:var(--fg3);padding:16px 8px 4px}
+.main{min-width:0}
+.tb{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--line);font-weight:500}
+.tb .sp{flex:1}
+.pill{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px;border-radius:6px;box-shadow:0 0 0 1px var(--line);font-size:12px;color:var(--fg2);font-weight:500}
+.grp{display:flex;align-items:center;gap:8px;height:36px;padding:0 16px;background:var(--line2);font-weight:500}
+.row{display:grid;grid-template-columns:64px 18px 1fr auto 24px 52px;align-items:center;gap:10px;height:40px;padding:0 16px;border-top:1px solid var(--line2)}
+.row .pr{color:var(--fg3);font-size:12px}
+.row .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.row .lb{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--fg2)}
+.row .av{width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--fg2);font-size:9px;font-weight:600;display:grid;place-items:center}
+.row .d{font-size:12px;color:var(--fg3);text-align:right}
 
-body{background:var(--bg);color:var(--fg);font:14px/1.5 Inter,system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}
-.card{width:min(380px,100%);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px 28px 24px}
-.mark{font-size:13px;font-weight:600;letter-spacing:-.01em;margin-bottom:20px}
-h1{font-size:18px;font-weight:510;letter-spacing:-.02em;margin-bottom:6px}
-.lede{font-size:13px;color:var(--muted);margin-bottom:22px}
-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-input{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);font:14px/1.4 Inter,system-ui,sans-serif;margin-bottom:14px}
-input:focus{outline:2px solid var(--fg);outline-offset:1px}
-.row{display:flex;justify-content:space-between;align-items:center;margin:-4px 0 16px;font-size:12px}
-.row a{color:var(--muted)}
-.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--faint);font-size:12px}
-.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
-.alt{margin-top:18px;font-size:13px;color:var(--muted);text-align:center}
-.alt a{color:var(--fg);font-weight:500}
-
-@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding:16px;gap:16px;background:var(--bg2)}
+.l{display:flex;flex-direction:column;padding:40px 0 24px}
+.form{width:320px;margin:auto}
+.brand{font:600 16px/1 Inter;letter-spacing:-.02em}
+.form h1{font:600 20px/28px Inter;letter-spacing:-.01em;margin-top:40px}
+.form .sub{font-size:14px;line-height:20px;color:var(--fg2);margin-top:4px}
+.soc{display:grid;gap:8px;margin-top:28px}.soc .b{background:var(--card)}
+.soc .b i{font-size:16px}
+.or{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin:24px 0;font-size:12px;color:var(--fg3)}.or::before,.or::after{content:"";height:1px;background:var(--line)}
+.field+.field{margin-top:16px}
+.field .lr{display:flex;justify-content:space-between}.field .lr a{font-size:13px;color:var(--fg2)}
+.form .go{margin-top:20px}
+.alt{margin-top:24px;font-size:14px;color:var(--fg2)}.alt a{color:var(--fg);font-weight:500}
+.foot{width:320px;margin:0 auto;display:flex;gap:20px;font-size:13px;color:var(--fg3)}
+.r{border-radius:16px;background:var(--card);box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;padding:48px;overflow:hidden}
+.r blockquote{font:500 22px/32px Inter;letter-spacing:-.015em;max-width:440px;text-wrap:pretty}
+.r .who{display:flex;gap:12px;align-items:center;margin-top:24px;font-size:14px}.r .who img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.r .who span{display:block;color:var(--fg2);font-size:13px}
+.r .shot{margin-top:auto;margin-right:-120px;margin-bottom:-60px}
+@media (max-width:900px){.split{grid-template-columns:1fr;padding:0;background:var(--bg)}.r{display:none}.form{width:auto;margin:0 20px}.l{padding:32px 0 24px}.foot{width:auto;margin:32px 20px 0}}
 </style>
 </head>
 <body>
-
-<div class="card">
-  <div class="mark">Orbit</div>
-  <h1>Sign in</h1>
-  <p class="lede">Use your work email to continue.</p>
-  <form>
-    <label for="email">Email</label>
-    <input id="email" type="email" value="maya@orbit.dev" autocomplete="username"/>
-    <label for="password">Password</label>
-    <input id="password" type="password" value="••••••••••••" autocomplete="current-password"/>
-    <div class="row"><span></span><a href="#">Forgot password</a></div>
-    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-  </form>
-  <div class="divider">or</div>
-  <button class="btn btn-ghost btn-block" type="button">Continue with Google</button>
-  <p class="alt">No account? <a href="#">Create one</a></p>
+<div class="split">
+ <div class="l"><div class="form">
+  <div class="brand">Trestle</div>
+  <h1>Sign in to Trestle</h1><p class="sub">Welcome back. Use your work account.</p>
+  <div class="soc"><a class="b s w"><i class="bx bxl-google"></i>Continue with Google</a><a class="b s w"><i class="bx bxl-github"></i>Continue with GitHub</a><a class="b s w"><i class="bx bx-key"></i>Continue with SSO</a></div>
+  <div class="or">or</div>
+  <form onsubmit="return false"><div class="field"><label for="e">Work email</label><input id="e" class="inp" type="email" placeholder="you@company.com" value="ana@northwind.co"/></div>
+  <div class="field"><div class="lr"><label for="p">Password</label><a>Forgot password?</a></div><input id="p" class="inp" type="password" value="password123"/></div>
+  <button class="b p w go">Sign in</button></form>
+  <p class="alt">New to Trestle? <a>Create a workspace</a></p>
+ </div>
+ <div class="foot"><a>Privacy</a><a>Terms</a><a>Status</a><span style="margin-left:auto">© 2026 Trestle</span></div></div>
+ <div class="r">
+  <blockquote>We moved 60 people off three trackers in a week. Planning went from a Friday chore to a five-minute check.</blockquote>
+  <div class="who"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=faces&q=80" alt=""/><div>Ana Kim<span>Head of Engineering, Northwind</span></div></div>
+  <div class="shot bezel"><div class="in"><div class="app">
+ <aside class="side">
+  <div class="ws"><span>Northwind</span><i class="bx bx-chevron-down faint"></i><span class="sp"></span><i class="bx bx-search faint"></i><i class="bx bx-edit faint"></i></div>
+  <a class="on"><i class="bx bx-envelope"></i>Inbox<span class="ct num">4</span></a>
+  <a><i class="bx bx-user-circle"></i>My issues</a>
+  <div class="gl">Workspace</div>
+  <a><i class="bx bx-layer"></i>Projects</a><a><i class="bx bx-refresh"></i>Cycles</a><a><i class="bx bx-group"></i>Members</a>
+  <div class="gl">Your teams</div>
+  <a><i class="bx bx-chevron-down faint"></i>Platform</a>
+  <a class="sub"><i class="bx bx-copy-alt"></i>Issues</a><a class="sub"><i class="bx bx-refresh"></i>Cycles</a><a class="sub"><i class="bx bx-layer"></i>Projects</a>
+  <a><i class="bx bx-chevron-right faint"></i>Mobile</a>
+  <a><i class="bx bx-chevron-right faint"></i>Growth</a>
+ </aside>
+ <section class="main">
+  <div class="tb"><span><i class="bx bx-copy-alt faint"></i> Platform <span class="faint">/</span> Cycle 42</span><span class="sp"></span><span class="faint xs-t num">Oct 13 to Oct 26</span><span class="pill"><i class="bx bx-filter"></i>Filter</span><span class="pill"><i class="bx bx-slider-alt"></i>Display</span></div>
+  <div class="grp"><i class="bx bx-adjust" style="color:var(--warn)"></i>In progress <span class="faint num">4</span></div>
+  <div class="row"><span class="pr num">PLT-512</span><i class="bx bx-adjust" style="color:var(--warn)"></i><span class="t">Retry webhook deliveries with jittered backoff</span><span class="lb"><span class="dot" style="background:var(--info)"></span>Backend</span><span class="av">MA</span><span class="d num">Oct 16</span></div>
+  <div class="row"><span class="pr num">PLT-509</span><i class="bx bx-adjust" style="color:var(--warn)"></i><span class="t">Cursor pagination for the events endpoint</span><span class="lb"><span class="dot" style="background:var(--info)"></span>API</span><span class="av">JO</span><span class="d num">Oct 17</span></div>
+  <div class="row"><span class="pr num">PLT-503</span><i class="bx bx-adjust" style="color:var(--warn)"></i><span class="t">Audit log export to CSV</span><span class="lb"><span class="dot" style="background:var(--ok)"></span>Enterprise</span><span class="av">CV</span><span class="d num">Oct 20</span></div>
+  <div class="row"><span class="pr num">PLT-498</span><i class="bx bx-adjust" style="color:var(--warn)"></i><span class="t">Rate limit headers on every response</span><span class="lb"><span class="dot" style="background:var(--info)"></span>API</span><span class="av">RK</span><span class="d num">Oct 21</span></div>
+  <div class="grp"><i class="bx bx-circle faint"></i>Todo <span class="faint num">6</span></div>
+  <div class="row"><span class="pr num">PLT-521</span><i class="bx bx-circle faint"></i><span class="t">Rotate signing secrets without downtime</span><span class="lb"><span class="dot" style="background:var(--warn)"></span>Security</span><span class="av">MA</span><span class="d num">Oct 22</span></div>
+  <div class="row"><span class="pr num">PLT-518</span><i class="bx bx-circle faint"></i><span class="t">Move job queue metrics into the usage page</span><span class="lb"><span class="dot" style="background:var(--ok)"></span>Billing</span><span class="av">JO</span><span class="d num">Oct 23</span></div>
+  <div class="row"><span class="pr num">PLT-516</span><i class="bx bx-circle faint"></i><span class="t">SCIM group sync for Okta</span><span class="lb"><span class="dot" style="background:var(--ok)"></span>Enterprise</span><span class="av">CV</span><span class="d num">Oct 24</span></div>
+  <div class="row"><span class="pr num">PLT-514</span><i class="bx bx-circle faint"></i><span class="t">Dead-letter queue viewer</span><span class="lb"><span class="dot" style="background:var(--info)"></span>Backend</span><span class="av">RK</span><span class="d num">Oct 24</span></div>
+  <div class="row"><span class="pr num">PLT-511</span><i class="bx bx-circle faint"></i><span class="t">Regional failover for EU workspaces</span><span class="lb"><span class="dot" style="background:var(--info)"></span>Infra</span><span class="av">MA</span><span class="d num">Oct 25</span></div>
+  <div class="row"><span class="pr num">PLT-507</span><i class="bx bx-circle faint"></i><span class="t">Empty state for projects without issues</span><span class="lb"><span class="dot" style="background:var(--warn)"></span>Design</span><span class="av">JO</span><span class="d num">Oct 26</span></div>
+ </section>
 </div>
-
+</div></div>
+ </div>
+</div>
 </body>
 </html>

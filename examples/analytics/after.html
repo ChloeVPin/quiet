@@ -3,147 +3,190 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Pulse</title>
+<title>Halyard · Overview</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <style>
-:root{
-  --bg:#08090a;--panel:#0f1011;--panel2:#161719;--line:#23252a;
-  --fg:#e5e5e6;--muted:#8a8f98;--faint:#5c616a;
-  --accent:#5e6ad2;--green:#4cb782;--amber:#f2c94c;--red:#eb5757;
-  --btn:#e5e5e6;--btn-fg:#08090a;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{box-sizing:border-box;margin:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
+:root{--k04:rgb(0 0 0/.04);--k05:rgb(0 0 0/.05);--k06:rgb(0 0 0/.06);--k08:rgb(0 0 0/.08);--k20:rgb(0 0 0/.2);--k40:rgb(0 0 0/.4);--k60:rgb(0 0 0/.6)}
+:root{--bg:#fff;--bg2:#fafafa;--fg:#09090b;--fg2:#52525c;--fg3:#9f9fa9;--line:rgb(9 9 11/.1);--line2:rgb(9 9 11/.06);--card:#fff;
+--btn:#18181b;--btnfg:#fff;--btn2:#fff;--btn2fg:#09090b;--ring:rgb(9 9 11/.12);--ok:#16a34a;--warn:#d97706;--info:#2563eb;--shadow:0 1px 2px var(--k06),0 10px 15px -3px var(--k05)}
+.dark{--bg:#09090b;--bg2:#0e0e11;--fg:#fafafa;--fg2:#a1a1aa;--fg3:#71717b;--line:rgb(255 255 255/.1);--line2:rgb(255 255 255/.06);--card:#111113;
+--btn:#fafafa;--btnfg:#09090b;--btn2:rgb(255 255 255/.06);--btn2fg:#fafafa;--ring:rgb(255 255 255/.12);--ok:#4ade80;--warn:#fbbf24;--info:#60a5fa;--shadow:0 20px 40px -12px var(--k60)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--fg);font:400 16px/24px Inter,system-ui,sans-serif;font-feature-settings:"cv11","ss01"}
 a{color:inherit;text-decoration:none}
-.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
-.side{background:var(--panel2);border-right:1px solid var(--line);padding:14px 10px;font-size:13px}
-.side .ws{padding:6px 8px;margin-bottom:14px;font-weight:600;font-size:13px;letter-spacing:-.01em}
-.side a{display:flex;align-items:center;padding:7px 8px;border-radius:6px;color:var(--muted)}
-.side a.on{background:rgba(255,255,255,.06);color:var(--fg)}
-.side .sec{margin:16px 8px 6px;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
-.main{padding:20px 28px 48px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.top h1{font-size:14px;font-weight:500}
-.top .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.actions{display:flex;gap:8px;align-items:center}
-.btn{
-  display:inline-flex;align-items:center;font:500 13px/1 Inter,system-ui,sans-serif;
-  border-radius:8px;padding:7px 12px;border:0;cursor:pointer;
-  transition:transform 120ms var(--ease),opacity 120ms var(--ease);
+.c{width:min(1104px,calc(100% - 48px));margin:0 auto}
+.c-md{width:min(1024px,calc(100% - 48px));margin:0 auto}
+.num{font-variant-numeric:tabular-nums}
+/* nav */
+.nav{height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.nav .brand{font:600 16px/1 Inter;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.nav .links{display:flex;gap:32px;font-size:14px;color:var(--fg2)}
+.nav .links a:hover{color:var(--fg)}
+.nav .act{display:flex;gap:8px;justify-content:flex-end}
+.bar{border-bottom:1px solid var(--line)}
+/* buttons: one height per row, 6px radius, ring + tiny drop */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;font:500 14px/20px Inter;white-space:nowrap;cursor:pointer;border:0;transition:opacity .15s,background .15s}
+.b.sm{height:32px;padding:0 12px;font-size:13px;border-radius:6px}
+.b.p{background:var(--btn);color:var(--btnfg);box-shadow:0 0 0 1px var(--btn),0 1px 2px var(--k20)}
+.b.s{background:var(--btn2);color:var(--btn2fg);box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k06)}
+.b.p:hover{opacity:.9}.b.s:hover{background:var(--line2)}
+.b.w{width:100%}
+/* type */
+.h1{font:600 60px/60px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h2{font:600 40px/44px Inter;letter-spacing:-.025em;text-wrap:balance}
+.h3{font:600 20px/28px Inter;letter-spacing:-.01em}
+.lead{font-size:18px;line-height:28px;color:var(--fg2);text-wrap:pretty}
+.mute{color:var(--fg2)}.faint{color:var(--fg3)}
+.tone{color:var(--fg3)}
+.stmt{font:500 20px/28px Inter;letter-spacing:-.01em;text-wrap:pretty}.stmt span{color:var(--fg2)}
+.sm-t{font-size:14px;line-height:20px}
+.xs-t{font-size:12px;line-height:16px}
+.sec{padding:96px 0}
+/* bezel frame for product shots */
+.bezel{padding:4px;border-radius:14px;background:var(--bg2);box-shadow:0 0 0 1px var(--line),var(--shadow)}
+.bezel>.in{border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line);background:var(--card)}
+/* hairline grid shell */
+.rails{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hr{border-top:1px solid var(--line)}
+i.bx{font-size:16px;line-height:1;vertical-align:-2px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;color:var(--fg2)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+@media (max-width:760px){
+ .nav{grid-template-columns:1fr auto}.nav .links{display:none}
+ .h1{font-size:40px;line-height:44px}.h2{font-size:30px;line-height:36px}
+ .lead{font-size:17px;line-height:26px}
+ [class*="grid"],.cells,.three,.head,.quote,.stats,.logos,footer .c{grid-template-columns:1fr!important}
+ .cell+.cell,.three>div+div,.stats div+div{border-left:0!important;border-top:1px solid var(--line)}
+ .head,.cell,.three>div,.quote,.end,.hero{padding-left:20px!important;padding-right:20px!important}
+ .shot{padding:0 12px!important}
+ .app{grid-template-columns:1fr!important}.app .side{display:none}
+ .app .row{grid-template-columns:56px 16px 1fr 48px}.app .row .lb,.app .row .av{display:none}.app .tb .pill:first-of-type{display:none}.hero{padding-top:64px!important;padding-bottom:48px!important}
+ .tb .faint.xs-t{display:none}
+ .logos{height:auto!important;padding:24px 0;gap:16px}
 }
-.btn:active{transform:scale(.97)}
-.btn-light{background:var(--btn);color:var(--btn-fg)}
-.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:16px}
-.kpi{background:var(--panel);padding:14px 16px}
-.kpi .label{font-size:12px;color:var(--muted);margin-bottom:6px}
-.kpi .val{font-size:22px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.kpi .delta{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums}
-.kpi .delta.up{color:var(--green)}.kpi .delta.down{color:var(--red)}
-.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.card h2{font-size:13px;font-weight:500;margin-bottom:4px}
-.card .sub{font-size:12px;color:var(--muted);margin-bottom:14px;font-variant-numeric:tabular-nums}
-.chart{height:140px;display:flex;align-items:flex-end}
-.chart svg{width:100%;height:100%;display:block}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:9px 0;text-align:left;border-bottom:1px solid var(--line)}
-th{color:var(--muted);font-weight:500;font-size:12px}
-td{font-variant-numeric:tabular-nums}
-td.page{font-variant-numeric:normal}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:middle}
-.dot.hot{background:var(--amber)}.dot.ok{background:var(--faint)}.dot.up{background:var(--green)}
-@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+/* ---------- app kit ---------- */
+:root{--danger:#dc2626;--focus:#2563eb;--hl:rgb(245 158 11/.22)}
+.dark{--danger:#f87171;--focus:#60a5fa;--hl:rgb(245 158 11/.28)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);height:100vh;min-height:620px}
+.rail{background:var(--bg2);border-right:1px solid var(--line);padding:10px 8px;display:flex;flex-direction:column;font-size:13px;line-height:18px;overflow:hidden}
+.rail .ws{display:flex;align-items:center;gap:6px;height:32px;padding:0 8px;font-weight:600;font-size:14px;margin-bottom:6px}
+.rail .ws .sp{flex:1}.rail .ws i{color:var(--fg3)}
+.rail a{display:flex;align-items:center;gap:8px;height:32px;padding:0 8px;border-radius:6px;color:var(--fg2);transition:background .15s,color .15s}
+.rail a i{font-size:16px;color:var(--fg3)}
+.rail a:hover{background:var(--line2);color:var(--fg)}
+.rail a.on{background:var(--line2);color:var(--fg);font-weight:500}.rail a.on i{color:var(--fg)}
+.rail .ct{margin-left:auto;font-size:12px;color:var(--fg3)}
+.rail .gl{font-size:12px;color:var(--fg3);padding:16px 8px 6px}
+.rail .me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px}
+.av{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--fg2);font-size:10px;font-weight:600;display:inline-grid;place-items:center;flex:none}
+.top{display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-bottom:1px solid var(--line);font-size:13px}
+.top .sp{flex:1}.top .crumb{color:var(--fg2)}.top .crumb b{color:var(--fg);font-weight:500}
+.ib{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:6px;color:var(--fg2)}.ib:hover{background:var(--line2);color:var(--fg)}.ib i{font-size:18px}
+.panel{background:var(--card);border-radius:12px;box-shadow:0 0 0 1px var(--line)}
+.panel>.ph{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--line2);font-size:13px;font-weight:500}
+.panel>.ph .sp{flex:1}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{height:36px;padding:0 16px;text-align:left;font-weight:500;font-size:12px;color:var(--fg3);border-bottom:1px solid var(--line2)}
+.tbl td{height:40px;padding:0 16px;border-bottom:1px solid var(--line2);color:var(--fg2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.p{color:var(--fg);font-weight:500}.tbl .r{text-align:right}
+.tbl tr:hover td{background:var(--line2)}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:8px}
+.inp{height:36px;width:100%;padding:0 12px;border-radius:8px;border:0;background:var(--card);color:var(--fg);font:400 14px Inter;box-shadow:0 0 0 1px var(--ring),0 1px 2px var(--k05);transition:box-shadow .15s}
+.inp::placeholder{color:var(--fg3)}
+.inp:focus{outline:none;box-shadow:0 0 0 1px var(--fg3),0 0 0 3px var(--line)}
+.seg{display:inline-flex;padding:2px;border-radius:8px;background:var(--line2);box-shadow:inset 0 0 0 1px var(--line)}
+.seg a{height:28px;padding:0 10px;display:flex;align-items:center;font-size:12px;font-weight:500;border-radius:6px;color:var(--fg2)}
+.seg a.on{background:var(--card);color:var(--fg);box-shadow:0 0 0 1px var(--line),0 1px 2px var(--k08)}
+kbd{font:500 11px/1 Inter;color:var(--fg3);padding:3px 5px;border-radius:4px;box-shadow:0 0 0 1px var(--line);background:var(--bg2)}
+.up{color:var(--ok)}.dn{color:var(--danger)}
+.b:active{transform:scale(.97)}
+
+.main{overflow:hidden;display:flex;flex-direction:column}
+.body{padding:20px;display:grid;gap:16px;overflow:hidden}
+.hd{display:flex;align-items:end;justify-content:space-between}
+.hd h1{font:600 20px/28px Inter;letter-spacing:-.01em}.hd p{font-size:13px;color:var(--fg3)}
+.hd .act{display:flex;gap:8px;align-items:center}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr)}
+.kpi>div{padding:16px 18px}.kpi>div+div{border-left:1px solid var(--line2)}
+.kpi .l{font-size:12px;color:var(--fg2);display:flex;align-items:center;gap:6px}
+.kpi .v{font:600 24px/32px Inter;letter-spacing:-.02em;margin-top:6px}
+.kpi .d{font-size:12px;margin-top:2px;color:var(--fg3)}
+.chartp{padding:0 0 12px}
+.chartp .leg{display:flex;gap:16px;font-size:12px;color:var(--fg2);font-weight:400}
+.chartp .leg span{display:inline-flex;align-items:center;gap:6px}
+.sw1{width:12px;height:2px;background:var(--fg);display:inline-block}.sw2{width:12px;height:0;border-top:1.5px dashed var(--fg3);display:inline-block}
+.cwrap{position:relative;padding:16px 16px 0 52px;height:228px}
+.ch{width:100%;height:200px;display:block}
+.yax{position:absolute;left:16px;top:10px;height:200px;display:flex;flex-direction:column;justify-content:space-between;font-size:11px;color:var(--fg3)}
+.xax{display:flex;justify-content:space-between;padding:6px 16px 0 52px;font-size:11px;color:var(--fg3)}
+.tip{position:absolute;left:calc(52px + (100% - 68px)*22/29 + 10px);top:28px;padding:8px 10px;border-radius:8px;background:var(--card);box-shadow:0 0 0 1px var(--line),0 8px 20px var(--k40);font-size:12px;line-height:18px}
+.tip b{font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bar{display:inline-block;height:6px;border-radius:3px;background:var(--fg3);vertical-align:middle;margin-right:8px;opacity:.6}
+.ev{display:inline-flex;align-items:center;gap:8px;color:var(--fg)}.ev i{font-size:14px;color:var(--fg3)}
+@media (max-width:760px){.body{grid-template-columns:minmax(0,1fr)}.hd .act{display:none}.leg span:last-child{display:none}.panel{overflow:hidden}.top .crumb b{display:inline}.shell{grid-template-columns:minmax(0,1fr)}.rail{display:none}.kpi{grid-template-columns:1fr 1fr}.kpi>div:nth-child(3){border-left:0}.kpi>div:nth-child(n+3){border-top:1px solid var(--line2)}.two{grid-template-columns:1fr}.hd .act .seg{display:none}.body{padding:12px;overflow:visible}.shell{height:auto}.tip{display:none}.tbl td:nth-child(3),.tbl th:nth-child(3){display:none}}
 </style>
 </head>
-<body>
+<body class="dark">
 <div class="shell">
-  <aside class="side">
-    <div class="ws">Pulse</div>
-    <a class="on" href="#">Overview</a>
-    <a href="#">Funnels</a>
-    <a href="#">Users</a>
-    <div class="sec">Workspace</div>
-    <a href="#">Settings</a>
-    <a href="#">Billing</a>
-  </aside>
-  <main class="main">
-    <div class="top">
-      <div>
-        <h1>Overview</h1>
-        <div class="meta">Oct 9 to Oct 15 · Last 7 days</div>
-      </div>
-      <div class="actions">
-        <button class="btn btn-ghost">Export CSV</button>
-        <button class="btn btn-light">Share report</button>
-      </div>
-    </div>
-    <div class="kpis">
-      <div class="kpi"><div class="label">Revenue</div><div class="val">$128,420</div><div class="delta up">+12.4% vs prior week</div></div>
-      <div class="kpi"><div class="label">Active users</div><div class="val">18,402</div><div class="delta up">+4.2%</div></div>
-      <div class="kpi"><div class="label">Conversion</div><div class="val">3.84%</div><div class="delta up">+0.31 pts</div></div>
-      <div class="kpi"><div class="label">Avg session</div><div class="val">4:12</div><div class="delta down">-8s</div></div>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h2>Sessions</h2>
-        <div class="sub">Daily · 42.1k total</div>
-        <div class="chart">
-          <svg viewBox="0 0 560 180" preserveAspectRatio="none" aria-hidden="true">
-            <polyline fill="none" stroke="var(--accent)" stroke-width="2" points="0,140 80,110 160,122 240,78 320,88 400,42 480,58 560,36"/>
-            <polyline fill="none" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="4 4" points="0,150 80,145 160,138 240,130 320,128 400,120 480,118 560,112"/>
-          </svg>
-        </div>
-      </div>
-      <div class="card">
-        <h2>Top pages</h2>
-        <div class="sub">By views</div>
-        <table>
-          <thead><tr><th>Page</th><th>Views</th><th></th></tr></thead>
-          <tbody>
-            <tr><td class="page"><span class="dot hot"></span>/pricing</td><td>12,480</td><td style="color:var(--muted);text-align:right">28%</td></tr>
-            <tr><td class="page"><span class="dot up"></span>/docs</td><td>9,210</td><td style="color:var(--muted);text-align:right">21%</td></tr>
-            <tr><td class="page"><span class="dot ok"></span>/blog</td><td>6,104</td><td style="color:var(--muted);text-align:right">14%</td></tr>
-            <tr><td class="page"><span class="dot ok"></span>/login</td><td>4,880</td><td style="color:var(--muted);text-align:right">11%</td></tr>
-            <tr><td class="page"><span class="dot ok"></span>/changelog</td><td>3,102</td><td style="color:var(--muted);text-align:right">7%</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="grid" style="margin-top:16px">
-      <div class="card">
-        <h2>Sources</h2>
-        <div class="sub">Sessions by channel</div>
-        <table>
-          <thead><tr><th>Channel</th><th>Sessions</th><th></th></tr></thead>
-          <tbody>
-            <tr><td class="page">Direct</td><td>18,420</td><td style="color:var(--muted);text-align:right">41%</td></tr>
-            <tr><td class="page">Organic search</td><td>12,104</td><td style="color:var(--muted);text-align:right">27%</td></tr>
-            <tr><td class="page">Product Hunt</td><td>6,880</td><td style="color:var(--muted);text-align:right">15%</td></tr>
-            <tr><td class="page">Referral</td><td>4,210</td><td style="color:var(--muted);text-align:right">9%</td></tr>
-            <tr><td class="page">Paid social</td><td>3,102</td><td style="color:var(--muted);text-align:right">7%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <h2>Recent events</h2>
-        <div class="sub">Live · last 30 minutes</div>
-        <table>
-          <thead><tr><th>Event</th><th>Count</th><th></th></tr></thead>
-          <tbody>
-            <tr><td class="page"><span class="dot up"></span>signup_completed</td><td>84</td><td style="color:var(--muted);text-align:right">+12</td></tr>
-            <tr><td class="page"><span class="dot hot"></span>checkout_started</td><td>61</td><td style="color:var(--muted);text-align:right">+4</td></tr>
-            <tr><td class="page"><span class="dot ok"></span>invite_sent</td><td>39</td><td style="color:var(--muted);text-align:right">0</td></tr>
-            <tr><td class="page"><span class="dot ok"></span>export_csv</td><td>22</td><td style="color:var(--muted);text-align:right">-3</td></tr>
-            <tr><td class="page"><span class="dot ok"></span>billing_updated</td><td>11</td><td style="color:var(--muted);text-align:right">+1</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
+<aside class="rail">
+ <div class="ws"><span>Northwind</span><i class="bx bx-chevron-down"></i><span class="sp"></span><i class="bx bx-search"></i></div>
+ <a class="on"><i class="bx bx-line-chart"></i>Overview</a>
+ <a><i class="bx bx-filter-alt"></i>Funnels</a>
+ <a><i class="bx bx-user"></i>People</a>
+ <a><i class="bx bx-pulse"></i>Live events<span class="ct num">18</span></a>
+ <div class="gl">Dashboards</div>
+ <a><i class="bx bx-grid-alt"></i>Growth weekly</a>
+ <a><i class="bx bx-grid-alt"></i>Checkout health</a>
+ <a><i class="bx bx-grid-alt"></i>Retention cohorts</a>
+ <div class="gl">Data</div>
+ <a><i class="bx bx-data"></i>Sources</a>
+ <a><i class="bx bx-code-curly"></i>Event schema</a>
+ <a><i class="bx bx-cog"></i>Settings</a>
+ <div class="me"><span class="av">AK</span><div style="min-width:0"><div style="font-weight:500">Ana Kim</div><div class="xs-t faint">ana@northwind.co</div></div></div>
+</aside>
+<main class="main">
+ <div class="top"><span class="crumb">Dashboards / <b>Overview</b></span><span class="sp"></span><a class="ib" aria-label="Share"><i class="bx bx-link"></i></a><a class="b s sm"><i class="bx bx-export"></i>Export CSV</a></div>
+ <div class="body">
+  <div class="hd"><div><h1>Overview</h1><p class="num">Oct 1 to Oct 30 · compared with the previous 30 days</p></div><div class="act"><div class="seg"><a>7d</a><a class="on">30d</a><a>90d</a><a>12m</a></div><a class="b s sm"><i class="bx bx-filter"></i>All sources</a></div></div>
+  <div class="panel kpi">
+   <div><div class="l">Revenue</div><div class="v num">$128,420</div><div class="d num"><span class="up">+12.4%</span> vs $114,250</div></div>
+   <div><div class="l">Orders</div><div class="v num">3,912</div><div class="d num"><span class="up">+8.1%</span> vs 3,619</div></div>
+   <div><div class="l">Conversion</div><div class="v num">3.42%</div><div class="d num"><span class="dn">−0.18 pt</span> vs 3.60%</div></div>
+   <div><div class="l">Avg. order value</div><div class="v num">$32.83</div><div class="d num"><span class="up">+4.0%</span> vs $31.57</div></div>
+  </div>
+  <div class="panel chartp"><div class="ph">Revenue per day<span class="sp"></span><span class="leg"><span><i class="sw1"></i>This period</span><span><i class="sw2"></i>Previous period</span></span></div>
+   <div class="cwrap"><div class="yax num"><span>$6k</span><span>$4.5k</span><span>$3k</span><span>$1.5k</span><span>$0</span></div><svg viewBox="0 0 900 200" preserveAspectRatio="none" class="ch">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--fg)" stop-opacity=".10"/><stop offset="1" stop-color="var(--fg)" stop-opacity="0"/></linearGradient></defs>
+<line x1="0" x2="900" y1="50.0" y2="50.0" stroke="var(--line2)" vector-effect="non-scaling-stroke"/><line x1="0" x2="900" y1="100.0" y2="100.0" stroke="var(--line2)" vector-effect="non-scaling-stroke"/><line x1="0" x2="900" y1="150.0" y2="150.0" stroke="var(--line2)" vector-effect="non-scaling-stroke"/>
+<path d="M0.0,70.0 L31.0,60.2 L62.1,59.1 L93.1,45.3 L124.1,40.6 L155.2,50.1 L186.2,62.3 L217.2,75.6 L248.3,78.1 L279.3,64.1 L310.3,43.6 L341.4,47.1 L372.4,60.7 L403.4,67.2 L434.5,60.8 L465.5,40.9 L496.6,28.6 L527.6,20.0 L558.6,28.7 L589.7,40.2 L620.7,45.0 L651.7,51.8 L682.8,54.1 L713.8,46.2 L744.8,37.8 L775.9,45.5 L806.9,54.5 L837.9,57.2 L869.0,60.8 L900.0,48.0 L900,200 L0,200 Z" fill="url(#g)"/>
+<path d="M0.0,97.2 L31.0,80.8 L62.1,78.8 L93.1,70.0 L124.1,72.3 L155.2,74.5 L186.2,91.1 L217.2,89.0 L248.3,92.3 L279.3,85.0 L310.3,72.4 L341.4,64.1 L372.4,81.8 L403.4,82.4 L434.5,77.2 L465.5,66.2 L496.6,57.8 L527.6,46.7 L558.6,57.5 L589.7,72.3 L620.7,73.4 L651.7,70.0 L682.8,85.5 L713.8,79.2 L744.8,61.3 L775.9,74.3 L806.9,77.2 L837.9,80.6 L869.0,85.7 L900.0,63.2" fill="none" stroke="var(--fg3)" stroke-width="1.25" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
+<path d="M0.0,70.0 L31.0,60.2 L62.1,59.1 L93.1,45.3 L124.1,40.6 L155.2,50.1 L186.2,62.3 L217.2,75.6 L248.3,78.1 L279.3,64.1 L310.3,43.6 L341.4,47.1 L372.4,60.7 L403.4,67.2 L434.5,60.8 L465.5,40.9 L496.6,28.6 L527.6,20.0 L558.6,28.7 L589.7,40.2 L620.7,45.0 L651.7,51.8 L682.8,54.1 L713.8,46.2 L744.8,37.8 L775.9,45.5 L806.9,54.5 L837.9,57.2 L869.0,60.8 L900.0,48.0" fill="none" stroke="var(--fg)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+<circle cx="682.8" cy="54.1" r="3.5" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+</svg><div class="tip num"><div class="faint">Thu, Oct 23</div><b>$4,377</b> <span class="up">+27%</span></div></div>
+   <div class="xax num"><span>Oct 1</span><span>Oct 8</span><span>Oct 15</span><span>Oct 22</span><span>Oct 30</span></div></div>
+  <div class="two">
+   <div class="panel"><div class="ph">Top sources<span class="sp"></span><a class="xs-t mute" style="font-weight:400">View all</a></div><table class="tbl">
+    <tr><th>Source</th><th class="r">Visitors</th><th>Share</th><th class="r">Revenue</th></tr>
+    <tr><td class="p">Google organic</td><td class="r num">48,210</td><td><span class="bar" style="width:72px"></span><span class="num">41%</span></td><td class="r num">$52,180</td></tr>
+    <tr><td class="p">Direct</td><td class="r num">29,034</td><td><span class="bar" style="width:44px"></span><span class="num">25%</span></td><td class="r num">$38,940</td></tr>
+    <tr><td class="p">Newsletter</td><td class="r num">14,880</td><td><span class="bar" style="width:22px"></span><span class="num">13%</span></td><td class="r num">$19,770</td></tr>
+    <tr><td class="p">Instagram</td><td class="r num">11,402</td><td><span class="bar" style="width:17px"></span><span class="num">10%</span></td><td class="r num">$9,610</td></tr>
+   </table></div>
+   <div class="panel"><div class="ph">Recent events<span class="sp"></span><span class="tag"><span class="dot" style="background:var(--ok)"></span>Live</span></div><table class="tbl">
+    <tr><th>Event</th><th>Person</th><th>Page</th><th class="r">Time</th></tr>
+    <tr><td><span class="ev"><i class="bx bx-cart"></i>Order placed</span></td><td>m.hale@fieldkit.app</td><td>/checkout</td><td class="r num">2m ago</td></tr>
+    <tr><td><span class="ev"><i class="bx bx-user-plus"></i>Signed up</span></td><td>jo.park@relay.dev</td><td>/pricing</td><td class="r num">6m ago</td></tr>
+    <tr><td><span class="ev"><i class="bx bx-cart"></i>Order placed</span></td><td>r.okafor@halcyon.io</td><td>/checkout</td><td class="r num">11m ago</td></tr>
+    <tr><td><span class="ev"><i class="bx bx-x-circle"></i>Checkout abandoned</span></td><td>Anonymous</td><td>/checkout/pay</td><td class="r num">14m ago</td></tr>
+   </table></div>
+  </div>
+ </div>
+</main>
 </div>
 </body>
 </html>

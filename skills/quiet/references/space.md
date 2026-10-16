@@ -16,7 +16,9 @@ outerRadius = innerRadius + padding
 
 Mismatch is a Quiet fail. Fix it even when “nobody will notice.”
 
-Pick a small radius token set (e.g. control / surface / popup) and stick to it. Circles and intentionally square edges are fine when purposeful.
+Applies when a rounded surface sits inside another with padding of 16px or less (bezel 14 = 10 + 4, a 4px-padded segmented control 8 = 6 + 2). With more padding, the inner element uses its own token.
+
+Token set: 6px controls in app and small buttons, 8px buttons, 10px inner frames, 12px panels and cards, 14px product bezel and pricing grid. Pick a small radius token set (e.g. control / surface / popup) and stick to it. Circles and intentionally square edges are fine when purposeful.
 
 ## Optical nudges
 
