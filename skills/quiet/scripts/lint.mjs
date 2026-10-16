@@ -128,8 +128,14 @@ for (const file of files) {
   const text = fs.readFileSync(file, "utf8");
   const lines = text.split(/\r?\n/);
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+    const raw = lines[i];
+    // ignore SVG path/geometry data, numeric en-dash ranges, and changelog version labels
+    const line = raw
+      .replace(/\s(d|points|viewBox|transform)="[^"]*"/g, "")
+      .replace(/(\d)\s?(\u2013|&ndash;)\s?(\d)/g, "$1-$3");
+    const versionOk = /changelog|release|version|<time|<h[1-6]/i.test(raw);
     for (const rule of rules) {
+      if (rule.id === "corner-label" && versionOk && !/UI skill\s*·|local time|©\s*scroll/i.test(line)) continue;
       if ((rule.id === "raw-hex" || rule.id === "raw-color-fn") && (isThemePath(file) || isTokenDefinition(line))) continue;
       if (!rule.re.test(line)) continue;
       const tag = rule.severity;

@@ -71,7 +71,7 @@ building is cheap?
    not apply.
 6. **Layout.** Product density in apps. For product marketing: a 1104px
    container on structural rails, a two-line hero, the real product in a bezel
-   inside the fold (product marketing pages only: home, product, feature and pricing pages; company, about, careers, legal, docs and auth pages do not need a product shot), features as grid cells. Numbers and recipes (hero composition, product fragment, feature cells, wordmarks, pricing anatomy) in `references/landing.md`; follow them literally.
+   inside the fold (product marketing pages only: home, product, feature and pricing pages; company, about, careers, legal, docs, auth and editorial pages such as blog, changelog and index do not need a product shot; editorial headers are left-aligned), features as grid cells. Numbers and recipes (hero composition, product fragment, feature cells, wordmarks, pricing anatomy) in `references/landing.md`; follow them literally.
    No stat-card heroes, no fake feature row tables, no serif-section rhythm.
 7. **Copy.** Buttons name the action (“Send invite”, not “Submit”). No stock AI
    phrases. No eyebrow / pill kickers above headlines.

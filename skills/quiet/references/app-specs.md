@@ -16,7 +16,7 @@ Numbers to follow literally when building product surfaces. They pair with `prod
 - Press: scale 0.97 over 100ms.
 
 ## Controls
-- Button heights: 32px (12–13px/500, 12px padding) in app chrome; 36px (14px/500, 16px padding) in forms and page actions; 40px for hero CTAs; 52px for the primary button on a mobile screen. Radius 6–8px.
+- Button heights: 32px (12–13px/500, 12px padding) in app chrome; 36px (14px/500, 16px padding) in forms and page actions; 36px for hero CTAs on desktop and 44px on mobile (see landing.md); 52px for the primary button on a mobile screen. Radius 6–8px.
 - Inputs are 36px tall with a radius of 8px, 14px text and 12px left padding, plus a 1px hairline border and a very faint shadow. A textarea is 64px tall, or 128px for long text.
 - Labels are 14px/500 and sit 8–10px above the field. Help and error text is 13px in the muted or danger color, 6px below the field.
 - A segmented control (7d / 30d / 90d) is 32px tall. The active segment is a raised surface, not a colored fill.
@@ -52,7 +52,7 @@ Numbers to follow literally when building product surfaces. They pair with `prod
 - An empty app view keeps the full shell (sidebar, tabs with counts). The center holds a 40px icon tile, a 14px/500 title, one or two lines of muted text, and two 32px buttons, with a small tips panel below.
 
 ## Footer and page end
-- Marketing footer: 128px top padding, 80px bottom. Links 14/20 at 400 in muted text; column headings 14px/500.
+- Marketing footer: see sections.md Footer variants (64px top, 48px bottom). Links 14/20 at 400 in muted text; column headings 14px/500.
 - The final legal row includes a status line: a 6px green dot with "All systems normal".
 - On short pages, the rails continue down to the viewport bottom (the body is a flex column with a filler block) so the page never ends in empty space.
 

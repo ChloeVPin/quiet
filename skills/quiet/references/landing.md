@@ -5,7 +5,7 @@ Use these numbers unless the product has a reason to differ. They describe a cal
 ## Grid and space
 - Rails: 1px vertical lines at the edges of a 1104px centered box (so at 1440px they sit at x=168 and x=1272). Content width is 1008px (1104 minus 48px gutters each side). The product shot is 1024px wide, centered, breaking 8px past the content edge toward the rails; it never touches or crosses them. Mobile: rails at the viewport edge, 20px gutter, product shot full width minus 12px each side.
 - Structural rails: 1px lines on the container edges for the full page height, and a full-bleed 1px rule between major sections. Cells inside a section split with the same 1px line. On the marketing layer nothing else draws a line: no decorative rules, ticks, or lines that align to nothing. Inside app UI, tables, panels and form groups, functional separators are allowed at the soft line alpha (6%), rows and headers only.
-- Section padding 96px top and bottom. Hero 96px top, 64px bottom (mobile 64 / 48). Cells 40px by 48px.
+- Section padding 96px top and bottom. Hero 96px top, 64px bottom (mobile 64 / 48). Cells are padded 40px top and bottom and 48px left and right. Fragments fill the cell width minus that padding; the cell min-height is set by the tallest fragment in the row.
 - Nav 64px tall, three columns: brand left, links centered (14px, gap 32px, secondary color), actions right. A 1px rule under it.
 
 ## Type
@@ -23,19 +23,19 @@ Use these numbers unless the product has a reason to differ. They describe a cal
 - Accent only as status data (green done, amber in progress, blue info), shown as a 6px dot plus text.
 
 ## Controls
-- Buttons 36px tall (32px in the nav), 14px/500 (13px in the nav), radius 8px (6px small), padding 14px.
+- Buttons 36px tall on desktop, hero CTAs included (32px in the nav); 44px on mobile below 1024px, 14px/500 (13px in the nav), radius 8px (6px small), padding 14px.
 - Primary: filled with the text color, 1px ring of the same color, 1px shadow. Secondary: page or 6% tint fill, 1px ring at 12% alpha.
 - Inputs match the height of the button beside them. Primary form actions such as a waitlist may go to 40px for both.
 - A row of buttons shares one height. Full-width buttons in pricing cards.
 
 ## Product shot
-- Bezel: 4px padding, raised background, 1px line, outer radius 14px, inner radius 10px, shadow 0 1px 2px and 0 10px 15px -3px at 5 to 6 percent (dark: 0 20px 40px -12px at 60 percent).
+- Bezel: 4px padding, raised background, 1px line (dark: white at 7.5%), outer radius 14px, inner radius 10px, shadow 0 1px 2px and 0 10px 15px -3px at 5 to 6 percent (dark: 0 20px 40px -12px at 60 percent).
 - Starts above the fold, about 400 to 480px from the top at 1440 by 900.
 - The UI inside is dense and real: 13px text, 40px rows, ids, owners, tabular dates, status dots.
 
 ## Section order
 For a landing brief these sections count as requested (not "unrequested features"): nav, hero, product shot, wordmarks, section header, two feature cells, three small cells, pricing (when the brief mentions price), final CTA, footer. Testimonial and FAQ are optional; add them only if the brief has real content for them. Default order:
-Nav, hero, product shot, customer wordmarks (one row of six), section header (H2 left, lead right, aligned to the bottom), two feature cells with a small live UI fragment each, three small cells (icon, title, two lines), one testimonial with real photo and three metrics, final CTA repeating the hero buttons, four-column footer, legal row.
+Nav, hero, product shot, customer wordmarks (one row of six), section header (H2 left, lead right, aligned to the bottom), two feature cells with a small live UI fragment each, three small cells (icon, title, two lines), one testimonial with real photo and three metrics, final CTA repeating the hero buttons, footer (brand column plus 4 link groups, see sections.md) with legal row.
 
 ## Pricing
 Monthly and yearly segmented control centered over a three-column cell grid. Price 36/40 600 with a 14px unit. Recommended plan uses a raised background and the only filled button; the word Recommended sits beside the plan name in tertiary text. Button labels say what is bought: Start 14-day Team trial, Buy Business. Then a comparison table and a two-column FAQ.
@@ -43,7 +43,7 @@ Monthly and yearly segmented control centered over a three-column cell grid. Pri
 ## Hero composition (do not improvise)
 - Center the hero: H1, lead, buttons (or waitlist form) all centered on the container axis. Left-aligned heroes are a fail for product, pricing and waitlist pages.
 - Headline budget: two short sentences, each 2 to 6 words and at most ~24 characters, so each sentence fits on ONE line at 60px inside ~760px. If a sentence wraps, rewrite it shorter; never shrink the type. Line 1 is the promise in the text color, line 2 the payoff in the tertiary color.
-- Vertical budget at 1440x900: H1 top ~180px, lead 16px below (2 to 3 lines, max 540px wide, centered), buttons 32px below the lead, product bezel top at 540 to 600px so a strong slice of the product shows in the fold.
+- Vertical budget at 1440x900: H1 top = 64px nav + 96px hero padding = 160px (mobile 56 + 64 = 120px), lead 16px below (2 to 3 lines, max 540px wide, centered), buttons 32px below the lead, product bezel top at 540 to 600px so a strong slice of the product shows in the fold.
 - Waitlist nav: brand wordmark left, one quiet status string right in tertiary text (for example "Private beta · Cohort 3"). No center links, no Sign in, no second CTA; the form is the only action on the page.
 
 ## Product fragment recipe (the hero screenshot)
@@ -76,6 +76,7 @@ Name (500), one-line audience description (secondary, 14px), price 36/40 with un
 
 ## Feature cells vs small cells
 - Feature cells: two per row, 40x48px padding, meta line + statement + a live UI fragment. Use for the two capabilities that define the product.
+- Three-up cells with UI are allowed when the page is a feature or dark showcase page with three equal capabilities and each fragment fits in 5 rows or fewer at 11–12px. Otherwise use two feature cells plus small cells.
 - Small cells: three per row, same padding, 20px icon, then statement copy only (bold first sentence + secondary rest), no fragment. Use for supporting capabilities. Never mix the two patterns in one row.
 
 ## Label chips
