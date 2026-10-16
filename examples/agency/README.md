@@ -2,4 +2,4 @@
 
 Quiet studio site on the grid: a two-column hero, a selected work list, three service cells, and a booking CTA. Expressive through type, not cream or serif costume.
 
-Pages: [`after.html`](after.html). Screenshots at 2x: [`after-fold.png`](after-fold.png), [`after-mobile.png`](after-mobile.png), [`after-s1.png`](after-s1.png).
+Pages: [`result.html`](result.html). Screenshots at 2x: [`result-fold.png`](result-fold.png), [`result-mobile.png`](result-mobile.png), [`result-s1.png`](result-s1.png).
