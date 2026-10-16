@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png" />
-    <img src="assets/hero-light.png" alt="Quiet examples: a SaaS landing, analytics, chat and a mobile app" width="880" />
-  </picture>
+  <img src="assets/quiet-tour.webp" alt="A tour of six screens designed with Quiet" width="880" />
 </p>
 
 <p align="center">A design skill for coding agents. Calm, product-first interfaces from landing page to app.</p>
@@ -24,10 +21,6 @@ The agent plans first, waits for approval, builds one surface per pass and check
 ```bash
 node skills/quiet/scripts/lint.mjs path/to/ui
 ```
-
-<p align="center">
-  <img src="assets/tour.webp" alt="A tour of six example screens" width="880" />
-</p>
 
 ## Examples
 
